@@ -1,25 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Exercícios</title>
+  <title>Teste POST no Backend</title>
 </head>
 <body>
-  <h1>Exercícios</h1>
-  <ul id="lista"></ul>
+  <h1>Enviar dados pro backend</h1>
+  <button id="enviar">Criar exemplo</button>
+  <button id="apagar">Apagar registro 7</button>
+  <button id="atualizar">Atualizar</button>
 
   <script>
-    fetch("/api/exercicios")
-      .then(r => r.json())
-      .then(data => {
-        const lista = document.getElementById("lista");
-        data.exercicios?.forEach(ex => {
-          const li = document.createElement("li");
-          li.textContent = `${ex.nome} → ${ex.grupo_muscular.map(g => g.nome).join(", ")}`;
-          lista.appendChild(li);
-        });
-      })
-      .catch(err => console.error(err));
+    document.getElementById("enviar").onclick = async () => {
+      const resposta = await fetch("http://localhost:3000/example", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          value: "Exemplo pelo front nº 2",
+
+        })
+      });
+
+
+      const resultado = await resposta.json();
+      console.log(resultado);
+      alert("Registro criado!");
+    };
+
+    document.getElementById("apagar").onclick = async () => {
+      const resposta = await fetch("http://localhost:3000/example/7", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        // body: JSON.stringify({
+        //   value: "Exemplo pelo front nº 2",
+
+        // })
+      });
+
+
+      const resultado = await resposta.json();
+      console.log(resultado);
+      alert("Registro apagado!");
+    };
+
+    document.getElementById("atualizar").onclick = async () => {
+      const resposta = await fetch("http://localhost:3000/example/6", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          value: "Ohhhhh Brazil!!! Abracadabra, amor oh nana!!!",
+
+        })
+      });
+
+
+      const resultado = await resposta.json();
+      console.log(resultado);
+      alert("Registro atualizado!");
+    };
+
   </script>
 </body>
 </html>
