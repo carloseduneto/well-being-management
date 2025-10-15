@@ -1,0 +1,14 @@
+supabase-express/node_modules
+mkdir supabase-express
+cd supabase-express
+npm init -y  
+npm init -y
+npm install express dotenv @supabase/supabase-js
+npm install -D nodemon
+npm install
+yarn
+npm install cors
+npm install express axios dotenv
+npm install express dotenv @supabase/supabase-js jsonwebtoken node-fetch
+npm install express dotenv @supabase/supabase-js
+node server.js
