@@ -9,6 +9,8 @@
   <button id="enviar">Criar exemplo</button>
   <button id="apagar">Apagar registro 7</button>
   <button id="atualizar">Atualizar</button>
+  <button id="exibir">Exibir no console</button>
+
 
   <script>
     document.getElementById("enviar").onclick = async () => {
@@ -16,7 +18,7 @@
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          value: "Exemplo pelo front nº 2",
+          value: "Exemplo pelo front nº 3",
 
         })
       });
@@ -44,12 +46,12 @@
     };
 
     document.getElementById("atualizar").onclick = async () => {
-      const resposta = await fetch("http://localhost:3000/example/6", {
+      const resposta = await fetch("http://localhost:3000/example/8", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          value: "Ohhhhh Brazil!!! Abracadabra, amor oh nana!!!",
-
+          value: "I can't see me cry" +
+             "Can't see me cry ever again",
         })
       });
 
@@ -58,7 +60,20 @@
       console.log(resultado);
       alert("Registro atualizado!");
     };
+    
+    document.getElementById("exibir").onclick = async () => {
+      const resposta = await fetch("http://localhost:3000/example", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" }
+      });
 
+
+      const resultado = await resposta.json();
+      console.log(resultado);
+      alert("Registro atualizado!");
+    };
+
+    
   </script>
 </body>
 </html>
