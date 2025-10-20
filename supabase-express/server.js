@@ -2,6 +2,8 @@ import express from "express";
 import axios from "axios";
 import dotenv from "dotenv";
 import cors from "cors";
+import NodeCache from "node-cache";
+
 
 
 dotenv.config();
@@ -16,6 +18,20 @@ const EMAIL = process.env.SUPABASE_EMAIL;
 const PASSWORD = process.env.SUPABASE_PASSWORD;
 const PORT = process.env.PORT || 3000;
 
+import { createClient } from "@supabase/supabase-js";
+
+const cache = new NodeCache({ stdTTL: 3600 }); // 1h (3600 segundos)
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+supabase
+  .channel("treino-changes")
+  .on("postgres_changes", { event: "*", schema: "public", table: "treino" }, () => {
+    cache.del("treino_data");
+    console.log("🌀 Cache 'treino_data' limpo por alteração no banco");
+  })
+  .subscribe();
+
+  
 let access_token = null;
 
 // Função para autenticar e armazenar o token
@@ -62,6 +78,36 @@ app.get("/example", ensureAuth, async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+
+app.get("/treino", ensureAuth, async (req, res) => {
+  try {
+    const cacheKey = "treino_data";
+    let data = cache.get(cacheKey);
+
+    if (!data) {
+      const response = await axios.get(
+        `${SUPABASE_URL}/rest/v1/treino?select=id,exercicio(id,nome,grupos_musculares(nome)),categoria(nome)`,
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+            apikey: SUPABASE_ANON_KEY,
+          },
+        }
+      );
+      data = response.data;
+      cache.set(cacheKey, data);
+      console.log("💾 Dados armazenados no cache");
+    } else {
+      console.log("⚡ Dados servidos do cache");
+    }
+
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 
 app.post("/example", ensureAuth, async (req, res) => {
   try {
