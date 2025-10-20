@@ -186,13 +186,45 @@
       </div>
 
 
+      
+      
+      
+      
+      <!-- Apagar caso não precise mais -->
+      <button id="installBtn" style="display:block;">Instalar app</button>
     </div>
+
+
     <script>
             if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("./service-worker.js")
           .then(() => console.log("Service Worker registrado"))
           .catch(err => console.error("Erro ao registrar Service Worker:", err));
       }
+
+      //Apagar caso não precise mais desses exemplos de requisições fetch
+      let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Impede o Chrome de mostrar o pop-up automático
+  e.preventDefault();
+  deferredPrompt = e;
+
+  // Exibe seu botão de instalar
+  const installBtn = document.getElementById('installBtn');
+  installBtn.style.display = 'block';
+
+  installBtn.addEventListener('click', async () => {
+    installBtn.style.display = 'none';
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`Usuário escolheu: ${outcome}`);
+    deferredPrompt = null;
+  });
+});
+
+//Apagar caso não precise mais desses exemplos de requisições fetch
+
 
 
 
