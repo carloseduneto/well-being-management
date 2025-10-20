@@ -1,79 +1,256 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Teste POST no Backend</title>
-</head>
-<body>
-  <h1>Enviar dados pro backend</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste POST no Backend</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <!-- <h1>Enviar dados pro backend</h1>
   <button id="enviar">Criar exemplo</button>
   <button id="apagar">Apagar registro 7</button>
   <button id="atualizar">Atualizar</button>
-  <button id="exibir">Exibir no console</button>
-
-
-  <script>
-    document.getElementById("enviar").onclick = async () => {
-      const resposta = await fetch("http://localhost:3000/example", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          value: "Abracadabra oh na na na, morta gaga. Hello hello baby you called, I can't hear a thing. I have got no service in the club.",
-
-        })
-      });
-
-
-      const resultado = await resposta.json();
-      console.log(resultado);
-      alert("Registro criado!");
-    };
-
-    document.getElementById("apagar").onclick = async () => {
-      const resposta = await fetch("http://localhost:3000/example/7", {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        // body: JSON.stringify({
-        //   value: "Exemplo pelo front nº 2",
-
-        // })
-      });
-
-
-      const resultado = await resposta.json();
-      console.log(resultado);
-      alert("Registro apagado!");
-    };
-
-    document.getElementById("atualizar").onclick = async () => {
-      const resposta = await fetch("http://localhost:3000/example/8", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          value: "I can't see me cry" +
-             "Can't see me cry ever again",
-        })
-      });
-
-
-      const resultado = await resposta.json();
-      console.log(resultado);
-      alert("Registro atualizado!");
-    };
+  <button id="exibir">Exibir no console</button> -->
+    <header>
+  <div   class="headerLeft">
+    <span class="material-symbols-rounded"> arrow_back_ios </span>
+    <h2 class="titleScreen">Treino</h2>
     
-    document.getElementById("exibir").onclick = async () => {
-      const resposta = await fetch("http://localhost:3000/treino", {
-        method: "GET",
-        headers: { "Content-Type": "application/json" }
-      });
+  </div>
+
+  <div class="headerRight">
+
+    <span class="material-symbols-rounded"> format_line_spacing </span>
+    <span class="material-symbols-rounded"> search </span>
+    <span class="material-symbols-rounded"> select_check_box </span>
+  </header>
+</div>
+
+    <div class="content">
+      
+      <div class="exerciseCard">
+        <div class="exerciseProgressDoing">
+          <span class="seriesDones">
+            3
+          </span>
+          <span class="seriesLast">
+            /5
+          </span>
+        </div>
+        <div class="exerciseInfo">
+          <span class="exerciseInfoTitle">Supino inclinado com halter</span>
+          <span>Peito</span>
+        </div>
+        <hr>
+      </div>
+
+      <div class="exerciseCard">
+        <div class="exerciseProgress">
+          <span>
+            4
+          </span>
+          <span>
+            
+          </span>
+        </div>
+        <div class="exerciseInfo">
+          <span class="exerciseInfoTitle">Crucifixo inclinado no Cross</span>
+          <span>Peito</span>
+        </div>
+        <hr>
+      </div>
+
+      <div class="exerciseCard">
+        <div class="exerciseProgress">
+          <span>
+            4
+          </span>
+          <span>
+            
+          </span>
+        </div>
+        <div class="exerciseInfo">
+          <span class="exerciseInfoTitle">Supino reto smith</span>
+          <span>Peito</span>
+        </div>
+        <hr>
+      </div>
+      
+      <div class="exerciseCard">
+        <div class="exerciseProgress">
+          <span>
+            4
+          </span>
+          <span>
+            
+          </span>
+        </div>
+        <div class="exerciseInfo">
+          <span class="exerciseInfoTitle">Desenvolvimento no smith</span>
+          <span>Ombros</span>
+        </div>
+        <hr>
+      </div>
+      <div class="exerciseCard">
+        <div class="exerciseProgress">
+          <span>
+            4
+          </span>
+          <span>
+            
+          </span>
+        </div>
+        <div class="exerciseInfo">
+          <span class="exerciseInfoTitle">Elevação lateral</span>
+          <span>Ombros</span>
+        </div>
+        <hr>
+      </div>
+      <div class="exerciseCard">
+        <div class="exerciseProgress">
+          <span>
+            4
+          </span>
+          <span>
+            
+          </span>
+        </div>
+        <div class="exerciseInfo">
+          <span class="exerciseInfoTitle">Tríceps barra W</span>
+          <span>Tríceps</span>
+        </div>
+        <hr>
+      </div>
+      <div class="exerciseCard">
+        <div class="exerciseProgress">
+          <span>
+            4
+          </span>
+          <span>
+            
+          </span>
+        </div>
+        <div class="exerciseInfo">
+          <span class="exerciseInfoTitle">Tríceps banco</span>
+          <span>Tríceps</span>
+        </div>
+      </div>
+      <div class="exerciseCard">
+        <div class="exerciseProgress">
+          <span>
+            4
+          </span>
+          <span>
+            
+          </span>
+        </div>
+        <div class="exerciseInfo">
+          <span class="exerciseInfoTitle">Panturrilha sentada</span>
+          <span>Pernas</span>
+        </div>
+      </div>
+      <div class="exerciseCard">
+        <div class="exerciseProgress">
+          <span>
+            4
+          </span>
+          <span>
+            
+          </span>
+        </div>
+        <div class="exerciseInfo">
+          <span class="exerciseInfoTitle">Panturrilha em pé</span>
+          <span>Pernas</span>
+        </div>
+      </div>
 
 
-      const resultado = await resposta.json();
-      console.log(resultado);
-      alert("Registro atualizado!");
-    };
+    </div>
+    <script>
+      document.getElementById("enviar").onclick = async () => {
+        const resposta = await fetch("http://localhost:3000/example", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            value:
+              "Abracadabra oh na na na, morta gaga. Hello hello baby you called, I can't hear a thing. I have got no service in the club.",
+          }),
+        });
 
-    
-  </script>
-</body>
+        const resultado = await resposta.json();
+        console.log(resultado);
+        alert("Registro criado!");
+      };
+
+      document.getElementById("apagar").onclick = async () => {
+        const resposta = await fetch("http://localhost:3000/example/7", {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          // body: JSON.stringify({
+          //   value: "Exemplo pelo front nº 2",
+
+          // })
+        });
+
+        const resultado = await resposta.json();
+        console.log(resultado);
+        alert("Registro apagado!");
+      };
+
+      document.getElementById("atualizar").onclick = async () => {
+        const resposta = await fetch("http://localhost:3000/example/8", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            value: "I can't see me cry" + "Can't see me cry ever again",
+          }),
+        });
+
+        const resultado = await resposta.json();
+        console.log(resultado);
+        alert("Registro atualizado!");
+      };
+
+      document.getElementById("exibir").onclick = async () => {
+        const resposta = await fetch("http://localhost:3000/treino", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        const resultado = await resposta.json();
+        console.log(resultado);
+        alert("Registro atualizado!");
+      };
+    </script>
+    <footer>
+      <div class="navButtons navButtonsActive">
+        <span class="material-symbols-rounded"> exercise </span>
+        <span>Treino</span>
+      </div>
+      <div class="navButtons">
+        <span class="material-symbols-rounded"> history </span>
+        <span>Histórico</span>
+      </div>
+      <div class="navButtons">
+        <span class="material-symbols-rounded"> monitoring </span>
+        <span>Avaliação física</span>
+      </div>
+      <div class="navButtons">
+        <span class="material-symbols-rounded"> restaurant </span>
+        <span>Refeições</span>
+      </div>
+    </footer>
+  </body>
 </html>

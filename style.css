@@ -1,0 +1,229 @@
+/* Estilos padrão para telas menores que 440px (mobile) */
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+header{
+    background-color: #ffffff;
+    color: white;
+    text-align: center;
+    width: 100%;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    padding-left: 5%;
+    margin-right: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+}
+
+.headerLeft{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 20%;
+    padding-left: 5%;
+    /* background-color: aqua; */
+    padding-right: 5%;
+    margin-right: 25%;
+}
+
+.titleScreen{
+    margin-left: 10px;
+}
+
+.headerRight{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 30%;
+    
+}
+
+*{
+    font-family: "Montserrat Alternates", sans-serif;
+        font-style: normal;
+}
+    
+    body {
+        /* background-color: lightblue; */
+        font-size: 16px;
+        display: flex;
+    flex-direction: column;
+}
+
+header, footer{
+    z-index: 100;
+}
+
+footer{
+    background-color: #ffffff;
+    color: white;
+    text-align: center;
+    width: 96%;
+    color: black;
+    text-align: center;
+    /* padding: 10px 0; */
+    margin-bottom: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-radius: 40px;
+    display: block;
+    box-shadow: 0px 5px 5px #00000049;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+}
+
+footer{
+    height: 67px;
+    
+}
+
+.navButtons{
+    height: 61px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    font-size: 12px;
+}
+
+.navButtonsActive{
+    background-color: #ffd1c0;
+    color: #ff6314;
+    font-weight: 600;
+}
+.navButtons{
+    width: 23%;
+    /* border: solid black; */
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content{
+    flex: 1;
+    margin-top: 80px;
+    padding-bottom: 100px;
+}
+
+.exerciseCard{
+    background-color: #ffffff;
+    /* border-radius: 20px; */
+    /* box-shadow: 0px 4px 4px #00000029; */
+    padding: 15px;
+    /* margin: 10px 20px; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid #E3E3E3 1px;
+    border-width: 10px 0px 1px 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+.exerciseProgressDoing {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    position: relative;
+}
+
+.exerciseProgressDoing::before {
+    content: "";
+    position: absolute;
+    top: 5; left: 5; right: 5; bottom: 5;   
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    padding: 7px; /* Largura da borda */
+    background: conic-gradient(#23D200 0% 60%, #E3E3E3 60% 100%);
+    mask: 
+        radial-gradient(farthest-side, #0000 calc(0% - 4px), #000 0) 
+        content-box, 
+        radial-gradient(farthest-side, #000 100%, #0000 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+}
+
+.seriesDones{
+    position: absolute;
+    font-size: 25px;
+    top: 45%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+}
+.seriesLast{
+    position: absolute;
+    font-size: 12px;
+    top: 65%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+}
+
+.exerciseProgress{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    position: relative;
+    font-size: 25px;
+}
+
+.exerciseProgress::before {
+    content: "";
+    position: absolute;
+    top: 5; left: 5; right: 5; bottom: 5;   
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    padding: 7px; /* Largura da borda */
+    background: conic-gradient(#23D200 0% 0%, #E3E3E3 0% 100%);
+    mask: 
+        radial-gradient(farthest-side, #0000 calc(0% - 4px), #000 0) 
+        content-box, 
+        radial-gradient(farthest-side, #000 100%, #0000 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+}
+.exerciseInfo{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    flex: 1;
+}
+
+.exerciseInfoTitle{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+/* Media Query para telas de 440px ou maiores (large) */
+@media (min-width: 440px) {
+    body {
+        background-color: darkgreen;
+        color: white;
+        font-size: 20px;
+    }
+
+    footer{
+        display: none;
+    }
+}

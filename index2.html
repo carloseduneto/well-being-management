@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste POST no Backend</title>
+</head>
+<body>
+  <h1>Enviar dados pro backend</h1>
+  <button id="enviar">Criar exemplo</button>
+  <button id="apagar">Apagar registro 7</button>
+  <button id="atualizar">Atualizar</button>
+  <button id="exibir">Exibir no console</button>
+
+
+  <script>
+    document.getElementById("enviar").onclick = async () => {
+      const resposta = await fetch("http://localhost:3000/example", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          value: "Abracadabra oh na na na, morta gaga. Hello hello baby you called, I can't hear a thing. I have got no service in the club.",
+
+        })
+      });
+
+
+      const resultado = await resposta.json();
+      console.log(resultado);
+      alert("Registro criado!");
+    };
+
+    document.getElementById("apagar").onclick = async () => {
+      const resposta = await fetch("http://localhost:3000/example/7", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        // body: JSON.stringify({
+        //   value: "Exemplo pelo front nº 2",
+
+        // })
+      });
+
+
+      const resultado = await resposta.json();
+      console.log(resultado);
+      alert("Registro apagado!");
+    };
+
+    document.getElementById("atualizar").onclick = async () => {
+      const resposta = await fetch("http://localhost:3000/example/8", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          value: "I can't see me cry" +
+             "Can't see me cry ever again",
+        })
+      });
+
+
+      const resultado = await resposta.json();
+      console.log(resultado);
+      alert("Registro atualizado!");
+    };
+    
+    document.getElementById("exibir").onclick = async () => {
+      const resposta = await fetch("http://localhost:3000/treino", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" }
+      });
+
+
+      const resultado = await resposta.json();
+      console.log(resultado);
+      alert("Registro atualizado!");
+    };
+
+    
+  </script>
+</body>
+</html>
