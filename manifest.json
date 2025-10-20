@@ -1,8 +1,9 @@
 {
   "name": "Gestão de treino",
-  "short_name": "MeuApp",
-  "description": "Um aplicativo web incrível",
-  "start_url": "/index.html",
+  "short_name": "Gestão",
+  "description": "Gerencie seus treinos de forma prática e leve",
+  "start_url": "/?source=pwa",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ff6314",
