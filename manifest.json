@@ -1,8 +1,8 @@
 {
   "name": "Gestão de treino",
-  "short_name": "Gestão",
+  "short_name": "Gestão de treino",
   "description": "Gerencie seus treinos de forma prática e leve",
-  "start_url": "/?source=pwa",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#ff6314",
