@@ -2,7 +2,7 @@
   "name": "Gestão de treino",
   "short_name": "Gestão de treino",
   "description": "Gerencie seus treinos de forma prática e leve",
-  "start_url": "/",
+  "start_url": "/well-being-management/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#ff6314",
