@@ -19,7 +19,7 @@
 
 
 
-<link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">k
+<link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
 
 
     <link rel="manifest" href="./manifest.json">
@@ -35,7 +35,7 @@
     <header>
   <div   class="headerLeft">
     <span class="material-symbols-rounded"> arrow_back_ios </span>
-    <h2 class="titleScreen">Treino 1.0</h2>
+    <h2 class="titleScreen">Treino 2.0</h2>
     
   </div>
 
@@ -196,11 +196,12 @@
 
 
     <script>
-            if ("serviceWorker" in navigator) {
+            if (typeof navigator.serviceWorker !== 'undefined') {
         navigator.serviceWorker.register("./service-worker.js")
           .then(() => console.log("Service Worker registrado"))
           .catch(err => console.error("Erro ao registrar Service Worker:", err));
       }
+
 /*
       //Apagar caso não precise mais desses exemplos de requisições fetch
       let deferredPrompt;
