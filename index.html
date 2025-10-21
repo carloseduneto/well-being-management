@@ -22,7 +22,7 @@
 <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">k
 
 
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#ff6314">
 
   </head>
@@ -191,7 +191,7 @@
       
       
       <!-- Apagar caso não precise mais -->
-      <button id="installBtn" style="display:block;">Instalar app</button>
+          <button id="installButton">Instalar Aplicativo</button>
     </div>
 
 
@@ -201,7 +201,7 @@
           .then(() => console.log("Service Worker registrado"))
           .catch(err => console.error("Erro ao registrar Service Worker:", err));
       }
-
+/*
       //Apagar caso não precise mais desses exemplos de requisições fetch
       let deferredPrompt;
 
@@ -213,8 +213,9 @@ window.addEventListener('beforeinstallprompt', (e) => {
   // Exibe seu botão de instalar
   const installBtn = document.getElementById('installBtn');
   installBtn.style.display = 'block';
-
+  
   installBtn.addEventListener('click', async () => {
+    console.log('beforeinstallprompt disparado');
     installBtn.style.display = 'none';
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
@@ -224,6 +225,32 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 //Apagar caso não precise mais desses exemplos de requisições fetch
+
+*/
+
+    let deferredPrompt;
+    const installButton = document.getElementById('installButton');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      console.log('beforeinstallprompt disparado');
+      // Previne que o pop-up padrão do navegador apareça
+      e.preventDefault();
+      // Armazena o evento para que ele possa ser chamado mais tarde
+      deferredPrompt = e;
+      // Mostra o botão de instalação
+      installButton.style.display = 'block';
+
+      installButton.addEventListener('click', (e) => {
+        // Esconde o botão
+        installButton.style.display = 'none';
+        // Mostra o pop-up de instalação do navegador
+        deferredPrompt.prompt();
+        // Espera a escolha do usuário
+        deferredPrompt.userChoice.then((choiceResult) => {
+          deferredPrompt = null;
+        });
+      });
+    });
 
 
 
