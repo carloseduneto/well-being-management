@@ -30,130 +30,37 @@
   <button id="exibir">Exibir no console</button> -->
     <header>
       <div class="headerLeft">
-        <span class="material-symbols-rounded"> arrow_back_ios </span>
-        <h2 class="titleScreen">Treino</h2>
+        <a href="index.html">
+          <span class="material-symbols-rounded"> arrow_back_ios </span>
+        </a>
+        <h2 class="titleScreen">Detalhes</h2>
       </div>
 
       <div class="headerRight">
-        <span class="material-symbols-rounded"> format_line_spacing </span>
-        <span class="material-symbols-rounded"> search </span>
-        <span class="material-symbols-rounded"> select_check_box </span>
+        <span class="material-symbols-rounded"> edit </span>
+        <span class="material-symbols-rounded"> delete </span>
       </div>
     </header>
 
     <div class="content">
-      <a href="./exercicio-detalhes.html">
-        <div class="exerciseCard">
-          <div class="exerciseProgressDoing">
-            <span class="seriesDones"> 3 </span>
-            <span class="seriesLast"> /5 </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Supino inclinado com halter</span>
-            <span>Peito</span>
-          </div>
-          <hr />
-        </div>
-      </a>
+      <div class="exerciseDetail">
+        <div class="exerciseDetailCard">
+          <div class="swapExercise">
+            <span class="material-symbols-rounded"> chevron_backward </span>
+            <span class="material-symbols-rounded"> chevron_forward </span>
 
-      <div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Crucifixo inclinado no Cross</span>
-            <span>Peito</span>
-          </div>
-          <hr />
-        </div>
 
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
           </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Supino reto smith</span>
-            <span>Peito</span>
-          </div>
-          <hr />
-        </div>
-
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Desenvolvimento no smith</span>
-            <span>Ombros</span>
-          </div>
-          <hr />
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Elevação lateral</span>
-            <span>Ombros</span>
-          </div>
-          <hr />
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Tríceps barra W</span>
-            <span>Tríceps</span>
-          </div>
-          <hr />
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Tríceps banco</span>
-            <span>Tríceps</span>
-          </div>
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Panturrilha sentada</span>
-            <span>Pernas</span>
-          </div>
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Panturrilha em pés</span>
-            <span>Pernas</span>
+          <h3>Supino reto</h3>
+          <div class="progressExerciseDetail">
+            <div class="progressBarExerciseDetail"></div>
+            <span>3/5</span>
           </div>
         </div>
 
-        <!-- Apagar caso não precise mais -->
-        <!-- <button id="installButton">Instalar Aplicativo</button> -->
+        <div></div>
       </div>
-
-      <button class="primaryButtonAction">
-        <span class="material-symbols-rounded primaryIconAction"> add </span>
-      </button>
     </div>
-
     <script>
       if (typeof navigator.serviceWorker !== "undefined") {
         navigator.serviceWorker

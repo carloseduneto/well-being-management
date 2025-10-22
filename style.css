@@ -5,7 +5,16 @@ body {
     margin: 0;
 }
 
-header{
+:root {
+    --main-theme-color: #ff6314;
+    --alternative-main-theme-color: #ff7733;
+    --second-theme-color: #ffd1c0;
+    --cor-secundaria: #E3E3E3;
+    --texto: #222;
+    --fundo: #fff;
+}
+
+header {
     background-color: #ffffff;
     color: white;
     text-align: center;
@@ -21,7 +30,7 @@ header{
     position: fixed;
 }
 
-.headerLeft{
+.headerLeft {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -32,35 +41,36 @@ header{
     margin-right: 20%;
 }
 
-.titleScreen{
+.titleScreen {
     margin-left: 10px;
 }
 
-.headerRight{
+.headerRight {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     width: 30%;
-    
+
 }
 
-*{
+* {
     font-family: "Montserrat Alternates", sans-serif;
-        font-style: normal;
+    font-style: normal;
 }
-    
-    body {
-        /* background-color: lightblue; */
-        font-size: 16px;
-        display: flex;
+
+body {
+    /* background-color: lightblue; */
+    font-size: 16px;
+    display: flex;
     flex-direction: column;
 }
 
-header, footer{
+header,
+footer {
     z-index: 100;
 }
 
-footer{
+footer {
     background-color: #ffffff;
     color: white;
     text-align: center;
@@ -81,24 +91,25 @@ footer{
     bottom: 0;
 }
 
-footer{
+footer {
     height: 67px;
-    
+
 }
 
-.navButtons{
+.navButtons {
     height: 61px;
     margin-left: 2.5px;
     margin-right: 2.5px;
     font-size: 12px;
 }
 
-.navButtonsActive{
-    background-color: #ffd1c0;
-    color: #ff6314;
+.navButtonsActive {
+    background-color: var(--second-theme-color);
+    color: var(--main-theme-color);
     font-weight: 600;
 }
-.navButtons{
+
+.navButtons {
     width: 23%;
     /* border: solid black; */
     border-radius: 40px;
@@ -108,13 +119,13 @@ footer{
     justify-content: center;
 }
 
-.content{
+.content {
     flex: 1;
     margin-top: 80px;
-    padding-bottom: 100px;
+    padding-bottom: 200px;
 }
 
-.exerciseCard{
+.exerciseCard {
     background-color: #ffffff;
     /* border-radius: 20px; */
     /* box-shadow: 0px 4px 4px #00000029; */
@@ -145,28 +156,32 @@ footer{
 .exerciseProgressDoing::before {
     content: "";
     position: absolute;
-    top: 5; left: 5; right: 5; bottom: 5;   
+    top: 5;
+    left: 5;
+    right: 5;
+    bottom: 5;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    padding: 7px; /* Largura da borda */
+    padding: 7px;
+    /* Largura da borda */
     background: conic-gradient(#23D200 0% 60%, #E3E3E3 60% 100%);
-    mask: 
-        radial-gradient(farthest-side, #0000 calc(0% - 4px), #000 0) 
-        content-box, 
+    mask:
+        radial-gradient(farthest-side, #0000 calc(0% - 4px), #000 0) content-box,
         radial-gradient(farthest-side, #000 100%, #0000 0);
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
 }
 
-.seriesDones{
+.seriesDones {
     position: absolute;
     font-size: 25px;
     top: 45%;
     left: 40%;
     transform: translate(-50%, -50%);
 }
-.seriesLast{
+
+.seriesLast {
     position: absolute;
     font-size: 12px;
     top: 65%;
@@ -174,7 +189,7 @@ footer{
     transform: translate(-50%, -50%);
 }
 
-.exerciseProgress{
+.exerciseProgress {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -189,30 +204,120 @@ footer{
 .exerciseProgress::before {
     content: "";
     position: absolute;
-    top: 5; left: 5; right: 5; bottom: 5;   
+    top: 5;
+    left: 5;
+    right: 5;
+    bottom: 5;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    padding: 7px; /* Largura da borda */
+    padding: 7px;
+    /* Largura da borda */
     background: conic-gradient(#23D200 0% 0%, #E3E3E3 0% 100%);
-    mask: 
-        radial-gradient(farthest-side, #0000 calc(0% - 4px), #000 0) 
-        content-box, 
+    mask:
+        radial-gradient(farthest-side, #0000 calc(0% - 4px), #000 0) content-box,
         radial-gradient(farthest-side, #000 100%, #0000 0);
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
 }
-.exerciseInfo{
+
+.exerciseInfo {
     display: flex;
     flex-direction: column;
     margin-left: 15px;
     flex: 1;
 }
 
-.exerciseInfoTitle{
+.exerciseInfoTitle {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 5px;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+    color: black;
+}
+
+a {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:focus,
+a:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.progressBarExerciseDetail {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #E3E3E3;
+}
+
+.progressBarExerciseDetail::after {
+    width: 100%;
+    height: 20px;
+    z-index: 5;
+    position: relative;
+    top: 5px;
+    left: 0;
+    border-radius: 10px;
+
+    content: "";
+    display: block;
+
+    height: 100%;
+    background-color: #23D200;
+    width: 0%;
+}
+
+.primaryButtonAction {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 20%;
+    background-color: var(--main-theme-color);
+    color: black;
+    border: none;
+    box-shadow: 0px 4px 6px #00000040;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+}
+
+.primaryIconAction{
+    font-size: 100px;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 700,
+        'GRAD' 20,
+        'opsz' 60
+}
+
+/* Details screen */
+.swapExercise {
+    /* top: 20px;
+    left: 20px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 50px;
+    cursor: pointer;
+    width: 90%;
+    background-color: violet;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 /* Media Query para telas de 440px ou maiores (large) */
@@ -223,7 +328,7 @@ footer{
         font-size: 20px;
     }
 
-    footer{
+    footer {
         display: none;
     }
 }
