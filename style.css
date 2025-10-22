@@ -123,7 +123,9 @@ footer {
     flex: 1;
     margin-top: 80px;
     padding-bottom: 200px;
+    
 }
+
 
 .exerciseCard {
     background-color: #ffffff;
@@ -253,30 +255,7 @@ a:active {
     box-shadow: none;
 }
 
-.progressBarExerciseDetail {
-    width: 100%;
-    height: 20px;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: #E3E3E3;
-}
 
-.progressBarExerciseDetail::after {
-    width: 100%;
-    height: 20px;
-    z-index: 5;
-    position: relative;
-    top: 5px;
-    left: 0;
-    border-radius: 10px;
-
-    content: "";
-    display: block;
-
-    height: 100%;
-    background-color: #23D200;
-    width: 0%;
-}
 
 .primaryButtonAction {
     position: fixed;
@@ -305,6 +284,33 @@ a:active {
 }
 
 /* Details screen */
+.exerciseDetail{
+    background-color: #ffffff;
+    box-shadow: 0 4px 4px #00000029;
+    border-radius: 10px;
+    margin: 0;
+    position: fixed;
+    top: 12%;
+    left: 0%;
+    right: 0%;
+    width: auto;
+    z-index: 99999;
+    transform: translateZ(0);
+}
+
+.contentDetails {
+    flex: 1;
+    margin-top: 180px;
+    padding-bottom: 200px;
+
+}
+
+
+.swapExerciseIconRight{
+    rotate: 180deg;
+}
+
+
 .swapExercise {
     /* top: 20px;
     left: 20px; */
@@ -312,12 +318,116 @@ a:active {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    font-size: 50px;
+    font-size: 18px;
     cursor: pointer;
-    width: 90%;
-    background-color: violet;
-    padding-left: 5%;
-    padding-right: 5%;
+    width: 86%;
+    /* background-color: violet; */
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.exerciseTitle{
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.swapExerciseDetail{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 86%;
+    /* background-color: violet; */
+    padding-left: 7%;
+    padding-right: 7%;
+    flex-direction: column;
+    /* background-color: blanchedalmond; */
+}
+
+.progressExerciseDetail{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* margin-top: 10px; */
+    margin-bottom: 5px;
+    /* background-color: aqua; */
+    align-items: center;
+}
+
+.progressBarExerciseDetail {
+    width: 100%;
+    height: 12px;
+    border-radius: 10px;
+    background-color: #E3E3E3;
+    position: relative;
+    overflow: hidden;
+}
+
+.progressBarExerciseDetail::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    border-radius: inherit;
+    background-color: #23D200;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.progressExerciseNumber{
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.detalisTitleInput{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-top: 20px;
+    /* display: block; */
+    /* margin-left: 5%; */
+    /* background-color: aqua; */
+}
+.detalisTitleInputRecomendation{
+    /* font-size: 18px; */
+    /* font-weight: 600; */
+    /* margin-bottom: 8px; */
+    /* margin-top: 20px; */
+    /* display: block; */
+    /* margin-left: 0%; */
+    /* background-color: aqua; */
+    font-size: 16px;
+}
+.recomendation{
+    display: flex;
+    flex-direction: column;
+}
+
+.recomendationSeries{
+    display: flex;
+    flex-direction: column;
+}
+.contentDetails{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-right: 3%;
+}
+
+.inputDetails{
+    width: 95%;
+    height: 40px;
+    border-radius: 8px;
+    border: solid #E3E3E3 1px;
+    padding-left: 10px;
+    font-size: 16px;
 }
 
 /* Media Query para telas de 440px ou maiores (large) */

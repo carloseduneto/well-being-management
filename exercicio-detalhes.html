@@ -42,25 +42,100 @@
       </div>
     </header>
 
-    <div class="content">
-      <div class="exerciseDetail">
-        <div class="exerciseDetailCard">
-          <div class="swapExercise">
-            <span class="material-symbols-rounded"> chevron_backward </span>
-            <span class="material-symbols-rounded"> chevron_forward </span>
+    <div class="exerciseDetail">
+      <div class="exerciseDetailCard">
+        <div class="swapExercise">
+          <span class="material-symbols-rounded swapExerciseIcon">
+            arrow_back_ios
+          </span>
+          <span class="material-symbols-rounded swapExerciseIconRight">
+            arrow_back_ios
+          </span>
+        </div>
+        <div class="swapExerciseDetail">
+          <span class="exerciseTitle">Supino inclinado com halter</span>
 
-
-          </div>
-          <h3>Supino reto</h3>
           <div class="progressExerciseDetail">
             <div class="progressBarExerciseDetail"></div>
-            <span>3/5</span>
+            <span class="progressExerciseNumber">3/5</span>
           </div>
         </div>
-
-        <div></div>
       </div>
     </div>
+
+    <div class="contentDetails">
+      <div class="recomendation">
+        <span class="detalisTitleInput">Recomendações</span>
+        <span class="detalisTitleInputRecomendation"
+          >1X peso bem leve, 10 a 12 repetições. <br>1X um pouco mais pesado 10 a 12
+          repetições. <br>1X mais pesada, 8 repetições. (-1)<br> 1X Top séries</span
+        >
+      </div>
+
+      <div class="recomendationSeries">
+        <label class="detalisTitleInput" for="weightInput">Séries recomendadas</label>
+        
+        <select name="" id="recomendationSeries" class="inputDetails">
+          <option value="" disabled selected>2x6a8</option>
+          <option value="8">2x6a8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        
+        <div class="recomendationSeries">
+          <label class="detalisTitleInput" for="weightInput">Repetições</label>
+          <input
+            class="inputDetails"
+            type="number"
+            id="weightInput"
+            placeholder="Ex: 20"
+          />
+    </div>
+        <div class="recomendationSeries">
+          <label class="detalisTitleInput" for="weightInputCarga">Carga (kg)</label>
+          <input
+            class="inputDetails weight-mask"
+            type="text"
+            id="weightInputCarga"
+            inputmode="decimal"
+            placeholder="Ex: 20"
+            aria-label="Carga em quilogramas"
+          />
+        </div>
+
+       
+
+        
+        <div class="recomendationSeries">
+          <label class="detalisTitleInput" for="weightInput">Peso (kg)</label>
+          <input
+            class="inputDetails"
+            type="number"
+            id="weightInput"
+            placeholder="Ex: 20"
+          />
+    </div>
+        <div class="recomendationSeries">
+          <label class="detalisTitleInput" for="weightInput">Peso (kg)</label>
+          <input
+            class="inputDetails"
+            type="number"
+            id="weightInput"
+            placeholder="Ex: 20"
+          />
+    </div>
+        <div class="recomendationSeries">
+          <label class="detalisTitleInput" for="weightInput">Peso (kg)</label>
+          <input
+            class="inputDetails"
+            type="number"
+            id="weightInput"
+            placeholder="Ex: 20"
+          />
+    </div>
+      </div>
     <script>
       if (typeof navigator.serviceWorker !== "undefined") {
         navigator.serviceWorker
@@ -177,6 +252,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
         alert("Registro atualizado!");
       };
     </script>
+
+    <script src="../file/script.js"></script>
     <footer>
       <div class="navButtons navButtonsActive">
         <span class="material-symbols-rounded"> exercise </span>
