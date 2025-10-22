@@ -290,7 +290,7 @@ a:active {
     border-radius: 10px;
     margin: 0;
     position: fixed;
-    top: 12%;
+    top: 10%;
     left: 0%;
     right: 0%;
     width: auto;
@@ -431,7 +431,7 @@ a:active {
 }
 
 /* Media Query para telas de 440px ou maiores (large) */
-@media (min-width: 440px) {
+@media (min-width: 620px) {
     body {
         background-color: darkgreen;
         color: white;
