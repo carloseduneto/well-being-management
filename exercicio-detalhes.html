@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gestão de treino</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+    <link rel="stylesheet" href="./assets/styles/details.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
 
-    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon" />
 
     <link rel="manifest" href="./manifest.json" />
     <meta name="theme-color" content="#ff6314" />
@@ -29,80 +30,60 @@
   <button id="atualizar">Atualizar</button>
   <button id="exibir">Exibir no console</button> -->
     <header>
-      <div class="headerLeft">
-        <a href="index.html">
+      <div class="header">
+
+        <div class="headerLeft">
+          <a href="index.html">
           <span class="material-symbols-rounded"> arrow_back_ios </span>
         </a>
         <h2 class="titleScreen">Detalhes</h2>
       </div>
-
+      
       <div class="headerRight">
         <span class="material-symbols-rounded"> edit </span>
         <span class="material-symbols-rounded"> delete </span>
       </div>
+    </div>
       
-      
-          <div class="exerciseDetail">
-      <div class="exerciseDetailCard">
-        <div class="swapExercise">
-          <span class="material-symbols-rounded swapExerciseIcon">
-            arrow_back_ios
-          </span>
-          <span class="material-symbols-rounded swapExerciseIconRight">
-            arrow_back_ios
-          </span>
-        </div>
-        <div class="swapExerciseDetail">
-          <span class="exerciseTitle">Lorem Ipsum</span>
-
-          <div class="progressExerciseDetail">
-            <div class="progressBarExerciseDetail"></div>
-            <span class="progressExerciseNumber">3/5</span>
+      <div class="exerciseDetail">
+        <div class="exerciseDetailCard">
+          <div class="swapExercise">
+            <span class="material-symbols-rounded swapExerciseIcon">
+              arrow_back_ios
+            </span>
+            <span class="material-symbols-rounded swapExerciseIconRight">
+              arrow_back_ios
+            </span>
+          </div>
+          <div class="swapExerciseDetail">
+            <span class="exerciseTitle">Lorem Ipsum</span>
+            
+            <div class="progressExerciseDetail">
+              <div class="progressBarExerciseDetail"></div>
+              <span class="progressExerciseNumber">3/5</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
     </header>
 
-    <div class="exerciseDetail">
-      <div class="exerciseDetailCard">
-        <div class="swapExercise">
-          <span class="material-symbols-rounded swapExerciseIcon">
-            arrow_back_ios
-          </span>
-          <span class="material-symbols-rounded swapExerciseIconRight">
-            arrow_back_ios
-          </span>
-        </div>
-        <div class="swapExerciseDetail">
-          <span class="exerciseTitle">Lorem Ipsum</span>
 
-          <div class="progressExerciseDetail">
-            <div class="progressBarExerciseDetail"></div>
-            <span class="progressExerciseNumber">3/5</span>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="contentDetails">
       <div class="recomendation">
         <span class="detalisTitleInput">Recomendações</span>
         <span class="detalisTitleInputRecomendation"
-          >1X peso bem leve, 10 a 12 repetições. <br>1X um pouco mais pesado 10 a 12
-          repetições. <br>1X mais pesada, 8 repetições. (-1)<br> 1X Top séries</span
-        >
-        <span class="detalisTitleInputRecomendation"
-          >1X peso bem leve, 10 a 12 repetições. <br>1X um pouco mais pesado 10 a 12
-          repetições. <br>1X mais pesada, 8 repetições. (-1)<br> 1X Top séries</span
+          >1X peso bem leve, 10 a 12 repetições. <br />1X um pouco mais pesado
+          10 a 12 repetições. <br />1X mais pesada, 8 repetições. (-1)<br />
+          1X Top séries</span
         >
       </div>
 
-      
-      <div class="recomendationSeries">
-        <label class="detalisTitleInput" for="weightInput">Séries recomendadas</label>
-        <select name="" id="recomendationSeries" class="inputDetails">
+      <div class="inputData">
+        <label class="detalisTitleInput" for="weightInput"
+          >Séries recomendadas</label
+        >
+        <select name="" id="recomendationSeries" class="inputDetails selectDetails">
           <option value="" disabled selected>2x6a8</option>
           <option value="8">2x6a8</option>
           <option value="9">9</option>
@@ -110,54 +91,70 @@
           <option value="11">11</option>
           <option value="12">12</option>
         </select>
-        
 
+        <!-- Repetições e carga inputs -->
+         <div class="shortInputContainer">
 
-        <div class="recomendationSeries">
-          <label class="detalisTitleInput" for="weightInput">Repetições</label>
+           <div class="inputData shortInputData ">
+             <label class="detalisTitleInput" for="repetition">Repetições</label>
+             <input
+             class="inputDetails"
+             type="number"
+             id="repetition"
+             placeholder=""
+             />
+            </div>
+            
+            
+            <div class="inputData shortInputData">
+          <label class="detalisTitleInput" for="weightInputCarga"
+          >Carga (kg)</label
+          >
           <input
-            class="inputDetails"
-            type="number"
-            id="weightInput"
-            placeholder="Ex: 20"
-          />
-    </div>
-        <div class="recomendationSeries">
-          <label class="detalisTitleInput" for="weightInputCarga">Carga (kg)</label>
-          <input
-            class="inputDetails weight-mask"
-            type="text"
-            id="weightInputCarga"
-            inputmode="decimal"
-            placeholder="Ex: 20"
-            aria-label="Carga em quilogramas"
+          class="inputDetails weight-mask"
+          type="text"
+          id="weightInputCarga"
+          inputmode="decimal"
+          placeholder="Ex: 20"
+          aria-label="Carga em quilogramas"
           />
         </div>
+      </div>
+
+         <div class="shortInputContainer">
+
+           <div class="inputData shortInputData ">
+             <label class="detalisTitleInput" for="repetition">Esforço (RPE)</label>
+             <input
+             class="inputDetails"
+             type="number"
+             id="repetition"
+             placeholder=""
+             />
+            </div>
+            
+            
+            <div class="inputData shortInputData">
+          <label class="detalisTitleInput" for="weightInputCarga"
+          >Até a falha (RPI)</label
+          >
+          <input
+          class="inputDetails weight-mask"
+          type="text"
+          id="weightInputCarga2"
+          inputmode="decimal"
+          placeholder=""
+          aria-label="Carga em quilogramas"
+          />
+        </div>
+      </div>
+
+
+
+      </div>
+
 
     </div>
-      
-
-
-
-
-    
-  <span>A</span>
-  <span>A</span>
-  <span>A</span>
-  <span>A</span>
-  <span>A</span>
-  <span>A</span>
-  <span>A</span>
-  <span>A</span>
-  <span>A</span>
-  <span>A</span>
-  <span>A</span>
-  
-  <span>A</span>
-  <span>A</span>
-  <span>A</span>
-  <span>A</span>
-  </div>
     <script>
       if (typeof navigator.serviceWorker !== "undefined") {
         navigator.serviceWorker
@@ -275,7 +272,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
       };
     </script>
 
-    <script src="/file/script2.js"></script>
+    <script src="./assets/scripts/script2.js"></script>
     <footer>
       <div class="navButtons navButtonsActive">
         <span class="material-symbols-rounded"> exercise </span>
