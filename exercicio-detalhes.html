@@ -135,27 +135,87 @@
             
             
             <div class="inputData shortInputData">
-          <label class="detalisTitleInput" for="weightInputCarga"
-          >Até a falha (RPI)</label
-          >
-          <input
-          class="inputDetails weight-mask"
-          type="text"
-          id="weightInputCarga2"
-          inputmode="decimal"
-          placeholder=""
-          aria-label="Carga em quilogramas"
-          />
+              <label class="detalisTitleInput" for="weightInputCarga"
+              >Até a falha (RPI)</label
+              >
+              <input
+              class="inputDetails weight-mask"
+              type="text"
+              id="weightInputCarga2"
+              inputmode="decimal"
+              placeholder=""
+              aria-label="Carga em quilogramas"
+              />
+            </div>
+          </div>
+          
+          
+          
         </div>
-      </div>
+        <label class="detalisTitleInput" for="historico"
+        >Histórico</label>
+        
+        <div class="table-container">
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Repetições</th>
+      <th>Carga (kg)</th>
+      <th>RPE</th>
+      <th>RPI</th>
+      <th>Intervalo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10/06/2024</td>
+      <td>8</td>
+      <td>20</td>
+      <td>10</td>
+      <td>7</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>12/06/2024</td>
+      <td>8</td>
+      <td>25</td>
+      <td>8</td>
+      <td>8</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>14/06/2024</td>
+      <td>6</td>
+      <td>30</td>
+      <td>6</td>
+      <td>9</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>14/06/2024</td>
+      <td>6</td>
+      <td>30</td>
+      <td>6</td>
+      <td>9</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>14/06/2024</td>
+      <td>6</td>
+      <td>30</td>
+      <td>6</td>
+      <td>9</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<label class="detalisTitleInput" for="historico">Comentários</label>
 
 
-
-      </div>
-
-
-    </div>
-    <script>
+</div>
+<script>
       if (typeof navigator.serviceWorker !== "undefined") {
         navigator.serviceWorker
           .register("./service-worker.js")

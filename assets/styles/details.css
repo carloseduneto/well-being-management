@@ -194,3 +194,43 @@ select:open::picker-icon {
 .shortInputData{
     width: 45%;
 }
+
+.table-container {
+    overflow-x: auto;
+    /* permite rolar horizontalmente */
+    -webkit-overflow-scrolling: touch;
+    /* rolagem suave em mobile */
+    border-radius: 10px;
+    border: 1px #B9B9B9 solid;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 500px;
+  /* border-radius: 10px;        ← adicionado */
+  overflow: hidden;           /* ← mantém o arredondamento visível */
+}
+
+
+th,
+td {
+    border: 1px solid #B9B9B9;
+    padding: 8px 12px;
+    text-align: center;
+    white-space: nowrap;
+    /* evita quebrar o texto */
+}
+
+th {
+    background-color: #B9B9B9;
+    font-weight: 700;
+    /* border-left: 1px solid #ff0000; */
+    border-right: 1px solid #fff;
+    text-align: left;
+}
+
+td{
+    border:#B9B9B9 1px solid;
+    
+}
