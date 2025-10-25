@@ -23,8 +23,8 @@
     <meta name="theme-color" content="#ff6314" />
   </head>
   <body>
-    <!-- <h1>Enviar dados pro backend</h1>
-  <button id="enviar">Criar exemplo</button>
+    <!-- <h1>Enviar dados pro backend</h1> -->
+  <!-- <button id="enviar">Criar exemplo</button>
   <button id="apagar">Apagar registro 7</button>
   <button id="atualizar">Atualizar</button>
   <button id="exibir">Exibir no console</button> -->
@@ -234,7 +234,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
       };
 
       document.getElementById("apagar").onclick = async () => {
-        const resposta = await fetch("http://localhost:3000/example/7", {
+        const resposta = await fetch("http://localhost:3000/example/15", {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           // body: JSON.stringify({

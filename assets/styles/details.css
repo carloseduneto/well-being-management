@@ -234,3 +234,45 @@ td{
     border:#B9B9B9 1px solid;
     
 }
+
+.commingSoon{
+    position: relative;
+    top: 150px;
+    left: 50px;
+    z-index: 1000;
+    font-size: 40px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding:20px;
+    width:150px;
+}
+
+.commentsSection{
+     filter: blur(5px);
+}
+
+.commentsHistoryContainer{
+    margin-top: 20px;
+}
+
+.commentsHistory{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.commentDate{
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.seeMoreComments{
+    color: var(--texto);
+    font-weight: 700;
+    cursor: pointer;
+    text-align: right;
+    background-color: transparent;
+    border: none;
+}

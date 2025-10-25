@@ -249,7 +249,7 @@ a:active {
     color: black;
 }
 
-a {
+a, button {
     outline: none;
     -webkit-tap-highlight-color: transparent;
 }
