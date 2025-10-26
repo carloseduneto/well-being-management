@@ -1,0 +1,140 @@
+
+
+/* .container {
+    position: relative;
+    width: 900px;
+    display: flex;
+    justify-content: space-around;
+    background-color: aqua;
+}
+
+.container .card {
+    position: relative;
+    width: 250px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    border-radius: 4px;
+    text-align: center;
+    overflow: hidden;
+    transition: 0.5s;
+} */
+
+/* .container .card:hover {
+    transform: translateY(-90px);
+    
+} */
+
+/* .container .card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, .03);
+    pointer-events: none;
+} */
+
+
+.percent {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    
+}
+
+.percent .num {
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    /* background-color: aqua; */
+}
+.card{
+    /* background-color: yellow; */
+    margin: 0px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.percent .num h2 {
+    color: black;
+    font-weight: 800;
+    font-size: 25px;
+    transition: 0.5s;
+}
+
+.card:hover .percent .num h2 {
+    /* color: #fff; */
+    color: black;
+}
+
+.percent .num h2 span {
+    /* color: rgb(208, 129, 129); */
+
+    /* color: #fff; */
+    font-size: 12px;
+    top: 5px;
+    position: relative;
+    transition: 0.5s;
+}
+
+.card:hover .percent .num h2 span {
+    color: #fff;
+}
+
+.text {
+    position: relative;
+    color: #fff;
+    margin-top: 20px;
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+/* .card:hover .text {
+    color: #fff;
+} */
+
+svg {
+    rotate: 270deg;
+    /* position: relative; */
+    width: 80px;
+    height: 80px;
+    /* z-index: 1000; */
+}
+
+svg circle {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: #e3e3e3;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transform: translate(9px, 9px);
+}
+
+svg circle:nth-child(2) {
+
+    stroke-dasharray: 170;
+    stroke-dashoffset: 170;
+}
+
+.card:nth-child(1) svg circle:nth-child(2) {
+    stroke-dashoffset: calc(170 - (170 * 60) / 100);
+    stroke: #23D200;
+}

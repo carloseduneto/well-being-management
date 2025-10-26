@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gestão de treino</title>
     <link rel="stylesheet" href="./assets/styles/style.css" />
-    <link rel="stylesheet" href="./assets/styles/details.css" />
     <link rel="stylesheet" href="./assets/styles/categories.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,12 +36,7 @@
     <header>
       <div class="header">
         <div class="headerLeft">
-          <span
-            class="material-symbols-rounded"
-            onclick="location.href='categorias.html'"
-          >
-            arrow_back_ios
-          </span>
+          <span class="material-symbols-rounded"> arrow_back_ios </span>
           <h2 class="titleScreen">Treino</h2>
         </div>
 
@@ -55,111 +49,12 @@
     </header>
 
     <div class="content">
-      <a href="./exercicio-detalhes.html">
-        <div class="exerciseCard">
-          <div class="exerciseProgressDoing">
-            <span class="seriesDones"> 3 </span>
-            <span class="seriesLast"> /5 </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Supino inclinado com halter</span>
-            <span>Peito</span>
-          </div>
-          <hr />
-        </div>
-      </a>
+      <div class="categoryContainer">
 
-      <div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
+          <div class="categoryCard" onclick="location.href='index.html'">
+            <span class="categoryTitle">A</span>
           </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Crucifixo inclinado no Cross</span>
-            <span>Peito</span>
-          </div>
-          <hr />
-        </div>
 
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Supino reto smith</span>
-            <span>Peito</span>
-          </div>
-          <hr />
-        </div>
-
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Desenvolvimento no smith</span>
-            <span>Ombros</span>
-          </div>
-          <hr />
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Elevação lateral</span>
-            <span>Ombros</span>
-          </div>
-          <hr />
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Tríceps barra W</span>
-            <span>Tríceps</span>
-          </div>
-          <hr />
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Tríceps banco</span>
-            <span>Tríceps</span>
-          </div>
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Panturrilha sentada</span>
-            <span>Pernas</span>
-          </div>
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Panturrilha em pés</span>
-            <span>Pernas</span>
-          </div>
-        </div>
-
-        <!-- Apagar caso não precise mais -->
-        <!-- <button id="installButton">Instalar Aplicativo</button> -->
       </div>
 
       <button class="primaryButtonAction">
