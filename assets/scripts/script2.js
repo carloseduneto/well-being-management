@@ -1,7 +1,4 @@
-// const el = document.getElementById('teste');
-// el.innerHTML = 'Teste';
-    
-function mascaraKg() {
+ function mascaraKg() {
   const input = document.getElementById("weightInputCarga");
   const formatter = new Intl.NumberFormat("pt-BR", {
     minimumFractionDigits: 0,
@@ -62,3 +59,4 @@ function mascaraKg() {
 }
 
 mascaraKg();  
+
