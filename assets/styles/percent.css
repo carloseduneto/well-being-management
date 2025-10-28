@@ -134,11 +134,12 @@ svg circle:nth-child(2) {
     stroke-dashoffset: 180;
 }
 
-.card:nth-child(1) svg circle:nth-child(2) {
+/* .card:nth-child(1) svg circle:nth-child(2) {
     stroke-dashoffset: calc(180 - (180 * 50) / 100);
     stroke: #23D200;
     /* transition: 0.5s; */
-}
+ 
+*/
 
 circle {
     fill: none;
@@ -157,5 +158,5 @@ circle:nth-child(2) {
     stroke: #23D200;
     stroke-dasharray: 180;
     stroke-dashoffset: 180;
-    transition: stroke-dashoffset 2s ease-in-out;
+    transition: stroke-dashoffset 4s ease-in-out;
 }
