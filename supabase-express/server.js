@@ -104,16 +104,35 @@ app.get("/treino", ensureAuth, async (req, res) => {
           : "⏰ Atualização automática após 60 minutos"
       );
 
-      const response = await axios.get(
-        `${SUPABASE_URL}/rest/v1/treino?select=id,order,exercicio(id,nome,grupos_musculares(nome)),categoria(nome)&order=order.asc`,
-        {
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-            apikey: SUPABASE_ANON_KEY,
-          },
-        }
-      );
+// const response = await axios.get(
+//   `${SUPABASE_URL}/rest/v1/treino_historico?select=*`,
+//         {
+//           headers: {
+//             Authorization: `Bearer ${access_token}`,
+//             apikey: SUPABASE_ANON_KEY,
+//           },
+//         }
+//       );
 
+      const [treino, historico] = await Promise.all([
+  axios.get(`${SUPABASE_URL}/rest/v1/treino?select=id,order,exercicio(id,nome,grupos_musculares(nome)),categoria(nome),series_repeticoes(nome),series_recomendadas(nome,valor)&order=order.asc`, {
+    headers: { Authorization: `Bearer ${access_token}`, apikey: SUPABASE_ANON_KEY },
+  }),
+  axios.get(`${SUPABASE_URL}/rest/v1/treino_historico?select=exercicio,carga,repeticoes,rpe,rir,created_at`, {
+    headers: { Authorization: `Bearer ${access_token}`, apikey: SUPABASE_ANON_KEY },
+  }),
+]);
+
+// Agrupa historicos dentro dos respectivos exercícios
+const treinoComHistorico = treino.data.map(t => ({
+  ...t,
+  exercicio: {
+    ...t.exercicio,
+    treino_historico: historico.data.filter(h => h.exercicio === t.exercicio.id),
+  },
+}));
+      const response = { data: treinoComHistorico };
+      
       data = response.data;
       cache.set(cacheKey, data);
       indicadorAtualizacao = false; // 🔁 reseta automaticamente após atualizar
