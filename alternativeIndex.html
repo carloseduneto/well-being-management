@@ -32,9 +32,9 @@
   <body>
     <h1>Enviar dados pro backend</h1>
     <button id="enviar">Criar exemplo</button>
-  <button id="apagar">Apagar registro 7</button>
-  <button id="atualizar">Atualizar</button>
-  <button id="exibir">Exibir no console</button>
+    <button id="apagar">Apagar registro 7</button>
+    <button id="atualizar">Atualizar</button>
+    <button id="exibir">Exibir no console</button>
     <header>
       <div class="header">
         <div class="headerLeft">
@@ -56,15 +56,13 @@
     </header>
 
     <div class="content">
-
       <div id="exerciseData">
         <!-- Dados do exercício serão inseridos aqui -->
-          
       </div>
 
       <a href="./exercicio-detalhes.html">
         <div class="exerciseCard">
-          <div class="card">
+          <div class="card" data-progress="100">
             <div class="box">
               <div class="percent">
                 <svg>
@@ -72,7 +70,7 @@
                   <circle cx="29" cy="29" r="29"></circle>
                 </svg>
                 <div class="num">
-                  <h2>3<span>/5</span></h2>
+                  <h2>2<span>/4</span></h2>
                 </div>
               </div>
             </div>
@@ -196,7 +194,25 @@
       </button>
     </div>
 
+    <script src="./assets/scripts/script3.js"></script>
+
     <script>
+      document.querySelectorAll(".card").forEach(card => {
+        const circle = card.querySelector("circle:nth-child(2)");
+        const progress = card.dataset.progress;
+        if (progress != 0) {
+          const dashoffset = 180 - (180 * progress) / 100;
+
+          // força o início da animação (0%)
+          circle.style.strokeDashoffset = 180;
+          requestAnimationFrame(() => {
+            circle.style.strokeDashoffset = dashoffset;
+          });
+        } else {
+          circle.style.stroke = "#E3E3E3";
+        }
+      });
+
       if (typeof navigator.serviceWorker !== "undefined") {
         navigator.serviceWorker
           .register("./service-worker.js")
@@ -313,7 +329,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
       };
     </script>
 
-    <script src="./assets/scripts/script3.js"></script>
     <footer>
       <div class="navButtons navButtonsActive">
         <span class="material-symbols-rounded"> exercise </span>

@@ -80,14 +80,32 @@ app.get("/example", ensureAuth, async (req, res) => {
 });
 
 
+let indicadorAtualizacao = false; // 🌍 variável global
+
 app.get("/treino", ensureAuth, async (req, res) => {
   try {
     const cacheKey = "treino_data";
     let data = cache.get(cacheKey);
+    const tempoRestante = cache.getTtl(cacheKey)
+      ? (cache.getTtl(cacheKey) - Date.now()) / 1000
+      : 0;
 
-    if (!data) {
+    // 🔄 Condições:
+    // 1. indicadorAtualizacao == true  → atualiza sempre
+    // 2. Se passaram 60 minutos (TTL expirado) → atualiza
+    // 3. Caso contrário → usa cache
+    const deveAtualizar =
+      indicadorAtualizacao === true || !data || tempoRestante <= 0;
+
+    if (deveAtualizar) {
+      console.log(
+        indicadorAtualizacao
+          ? "♻️ Atualização forçada via indicador global"
+          : "⏰ Atualização automática após 60 minutos"
+      );
+
       const response = await axios.get(
-        `${SUPABASE_URL}/rest/v1/treino?select=id,exercicio(id,nome,grupos_musculares(nome)),categoria(nome)`,
+        `${SUPABASE_URL}/rest/v1/treino?select=id,order,exercicio(id,nome,grupos_musculares(nome)),categoria(nome)&order=order.asc`,
         {
           headers: {
             Authorization: `Bearer ${access_token}`,
@@ -95,9 +113,11 @@ app.get("/treino", ensureAuth, async (req, res) => {
           },
         }
       );
+
       data = response.data;
       cache.set(cacheKey, data);
-      console.log("💾 Dados armazenados no cache");
+      indicadorAtualizacao = false; // 🔁 reseta automaticamente após atualizar
+      console.log("💾 Dados atualizados e armazenados no cache");
     } else {
       console.log("⚡ Dados servidos do cache");
     }
@@ -106,6 +126,13 @@ app.get("/treino", ensureAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+});
+
+// 🔘 Endpoint opcional para ativar atualização manual
+app.post("/forcar-atualizacao", (req, res) => {
+  indicadorAtualizacao = true;
+  console.log("🚨 Indicador global de atualização ativado");
+  res.json({ message: "Atualização forçada marcada." });
 });
 
 

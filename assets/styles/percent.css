@@ -77,8 +77,8 @@
 }
 
 .card:hover .percent .num h2 {
-    /* color: #fff; */
-    color: black;
+    color: #000000;
+    /* color: black; */
 }
 
 .percent .num h2 span {
@@ -91,9 +91,9 @@
     transition: 0.5s;
 }
 
-.card:hover .percent .num h2 span {
+/* .card:hover .percent .num h2 span {
     color: #fff;
-}
+} */
 
 .text {
     position: relative;
@@ -155,7 +155,7 @@ circle:nth-child(1) {
 
 circle:nth-child(2) {
     stroke: #23D200;
-    stroke-dasharray: 0;
-    stroke-dashoffset: 0;
+    stroke-dasharray: 180;
+    stroke-dashoffset: 180;
     transition: stroke-dashoffset 2s ease-in-out;
 }

@@ -14,7 +14,7 @@ async function getExerciseData() {
         console.log(element.exercicio.nome);
         allExercises += '<a href="./exercicio-detalhes.html">' +
               '<div class="exerciseCard">'+
-               ' <div class="card">'+
+               ' <div class="card" data-progress=70>'+
                   '<div class="box">'+
                     '<div class="percent">'+
                       '<svg>'+
@@ -22,7 +22,7 @@ async function getExerciseData() {
                         '<circle cx="29" cy="29" r="29"></circle>'+
                       '</svg>'+
                       '<div class="num">'+
-                        '<h2>3<span>/5</span></h2>'+
+                        '<h2>5</h2>'+
                       '</div>'+
                     '</div>'+
                   '</div>'+
@@ -41,4 +41,6 @@ async function getExerciseData() {
   console.log("Teste");
 }
 
-getExerciseData();
+// getExerciseData();
+
+

@@ -56,9 +56,9 @@
     </header>
 
     <div class="content">
-      <a href="./exercicio-detalhes.html">
+      <a href="./exercicio-detalhes.html" >
         <div class="exerciseCard">
-          <div class="card">
+          <div class="card" data-progress="80">
             <div class="box">
               <div class="percent">
                 <svg>
@@ -75,23 +75,56 @@
             <span class="exerciseInfoTitle">Supino inclinado com halter</span>
             <span>Peito</span>
           </div>
-          <hr />
+          
         </div>
       </a>
 
-      <!-- <a href="./exercicio-detalhes.html">
+      
+      <a href="./exercicio-detalhes.html">
         <div class="exerciseCard">
-          <div class="exerciseProgressDoing">
-            <span class="seriesDones"> 3 </span>
-            <span class="seriesLast"> /5 </span>
+          <div class="card" data-progress="100">
+            <div class="box">
+              <div class="percent">
+                <svg>
+                  <circle cx="29" cy="29" r="29"></circle>
+                  <circle cx="29" cy="29" r="29"></circle>
+                </svg>
+                <div class="num">
+                  <h2>2<span>/4</span></h2>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="exerciseInfo">
             <span class="exerciseInfoTitle">Supino inclinado com halter</span>
             <span>Peito</span>
           </div>
-          <hr />
+          
         </div>
-      </a> -->
+      </a>
+      
+      <a href="./exercicio-detalhes.html">
+        <div class="exerciseCard">
+          <div class="card" data-progress="60">
+            <div class="box">
+              <div class="percent">
+                <svg>
+                  <circle cx="29" cy="29" r="29"></circle>
+                  <circle cx="29" cy="29" r="29"></circle>
+                </svg>
+                <div class="num">
+                  <h2>4</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="exerciseInfo">
+            <span class="exerciseInfoTitle">Supino inclinado com halter</span>
+            <span>Peito</span>
+          </div>
+  
+        </div>
+      </a>
 
       <div>
         <div class="exerciseCard">
@@ -115,7 +148,7 @@
             <span class="exerciseInfoTitle">Supino reto smith</span>
             <span>Peito</span>
           </div>
-          <hr />
+          
         </div>
 
         <div class="exerciseCard">
@@ -127,7 +160,7 @@
             <span class="exerciseInfoTitle">Desenvolvimento no smith</span>
             <span>Ombros</span>
           </div>
-          <hr />
+          
         </div>
         <div class="exerciseCard">
           <div class="exerciseProgress">
@@ -138,7 +171,7 @@
             <span class="exerciseInfoTitle">Elevação lateral</span>
             <span>Ombros</span>
           </div>
-          <hr />
+          
         </div>
         <div class="exerciseCard">
           <div class="exerciseProgress">
@@ -149,7 +182,7 @@
             <span class="exerciseInfoTitle">Tríceps barra W</span>
             <span>Tríceps</span>
           </div>
-          <hr />
+          
         </div>
         <div class="exerciseCard">
           <div class="exerciseProgress">
@@ -200,6 +233,25 @@
             console.error("Erro ao registrar Service Worker:", err)
           );
       }
+
+document.querySelectorAll('.card').forEach(card => {
+  const circle = card.querySelector('circle:nth-child(2)');
+  const progress = card.dataset.progress;
+  if(progress != 0){
+    const dashoffset = 180 - (180 * progress) / 100;
+  
+    // força o início da animação (0%)
+    circle.style.strokeDashoffset = 180;
+    requestAnimationFrame(() => {
+      circle.style.strokeDashoffset = dashoffset;
+    });
+    
+  }
+  else {
+    circle.style.stroke = "#E3E3E3";
+  }
+});
+
 
       /*
       //Apagar caso não precise mais desses exemplos de requisições fetch

@@ -256,10 +256,11 @@ td{
 }
 
 .seeMoreComments{
-    color: var(--texto);
+    color: black;
     font-weight: 700;
     cursor: pointer;
     text-align: right;
     background-color: transparent;
     border: none;
+    width: 100%;
 }
