@@ -21,6 +21,8 @@
 }
 
 
+
+
 .swapExerciseIconRight {
     rotate: 180deg;
 }
@@ -183,7 +185,7 @@ select:open::picker-icon {
 } */
 
 
-.shortInputContainer{
+.shortInputContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -191,7 +193,7 @@ select:open::picker-icon {
 
 }
 
-.shortInputData{
+.shortInputData {
     width: 45%;
 }
 
@@ -205,11 +207,12 @@ select:open::picker-icon {
 }
 
 table {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 500px;
-  /* border-radius: 10px;        ← adicionado */
-  overflow: hidden;           /* ← mantém o arredondamento visível */
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 500px;
+    /* border-radius: 10px;        ← adicionado */
+    overflow: hidden;
+    /* ← mantém o arredondamento visível */
 }
 
 
@@ -230,19 +233,19 @@ th {
     text-align: left;
 }
 
-td{
-    border:#B9B9B9 1px solid;
-    
+td {
+    border: #B9B9B9 1px solid;
+
 }
 
 
 
 
-.commentsHistoryContainer{
+.commentsHistoryContainer {
     margin-top: 20px;
 }
 
-.commentsHistory{
+.commentsHistory {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
@@ -250,12 +253,12 @@ td{
     font-size: 14px;
 }
 
-.commentDate{
+.commentDate {
     font-weight: 600;
     margin-bottom: 4px;
 }
 
-.seeMoreComments{
+.seeMoreComments {
     color: black;
     font-weight: 700;
     cursor: pointer;
