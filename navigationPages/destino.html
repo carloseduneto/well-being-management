@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Destino</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+  .container {
+    transform: translateX(100%);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s cubic-bezier(.22,.9,.33,1);
+  }
+  .enter { transform: translateX(0); }
+  .slide-out-right { transform: translateX(100%); }
+  span { font-weight: bold; color: #007bff; }
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+</style>
+</head>
+<body>
+<div class="container" id="destino">
+  <h1>Destino</h1>
+  <p>Você escolheu: <span id="info"></span></p>
+  <button onclick="voltar()">Voltar</button>
+</div>
+
+<script>
+const params = new URLSearchParams(location.search);
+document.getElementById("info").textContent = params.get("info") || "nenhuma";
+
+const container = document.getElementById("destino");
+requestAnimationFrame(() => container.classList.add("enter"));
+
+function voltar() {
+  container.classList.remove("enter");
+  container.classList.add("slide-out-right");
+  setTimeout(() => {
+    window.location.href = "home.html";
+  }, 600);
+}
+</script>
+</body>
+</html>

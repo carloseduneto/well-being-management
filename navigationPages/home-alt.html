@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Home</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-100%); /* ← começa fora da tela (à esquerda) */
+    transition: transform 0.6s cubic-bezier(.22,.9,.33,1);
+  }
+
+  .enter { transform: translateX(0); } /* ← entra na tela */
+  .slide-out-left { transform: translateX(-100%); } /* sai pra esquerda */
+  .fade-out { opacity: 0; transition: opacity 0.5s ease; }
+
+  button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div class="container" id="home">
+  <h1>Home</h1>
+  <button onclick="goTo('1')">Informação 1</button>
+  <button onclick="goTo('2')">Informação 2</button>
+  <button onclick="goTo('3')">Informação 3</button>
+  <hr>
+  <button onclick="goToAltHome()">Ir para Home Alternativo</button>
+</div>
+
+<script>
+const container = document.getElementById("home");
+
+// animação de entrada (da esquerda para a direita)
+window.addEventListener("DOMContentLoaded", () => {
+  requestAnimationFrame(() => container.classList.add("enter"));
+});
+
+function goTo(info) {
+  container.classList.remove("enter");
+  container.classList.add("slide-out-left");
+  setTimeout(() => {
+    window.location.href = `destino.html?info=${info}`;
+  }, 600);
+}
+
+function goToAltHome() {
+  container.classList.remove("enter");
+  container.classList.add("fade-out");
+  setTimeout(() => {
+    window.location.href = "home-alt.html";
+  }, 500);
+}
+</script>
+</body>
+</html>
