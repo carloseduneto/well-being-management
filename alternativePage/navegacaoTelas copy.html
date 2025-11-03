@@ -101,16 +101,23 @@
       .btn:active {
         transform: translateY(1px);
       }
+
+      .testeFixed {
+        position: fixed;
+        top: 0;
+        background-color: yellow;
+        width: 100%;
+      }
     </style>
   </head>
   <body>
     <div class="app">
       <!-- 🏠 Tela Home Principal -->
       <div class="tela active" id="tela-home">
-        <h1>Está fixo em cima</h1>
+        <!-- <h1>Está fixo em cima</h1> -->
 
         <div  class="tela__conteudo">
-          <h1>🏠 Home</h1>
+          <h1 class="testeFixed">🏠 Home</h1>
           <p>Bem-vindo — abra o Lorem-Ipsum para ver a transição.</p>
           <div
             style="
@@ -146,6 +153,8 @@
               justify-content: center;
             "
           >
+
+          
             <button class="btn" onclick="irPara('Lorem-Ipsum')">
               Ir para Lorem-Ipsum ➜
             </button>
@@ -163,6 +172,7 @@
             </button>
           </div>
           <br>
+          <br><br><br><br><br><br><br><br>
           <h1>🏠 Home</h1>
           <p>Bem-vindo — abra o Lorem-Ipsum para ver a transição.</p>
           <div
