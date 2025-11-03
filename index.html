@@ -30,11 +30,11 @@
     <meta name="theme-color" content="#ff6314" />
   </head>
   <body>
-    <!-- <h1>Enviar dados pro backend</h1> -->
-    <!-- <button id="enviar">Criar exemplo</button>
+    <h1>Enviar dados pro backend</h1>
+    <button id="enviar">Criar exemplo</button>
   <button id="apagar">Apagar registro 7</button>
   <button id="atualizar">Atualizar</button>
-  <button id="exibir">Exibir no console</button> -->
+  <button id="exibir">Exibir no console</button>
     <header>
       <div class="header">
         <div class="headerLeft">
@@ -310,7 +310,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             value:
-              "Abracadabra oh na na na, morta gaga. Hello hello baby you called, I can't hear a thing. I have got no service in the club.",
+              "Taylor swift, Fate of Ophelia",
           }),
         });
 
@@ -320,7 +320,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
       };
 
       document.getElementById("apagar").onclick = async () => {
-        const resposta = await fetch("http://localhost:3000/example/15", {
+        const resposta = await fetch("http://localhost:3000/example/27", {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           // body: JSON.stringify({
@@ -335,11 +335,11 @@ window.addEventListener('beforeinstallprompt', (e) => {
       };
 
       document.getElementById("atualizar").onclick = async () => {
-        const resposta = await fetch("http://localhost:3000/example/8", {
+        const resposta = await fetch("http://localhost:3000/example/28", {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            value: "I can't see me cry" + "Can't see me cry ever again",
+            value: "Abracadabra" + "Tale of Ophelia",
           }),
         });
 
