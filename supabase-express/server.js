@@ -115,7 +115,7 @@ app.get("/treino", ensureAuth, async (req, res) => {
 //       );
 
       const [treino, historico] = await Promise.all([
-  axios.get(`${SUPABASE_URL}/rest/v1/treino?select=id,order,exercicio(id,nome,grupos_musculares(nome)),categoria(nome),series_repeticoes(nome),series_recomendadas(nome,valor)&order=order.asc`, {
+  axios.get(`${SUPABASE_URL}/rest/v1/treino?select=id,order,exercicio(id,nome,grupos_musculares(nome)),categoria(nome, image),series_repeticoes(nome),series_recomendadas(nome,valor)&order=order.asc`, {
     headers: { Authorization: `Bearer ${access_token}`, apikey: SUPABASE_ANON_KEY },
   }),
   axios.get(`${SUPABASE_URL}/rest/v1/treino_historico?select=exercicio,carga,repeticoes,rpe,rir,created_at`, {
