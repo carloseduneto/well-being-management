@@ -87,7 +87,6 @@ async function getExerciseData() {
 }
 getExerciseData();
 
-let exerciseDataGlobal = null;
 async function getExerciseData2() {
   const resposta = await fetch("http://localhost:3000/treino", {
     method: "GET",
@@ -95,9 +94,46 @@ async function getExerciseData2() {
   });
 
   const exerciseDataGlobal = await resposta.json();
+  console.log("exerciseDataGlobal:");
+  console.log(exerciseDataGlobal);
   return exerciseDataGlobal;
 }
-getExerciseData2();
+
+// async function init() {
+//   const exerciseDataGlobal = await getExerciseData2();
+//   console.log("exerciseDataGlobal in init():");
+//   console.log(exerciseDataGlobal);
+// }
+
+// init();
+
+getExerciseData2().then((exerciseDataGlobal) => {
+  console.log("exerciseDataGlobal in then():");
+
+  let allCategoriesCards = document.getElementById("allCategoriesCards");
+  
+  const categoriasUnicas = [
+    ...new Map(
+      exerciseDataGlobal.map((exercise) => [
+        exercise.categoria.nome,
+        { nome: exercise.categoria.nome, image: exercise.categoria.image },
+      ])
+    ).values(),
+  ];
+
+  categoriasUnicas.forEach((categoria) => {
+    allCategoriesCards.innerHTML +=
+      '<div class="categoryContainer">' +
+      `<div class="categoryCard"  onclick="irPara('Lorem-Ipsum')" style='background-image: url("${categoria.image}");'>` +
+      `<span class="categoryTitle">${categoria.nome}</span>` +
+      "</div>" +
+      "</div>"; 
+  });
+
+  console.log(categoriasUnicas);
+
+  // console.log(exerciseDataGlobal.id);
+});
 
 function animateProgressCircles() {
   document.querySelectorAll(".card").forEach((card) => {
@@ -119,142 +155,149 @@ function animateProgressCircles() {
 
 animateProgressCircles();
 
-const DUR = 560;
-let historico = ["home"];
+// const DUR = 560;
+// let historico = ["home"];
 
-function irPara(destino, efeito = "slide") {
-  const telaAtual = historico[historico.length - 1];
-  if (destino === telaAtual) return;
+// function irPara(destino, efeito = "slide") {
+//   const telaAtual = historico[historico.length - 1];
+//   if (destino === telaAtual) return;
 
-  const atual = document.getElementById(`tela-${telaAtual}`);
-  const proxima = document.getElementById(`tela-${destino}`);
-  if (!proxima) {
-    console.warn(`Tela '${destino}' não encontrada!`);
-    return;
-  }
+//   const atual = document.getElementById(`tela-${telaAtual}`);
+//   const proxima = document.getElementById(`tela-${destino}`);
+//   if (!proxima) {
+//     console.warn(`Tela '${destino}' não encontrada!`);
+//     return;
+//   }
 
-  // Atualiza o histórico do navegador
-  history.pushState({ tela: destino, efeito }, "", `#${destino}`);
+//   // Atualiza o histórico do navegador
+//   history.pushState({ tela: destino, efeito }, "", `#${destino}`);
 
-  if (efeito === "dissolve") {
-    historico.push(destino);
-    animarDissolve(atual, proxima);
-    return;
-  }
+//   if (efeito === "dissolve") {
+//     historico.push(destino);
+//     animarDissolve(atual, proxima);
+//     return;
+//   }
 
-  const indiceDestino = historico.indexOf(destino);
-  const indoParaFrente = indiceDestino === -1;
+//   const indiceDestino = historico.indexOf(destino);
+//   const indoParaFrente = indiceDestino === -1;
 
-  if (indoParaFrente) {
-    historico.push(destino);
-    animarTransicao(atual, proxima, "esquerda");
-  } else {
-    historico = historico.slice(0, indiceDestino + 1);
-    animarTransicao(atual, proxima, "direita");
-  }
+//   if (indoParaFrente) {
+//     historico.push(destino);
+//     animarTransicao(atual, proxima, "esquerda");
+//   } else {
+//     historico = historico.slice(0, indiceDestino + 1);
+//     animarTransicao(atual, proxima, "direita");
+//   }
+// }
+
+// function voltar() {
+//   if (historico.length < 2) return;
+//   const atual = historico.pop();
+//   const anterior = historico[historico.length - 1];
+//   history.pushState({ tela: anterior }, "", `#${anterior}`);
+//   animarTransicao(
+//     document.getElementById(`tela-${atual}`),
+//     document.getElementById(`tela-${anterior}`),
+//     "direita"
+//   );
+// }
+
+// // 🔹 Slide animation
+// function animarTransicao(saindo, entrando, direcao) {
+//   const paraEsquerda = direcao === "esquerda";
+//   saindo.style.transition = "none";
+//   saindo.style.transform = "translateX(0)";
+//   entrando.style.transition = "none";
+//   entrando.style.transform = paraEsquerda
+//     ? "translateX(100%)"
+//     : "translateX(-100%)";
+//   entrando.classList.add("active");
+//   entrando.getBoundingClientRect();
+
+//   requestAnimationFrame(() => {
+//     saindo.style.transition = `transform ${DUR}ms cubic-bezier(.22,.9,.33,1)`;
+//     entrando.style.transition = `transform ${DUR}ms cubic-bezier(.22,.9,.33,1)`;
+//     saindo.style.transform = paraEsquerda
+//       ? "translateX(-100%)"
+//       : "translateX(100%)";
+//     entrando.style.transform = "translateX(0)";
+//   });
+
+//   setTimeout(() => {
+//     saindo.classList.remove("active");
+//     saindo.style.transition = "";
+//     saindo.style.transform = "";
+//     entrando.style.transition = "";
+//     entrando.style.transform = "";
+//   }, DUR + 30);
+// }
+
+// // 🔹 Dissolve animation
+// function animarDissolve(saindo, entrando) {
+//   entrando.style.transition = "none";
+//   entrando.style.opacity = 0;
+//   entrando.classList.add("active");
+
+//   requestAnimationFrame(() => {
+//     saindo.style.transition = `opacity ${DUR}ms ease`;
+//     entrando.style.transition = `opacity ${DUR}ms ease`;
+//     saindo.style.opacity = 0;
+//     entrando.style.opacity = 1;
+//   });
+
+//   setTimeout(() => {
+//     saindo.classList.remove("active");
+//     saindo.style.transition = "";
+//     saindo.style.opacity = "";
+//     entrando.style.transition = "";
+//     entrando.style.opacity = "";
+//   }, DUR + 30);
+// }
+
+// // 🔹 Suporte ao botão físico de voltar (mobile / navegador)
+// window.addEventListener("popstate", (event) => {
+//   if (event.state && event.state.tela) {
+//     const destino = event.state.tela;
+//     const efeito = event.state.efeito || "slide";
+//     const telaAtual = historico[historico.length - 1];
+//     const indiceDestino = historico.indexOf(destino);
+
+//     if (indiceDestino === -1) {
+//       historico.push(destino);
+//       efeito === "dissolve"
+//         ? animarDissolve(
+//             document.getElementById(`tela-${telaAtual}`),
+//             document.getElementById(`tela-${destino}`)
+//           )
+//         : animarTransicao(
+//             document.getElementById(`tela-${telaAtual}`),
+//             document.getElementById(`tela-${destino}`),
+//             "esquerda"
+//           );
+//     } else if (indiceDestino < historico.length - 1) {
+//       const atual = historico.pop();
+//       efeito === "dissolve"
+//         ? animarDissolve(
+//             document.getElementById(`tela-${atual}`),
+//             document.getElementById(`tela-${destino}`)
+//           )
+//         : animarTransicao(
+//             document.getElementById(`tela-${atual}`),
+//             document.getElementById(`tela-${destino}`),
+//             "direita"
+//           );
+//     }
+//   } else {
+//     irPara("home");
+//   }
+// });
+
+// // Estado inicial
+// history.replaceState({ tela: "home" }, "", "#home");
+
+function generateCategories() {
+  console.log("Generating categories...");
+  console.log(exerciseDataGlobal);
 }
 
-function voltar() {
-  if (historico.length < 2) return;
-  const atual = historico.pop();
-  const anterior = historico[historico.length - 1];
-  history.pushState({ tela: anterior }, "", `#${anterior}`);
-  animarTransicao(
-    document.getElementById(`tela-${atual}`),
-    document.getElementById(`tela-${anterior}`),
-    "direita"
-  );
-}
-
-// 🔹 Slide animation
-function animarTransicao(saindo, entrando, direcao) {
-  const paraEsquerda = direcao === "esquerda";
-  saindo.style.transition = "none";
-  saindo.style.transform = "translateX(0)";
-  entrando.style.transition = "none";
-  entrando.style.transform = paraEsquerda
-    ? "translateX(100%)"
-    : "translateX(-100%)";
-  entrando.classList.add("active");
-  entrando.getBoundingClientRect();
-
-  requestAnimationFrame(() => {
-    saindo.style.transition = `transform ${DUR}ms cubic-bezier(.22,.9,.33,1)`;
-    entrando.style.transition = `transform ${DUR}ms cubic-bezier(.22,.9,.33,1)`;
-    saindo.style.transform = paraEsquerda
-      ? "translateX(-100%)"
-      : "translateX(100%)";
-    entrando.style.transform = "translateX(0)";
-  });
-
-  setTimeout(() => {
-    saindo.classList.remove("active");
-    saindo.style.transition = "";
-    saindo.style.transform = "";
-    entrando.style.transition = "";
-    entrando.style.transform = "";
-  }, DUR + 30);
-}
-
-// 🔹 Dissolve animation
-function animarDissolve(saindo, entrando) {
-  entrando.style.transition = "none";
-  entrando.style.opacity = 0;
-  entrando.classList.add("active");
-
-  requestAnimationFrame(() => {
-    saindo.style.transition = `opacity ${DUR}ms ease`;
-    entrando.style.transition = `opacity ${DUR}ms ease`;
-    saindo.style.opacity = 0;
-    entrando.style.opacity = 1;
-  });
-
-  setTimeout(() => {
-    saindo.classList.remove("active");
-    saindo.style.transition = "";
-    saindo.style.opacity = "";
-    entrando.style.transition = "";
-    entrando.style.opacity = "";
-  }, DUR + 30);
-}
-
-// 🔹 Suporte ao botão físico de voltar (mobile / navegador)
-window.addEventListener("popstate", (event) => {
-  if (event.state && event.state.tela) {
-    const destino = event.state.tela;
-    const efeito = event.state.efeito || "slide";
-    const telaAtual = historico[historico.length - 1];
-    const indiceDestino = historico.indexOf(destino);
-
-    if (indiceDestino === -1) {
-      historico.push(destino);
-      efeito === "dissolve"
-        ? animarDissolve(
-            document.getElementById(`tela-${telaAtual}`),
-            document.getElementById(`tela-${destino}`)
-          )
-        : animarTransicao(
-            document.getElementById(`tela-${telaAtual}`),
-            document.getElementById(`tela-${destino}`),
-            "esquerda"
-          );
-    } else if (indiceDestino < historico.length - 1) {
-      const atual = historico.pop();
-      efeito === "dissolve"
-        ? animarDissolve(
-            document.getElementById(`tela-${atual}`),
-            document.getElementById(`tela-${destino}`)
-          )
-        : animarTransicao(
-            document.getElementById(`tela-${atual}`),
-            document.getElementById(`tela-${destino}`),
-            "direita"
-          );
-    }
-  } else {
-    irPara("home");
-  }
-});
-
-// Estado inicial
-history.replaceState({ tela: "home" }, "", "#home");
+generateCategories();
