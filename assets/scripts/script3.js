@@ -116,7 +116,11 @@ getExerciseData2().then((exerciseDataGlobal) => {
     ...new Map(
       exerciseDataGlobal.map((exercise) => [
         exercise.categoria.nome,
-        { nome: exercise.categoria.nome, image: exercise.categoria.image },
+        {
+          id: exercise.categoria.id,
+          nome: exercise.categoria.nome,
+          image: exercise.categoria.image,
+        },
       ])
     ).values(),
   ];
@@ -124,7 +128,7 @@ getExerciseData2().then((exerciseDataGlobal) => {
   categoriasUnicas.forEach((categoria) => {
     allCategoriesCards.innerHTML +=
       '<div class="categoryContainer">' +
-      `<div class="categoryCard"  onclick="irPara('Lorem-Ipsum')" style='background-image: url("${categoria.image}");'>` +
+      `<div class="categoryCard"  onclick="irPara('treino') value='${categoria.id}' " style='background-image: url("${categoria.image}");'>` +
       `<span class="categoryTitle">${categoria.nome}</span>` +
       "</div>" +
       "</div>"; 
