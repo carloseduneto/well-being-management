@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>App de Lorem-Ipsum — Navegação</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Inter, system-ui, sans-serif;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        background: #f6f6f6;
+        overflow: hidden;
+        display: flex;
+        align-items: stretch;
+      }
+
+      .app {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .tela {
+        position: absolute;
+        /* inset: 0; */
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        /* background-color: rgb(174, 21, 174); */
+        /* padding: 0.5rem;  */
+        /* Se quiser adicionar uma miniborda */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform 460ms cubic-bezier(0.22, 0.9, 0.33, 1),
+          opacity 460ms ease-in-out;
+      }
+
+      .tela__conteudo {
+        /* position: relative; */
+        background-color: pink;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        overflow-y: auto;
+        padding-top: 70px;
+        padding-bottom: 100px;      }
+
+      .tela__conteudo::-webkit-scrollbar {
+        width: 6px;
+      }
+      .tela__conteudo::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+      }
+      .tela__conteudo::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .tela.active {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      h1 {
+        margin-bottom: 1.25rem;
+        font-size: 1.5rem;
+      }
+      p {
+        margin-bottom: 1rem;
+        color: #444;
+      }
+
+      .btn {
+        background: #007bff;
+        color: #fff;
+        border: none;
+        padding: 0.8rem 1.2rem;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      .btn.secondary {
+        background: #6c757d;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+
+      .testeFixed {
+        position: fixed;
+        top: 0;
+        background-color: yellow;
+        /* border-radius: 25px; */
+        height: 50px;
+        width: 100%;
+        /* margin-top: 10px; */
+      }
+
+      .testeFixed2{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: orange;
+        border-radius: 25px;
+        height: 50px;
+        width: 100%;
+        margin-bottom: 10px;
+        align-self: center;
+        text-align: center;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+    <span>Navegação top
+      <br>
+      <br>
+      <br>
+    </span>
+
+
+      <!-- 🏠 Tela Home Principal -->
+      <div class="tela" id="tela-home">
+        <!-- <h1>Está fixo em cima</h1> -->
+
+        <div class="tela__conteudo">
+          <h1 class="testeFixed">🏠 Home</h1>
+          <p>Bem-vindo Home — abra o Lorem-Ipsum para ver a transição.</p>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <button class="btn" onclick="irPara('Lorem-Ipsum')">
+              Ir para Lorem-Ipsum ➜
+            </button>
+            <button class="btn" onclick="irPara('perfil')">
+              👤 Ir para Perfil
+            </button>
+            <button class="btn" onclick="irPara('outraTela2')">
+              outraTela2
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+              🏡 Ir para Home Alt 1
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+              🏡 Ir para Home Alt 2
+            </button>
+          </div>
+          <h1>🏠 Home</h1>
+          <p>Bem-vindo — abra o Lorem-Ipsum para ver a transição.</p>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <button class="btn" onclick="irPara('Lorem-Ipsum')">
+              Ir para Lorem-Ipsum ➜
+            </button>
+            <button class="btn" onclick="irPara('perfil')">
+              👤 Ir para Perfil
+            </button>
+            <button class="btn" onclick="irPara('outraTela2')">
+              outraTela2
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+              🏡 Ir para Home Alt 1
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+              🏡 Ir para Home Alt 2
+            </button>
+          </div>
+          <br />
+          <br /><br /><br /><br /><br /><br /><br /><br />
+          <h1>🏠 Home</h1>
+          <p>Bem-vindo — abra o Lorem-Ipsum para ver a transição.</p>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <button class="btn" onclick="irPara('Lorem-Ipsum')">
+              Ir para Lorem-Ipsum ➜
+            </button>
+            <button class="btn" onclick="irPara('dif')">Dif</button>
+            <button class="btn" onclick="irPara('outraTela2')">
+              outraTela2
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+              🏡 Ir para Home Alt 1
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+              🏡 Ir para Home Alt 2
+            </button>
+          </div>
+        </div>
+        <!-- <h1>Está fixo em baixo</h1> -->
+      </div>
+
+      <!-- 🔣 Tela Categorias Principal -->
+      <div class="tela active" id="tela-categories">
+        <!-- <h1>Está fixo em cima</h1> -->
+
+        <div class="tela__conteudo">
+          <!-- <h1 class="testeFixed">🏠 Home</h1> -->
+
+
+          <p>Bem-vindo A — abra o Lorem-Ipsum para ver a transição.</p>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <button class="btn" onclick="irPara('Lorem-Ipsum')">
+              Ir para Lorem-Ipsum ➜
+            </button>
+            <button class="btn" onclick="irPara('perfil')">
+              👤 Ir para Perfil
+            </button>
+            <button class="btn" onclick="irPara('outraTela2')">
+              outraTela2
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+              🏡 Ir para Home Alt 1
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+              🏡 Ir para Home Alt 2
+            </button>
+          </div>
+          <h1>🏠 Home</h1>
+          <p>Bem-vindo — abra o Lorem-Ipsum para ver a transição.</p>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <button class="btn" onclick="irPara('Lorem-Ipsum')">
+              Ir para Lorem-Ipsum ➜
+            </button>
+            <button class="btn" onclick="irPara('perfil')">
+              👤 Ir para Perfil
+            </button>
+            <button class="btn" onclick="irPara('outraTela2')">
+              outraTela2
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+              🏡 Ir para Home Alt 1
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+              🏡 Ir para Home Alt 2
+            </button>
+          </div>
+          <br />
+          <br /><br /><br /><br /><br /><br /><br /><br />
+          <h1>🏠 Home</h1>
+          <p>Bem-vindo — abra o Lorem-Ipsum para ver a transição.</p>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <button class="btn" onclick="irPara('Lorem-Ipsum')">
+              Ir para Lorem-Ipsum ➜
+            </button>
+            <button class="btn" onclick="irPara('dif')">Dif</button>
+            <button class="btn" onclick="irPara('outraTela2')">
+              outraTela2
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+              🏡 Ir para Home Alt 1
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+              🏡 Ir para Home Alt 2
+            </button>
+          </div>
+        </div>
+        <!-- <h1>Está fixo em baixo</h1> -->
+      </div>
+
+
+      <!-- 🏠 Tela Home Diferente -->
+      <div class="tela" id="tela-dif">
+        <h1>Está fixo em cima dif</h1>
+
+        <div class="tela__conteudo">
+          <h1>🏠 Home</h1>
+          <p>Bem-vindo — abra o Lorem-Ipsum para ver a transição.</p>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <button class="btn" onclick="irPara('Lorem-Ipsum')">
+              Ir para Lorem-Ipsum ➜
+            </button>
+            <button class="btn" onclick="irPara('perfil')">
+              👤 Ir para Perfil
+            </button>
+            <button class="btn" onclick="irPara('outraTela2')">
+              outraTela2
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+              🏡 Ir para Home Alt 1
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+              🏡 Ir para Home Alt 2
+            </button>
+          </div>
+        </div>
+        <h1>Está fixo em baixo</h1>
+      </div>
+
+      <!-- 📄 Tela Lorem-Ipsum -->
+      <div id="tela-Lorem-Ipsum" class="tela">
+        <h1>Lorem-Ipsum</h1>
+        <p>Aqui fica o Lorem-Ipsum em execução.</p>
+        <div style="display: flex; gap: 10px">
+          <button class="btn secondary" onclick="voltar()">⬅ Voltar</button>
+          <button class="btn" onclick="irPara('home')">🏠 Home</button>
+          <button class="btn" onclick="irPara('outraTela')">
+            Ir para Outra Tela
+          </button>
+        </div>
+      </div>
+
+      <!-- 📄 Outra Tela -->
+      <div id="tela-outraTela" class="tela">
+        <h1>Outra Tela</h1>
+        <p>Aqui fica outro conteúdo qualquer.</p>
+        <div style="display: flex; gap: 10px">
+          <button class="btn secondary" onclick="voltar()">⬅ Voltar</button>
+          <button class="btn" onclick="irPara('home')">🏠 Home</button>
+          <button class="btn" onclick="irPara('perfil')">
+            👤 Ir para Perfil
+          </button>
+        </div>
+      </div>
+
+      <!-- 📄 Outra Tela 2 -->
+      <div id="tela-outraTela2" class="tela">
+        <h1>Outra Tela 2</h1>
+        <p>Aqui fica outro conteúdo qualquer.</p>
+        <div style="display: flex; gap: 10px">
+          <button class="btn secondary" onclick="voltar()">⬅ Voltar</button>
+          <button class="btn" onclick="irPara('Ç')">Ç</button>
+        </div>
+      </div>
+
+      <!-- 👤 Tela Perfil -->
+      <div id="tela-perfil" class="tela">
+        <h1>👤 Perfil</h1>
+        <p>Informações do usuário e configurações.</p>
+        <div style="display: flex; gap: 10px">
+          <button class="btn secondary" onclick="voltar()">⬅ Voltar</button>
+          <button class="btn" onclick="irPara('home')">🏠 Home</button>
+          <button class="btn" onclick="irPara('w')">W</button>
+        </div>
+      </div>
+
+      <!-- 🔤 Tela W -->
+      <div id="tela-w" class="tela">
+        <h1>W</h1>
+        <p>W</p>
+        <div style="display: flex; gap: 10px">
+          <button class="btn secondary" onclick="voltar()">⬅ Voltar</button>
+          <button class="btn" onclick="irPara('home')">🏠 Home</button>
+          <button class="btn" onclick="irPara('Lorem-Ipsum')">
+            Ir para Lorem-Ipsum
+          </button>
+          <button class="btn" onclick="irPara('Ç')">Ir para Ç</button>
+        </div>
+      </div>
+
+      <!-- 🔤 Tela Ç -->
+      <div id="tela-Ç" class="tela">
+        <h1>Ç</h1>
+        <p>Ç</p>
+        <div style="display: flex; gap: 10px">
+          <button class="btn secondary" onclick="voltar()">⬅ Voltar</button>
+          <button class="btn" onclick="irPara('home')">🏠 Home</button>
+          <button class="btn" onclick="irPara('perfil')">Ir para Perfil</button>
+        </div>
+      </div>
+
+      <!-- 🏡 Home Alternativo 1 -->
+      <div id="tela-homeAlternativo1" class="tela">
+        <h1>🏡 Home Alternativo 1</h1>
+        <p>Versão alternativa do home.</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap">
+          <button class="btn secondary" onclick="irPara('home','dissolve')">
+            Voltar ao Home
+          </button>
+          <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+            Ir para Home Alt 2
+          </button>
+        </div>
+      </div>
+
+      <!-- 🏡 Home Alternativo 2 -->
+      <div id="tela-homeAlternativo2" class="tela">
+        <h1>🏡 Home Alternativo 2</h1>
+        <p>Segunda variação do home.</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap">
+          <button class="btn secondary" onclick="irPara('home','dissolve')">
+            Voltar ao Home
+          </button>
+          <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+            Ir para Home Alt 1
+          </button>
+        </div>
+      </div>
+      <span class="testeFixed2">Navegação bottom</span>
+    </div>
+
+    <script>
+      const DUR = 560;
+      let historico = ["home"];
+
+      function irPara(destino, efeito = "slide") {
+        const telaAtual = historico[historico.length - 1];
+        if (destino === telaAtual) return;
+
+        const atual = document.getElementById(`tela-${telaAtual}`);
+        const proxima = document.getElementById(`tela-${destino}`);
+        if (!proxima) {
+          console.warn(`Tela '${destino}' não encontrada!`);
+          return;
+        }
+
+        // Atualiza o histórico do navegador
+        history.pushState({ tela: destino, efeito }, "", `#${destino}`);
+
+        if (efeito === "dissolve") {
+          historico.push(destino);
+          animarDissolve(atual, proxima);
+          return;
+        }
+
+        const indiceDestino = historico.indexOf(destino);
+        const indoParaFrente = indiceDestino === -1;
+
+        if (indoParaFrente) {
+          historico.push(destino);
+          animarTransicao(atual, proxima, "esquerda");
+        } else {
+          historico = historico.slice(0, indiceDestino + 1);
+          animarTransicao(atual, proxima, "direita");
+        }
+      }
+
+      function voltar() {
+        if (historico.length < 2) return;
+        const atual = historico.pop();
+        const anterior = historico[historico.length - 1];
+        history.pushState({ tela: anterior }, "", `#${anterior}`);
+        animarTransicao(
+          document.getElementById(`tela-${atual}`),
+          document.getElementById(`tela-${anterior}`),
+          "direita"
+        );
+      }
+
+      // 🔹 Slide animation
+      function animarTransicao(saindo, entrando, direcao) {
+        const paraEsquerda = direcao === "esquerda";
+        saindo.style.transition = "none";
+        saindo.style.transform = "translateX(0)";
+        entrando.style.transition = "none";
+        entrando.style.transform = paraEsquerda
+          ? "translateX(100%)"
+          : "translateX(-100%)";
+        entrando.classList.add("active");
+        entrando.getBoundingClientRect();
+
+        requestAnimationFrame(() => {
+          saindo.style.transition = `transform ${DUR}ms cubic-bezier(.22,.9,.33,1)`;
+          entrando.style.transition = `transform ${DUR}ms cubic-bezier(.22,.9,.33,1)`;
+          saindo.style.transform = paraEsquerda
+            ? "translateX(-100%)"
+            : "translateX(100%)";
+          entrando.style.transform = "translateX(0)";
+        });
+
+        setTimeout(() => {
+          saindo.classList.remove("active");
+          saindo.style.transition = "";
+          saindo.style.transform = "";
+          entrando.style.transition = "";
+          entrando.style.transform = "";
+        }, DUR + 30);
+      }
+
+      // 🔹 Dissolve animation
+      function animarDissolve(saindo, entrando) {
+        entrando.style.transition = "none";
+        entrando.style.opacity = 0;
+        entrando.classList.add("active");
+
+        requestAnimationFrame(() => {
+          saindo.style.transition = `opacity ${DUR}ms ease`;
+          entrando.style.transition = `opacity ${DUR}ms ease`;
+          saindo.style.opacity = 0;
+          entrando.style.opacity = 1;
+        });
+
+        setTimeout(() => {
+          saindo.classList.remove("active");
+          saindo.style.transition = "";
+          saindo.style.opacity = "";
+          entrando.style.transition = "";
+          entrando.style.opacity = "";
+        }, DUR + 30);
+      }
+
+      // 🔹 Suporte ao botão físico de voltar (mobile / navegador)
+      window.addEventListener("popstate", event => {
+        if (event.state && event.state.tela) {
+          const destino = event.state.tela;
+          const efeito = event.state.efeito || "slide";
+          const telaAtual = historico[historico.length - 1];
+          const indiceDestino = historico.indexOf(destino);
+
+          if (indiceDestino === -1) {
+            historico.push(destino);
+            efeito === "dissolve"
+              ? animarDissolve(
+                  document.getElementById(`tela-${telaAtual}`),
+                  document.getElementById(`tela-${destino}`)
+                )
+              : animarTransicao(
+                  document.getElementById(`tela-${telaAtual}`),
+                  document.getElementById(`tela-${destino}`),
+                  "esquerda"
+                );
+          } else if (indiceDestino < historico.length - 1) {
+            const atual = historico.pop();
+            efeito === "dissolve"
+              ? animarDissolve(
+                  document.getElementById(`tela-${atual}`),
+                  document.getElementById(`tela-${destino}`)
+                )
+              : animarTransicao(
+                  document.getElementById(`tela-${atual}`),
+                  document.getElementById(`tela-${destino}`),
+                  "direita"
+                );
+          }
+        } else {
+          irPara("home");
+        }
+      });
+
+      // Estado inicial
+      history.replaceState({ tela: "home" }, "", "#home");
+    </script>
+  </body>
+</html>
