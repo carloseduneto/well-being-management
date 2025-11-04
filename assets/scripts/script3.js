@@ -128,7 +128,7 @@ getExerciseData2().then((exerciseDataGlobal) => {
   categoriasUnicas.forEach((categoria) => {
     allCategoriesCards.innerHTML +=
       '<div class="categoryContainer">' +
-      `<div class="categoryCard"  onclick="irPara('treino') value='${categoria.id}' " style='background-image: url("${categoria.image}");'>` +
+      `<div class="categoryCard"  onclick="irPara('treino') " style='background-image: url("${categoria.image}");' category="${categoria.id}">` +
       `<span class="categoryTitle">${categoria.nome}</span>` +
       "</div>" +
       "</div>"; 

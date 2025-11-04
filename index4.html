@@ -172,7 +172,7 @@
       </header>
 
       <!-- 🏠 Tela Home Principal -->
-      <div class="tela" id="tela-home" value="Home">
+      <div class="tela" id="tela-home" name="Home">
         <!-- <h1>Está fixo em cima</h1> -->
 
         <div class="tela__conteudo">
@@ -259,20 +259,18 @@
       </div>
 
       <!-- 🔣 Tela Categorias Principal -->
-      <div class="tela active" id="tela-categories" value="Categorias">
+      <div class="tela active" id="tela-categories" name="Categorias">
         <!-- <h1>Está fixo em cima</h1> -->
 
         <div class="tela__conteudo">
           <!-- <h1 class="testeFixed">🏠 Home</h1> -->
-          
-          <div id="allCategoriesCards">
-            
-          </div>
+
+          <div id="allCategoriesCards"></div>
 
           <!-- Content to copy categories -->
           <div class="content">
             <div class="categoryContainer">
-              <div class="categoryCard"  onclick="irPara('Lorem-Ipsum')">
+              <div class="categoryCard" onclick="irPara('treino')" category="A">
                 <span class="categoryTitle">A</span>
               </div>
             </div>
@@ -360,7 +358,7 @@
       </div>
 
       <!-- 🏠 Tela Home Diferente -->
-      <div class="tela" id="tela-dif">
+      <div class="tela" id="tela-treino" name="Treino">
         <h1>Está fixo em cima dif</h1>
 
         <div class="tela__conteudo">
@@ -522,8 +520,10 @@
       let historico = ["categories"];
       let titleScreen = document.getElementById("titleScreen");
 
+      obterCategoriaTreino()
       function irPara(destino, efeito = "slide") {
         const telaAtual = historico[historico.length - 1];
+        obterCategoriaTreino()
         if (destino === telaAtual) return;
 
         const atual = document.getElementById(`tela-${telaAtual}`);
@@ -535,10 +535,11 @@
 
         // 🔹 Atualiza o título automaticamente
         const titleScreen = document.getElementById("titleScreen");
-        const novoTitulo = proxima.getAttribute("value") || destino;
+        const novoTitulo = proxima.getAttribute("name") || destino;
         if (titleScreen) {
           titleScreen.textContent = novoTitulo;
         }
+
 
         // Atualiza o histórico do navegador
         history.pushState({ tela: destino, efeito }, "", `#${destino}`);
@@ -571,7 +572,7 @@
         const titleScreen = document.getElementById("titleScreen");
 
         // 🔹 Atualiza o título automaticamente
-        const novoTitulo = telaAnterior?.getAttribute("value") || anterior;
+        const novoTitulo = telaAnterior?.getAttribute("name") || anterior;
         if (titleScreen) {
           titleScreen.textContent = novoTitulo;
         }
@@ -589,13 +590,35 @@
         const atual = document.getElementById(`tela-${telaAtual}`);
         // 🔹 Atualiza o título automaticamente
         const titleScreen = document.getElementById("titleScreen");
-        const novoTitulo = atual.getAttribute("value");
+        const novoTitulo = atual.getAttribute("name");
         if (titleScreen) {
           titleScreen.textContent = novoTitulo;
         }
       }
 
       atualizarTitulo();
+
+      // Executa uma única vez quando a página carrega
+      function obterCategoriaTreino() {
+        document.querySelectorAll(".categoryCard[category]").forEach(card => {
+          if (!card.dataset.listenerAdicionado) {
+            card.addEventListener("click", () => {
+              const categoria = card.getAttribute("category");
+              console.log("Categoria Nova:", categoria);
+            });
+            card.dataset.listenerAdicionado = "true";
+          }
+        });
+      }
+
+      // document.addEventListener("DOMContentLoaded", () => {
+      //   document.querySelectorAll(".categoryCard[category]").forEach(card => {
+      //     card.addEventListener("click", () => {
+      //       const categoria = card.getAttribute("category");
+      //       console.log("Categoria Nova:", categoria);
+      //     });
+      //   });
+      // });
 
       // 🔹 Slide animation
       function animarTransicao(saindo, entrando, direcao) {
@@ -650,7 +673,7 @@
       }
 
       // 🔹 Suporte ao botão físico de voltar (mobile / navegador)
-      window.addEventListener("popstate", (event) => {
+      window.addEventListener("popstate", event => {
         if (event.state && event.state.tela) {
           const destino = event.state.tela;
           const efeito = event.state.efeito || "slide";
@@ -689,8 +712,7 @@
 
       // Estado inicial
       history.replaceState({ tela: "categories" }, "", "#categories");
-
-</script>
-<script src="./assets/scripts/script3.js"></script>
+    </script>
+    <script src="./assets/scripts/script3.js"></script>
   </body>
 </html>
