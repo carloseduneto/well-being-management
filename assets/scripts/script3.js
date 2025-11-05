@@ -111,7 +111,7 @@ getExerciseData2().then((exerciseDataGlobal) => {
   console.log("exerciseDataGlobal in then():");
 
   let allCategoriesCards = document.getElementById("allCategoriesCards");
-  
+
   const categoriasUnicas = [
     ...new Map(
       exerciseDataGlobal.map((exercise) => [
@@ -128,10 +128,10 @@ getExerciseData2().then((exerciseDataGlobal) => {
   categoriasUnicas.forEach((categoria) => {
     allCategoriesCards.innerHTML +=
       '<div class="categoryContainer">' +
-      `<div class="categoryCard"  onclick="irPara('treino', 'slide', this)" " style='background-image: url("${categoria.image}");' category="${categoria.id}">` +
+      `<div class="categoryCard"  onclick="irPara('treino', 'slide', this)" " style='background-image: url("${categoria.image}");' data-category="${categoria.id}">` +
       `<span class="categoryTitle">${categoria.nome}</span>` +
       "</div>" +
-      "</div>"; 
+      "</div>";
   });
 
   console.log(categoriasUnicas);
@@ -306,24 +306,26 @@ function generateCategories() {
 
 generateCategories();
 
-
 function obterCategoriaTreino(elemento) {
-        const categoria = elemento.getAttribute("category");
-        console.log("Categoria Nova:", categoria);
-        return categoria;
+  console.log("Elemento recebido:", elemento);
+  const categoria = elemento.dataset.category;
+  const idName = elemento.dataset.idName;
+  console.log("Categoria:", categoria, " | ID Name:", idName);
+  return categoria;
 }
 
 function mudarTreino(categoria) {
   let treinoTest = document.getElementById("treino-test");
-  treinoTest.innerHTML = `Categoria selecionada: ${categoria}`;
-}     
+  treinoTest.innerHTML = `Categoria selecionada: ${categoria}<br><br><br>`;
+}
 
-
-function irPara(destino, efeito = "slide", elemento = null) {
-  if (elemento) obterCategoriaTreino(elemento);
-  console.log("Elemento passado WWW:", obterCategoriaTreino(elemento));
-
-  mudarTreino(obterCategoriaTreino(elemento));
+      function irPara(destino, efeito = "slide", elemento = null) {
+        // Só chama obterCategoriaTreino se um elemento foi realmente passado
+        if (elemento) {
+          obterCategoriaTreino(elemento);
+          console.log("Elemento passado:", elemento);
+          mudarTreino(obterCategoriaTreino(elemento));
+        }
 
         const telaAtual = historico[historico.length - 1];
         if (destino === telaAtual) return;
@@ -335,10 +337,12 @@ function irPara(destino, efeito = "slide", elemento = null) {
           return;
         }
 
+        // 🔹 Atualiza o título automaticamente
         const titleScreen = document.getElementById("titleScreen");
         const novoTitulo = proxima.getAttribute("name") || destino;
         if (titleScreen) titleScreen.textContent = novoTitulo;
 
+        // Atualiza o histórico do navegador
         history.pushState({ tela: destino, efeito }, "", `#${destino}`);
 
         if (efeito === "dissolve") {
@@ -358,5 +362,3 @@ function irPara(destino, efeito = "slide", elemento = null) {
           animarTransicao(atual, proxima, "direita");
         }
       }
-
-

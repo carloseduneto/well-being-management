@@ -273,7 +273,7 @@
               <div
                 class="categoryCard"
                 onclick="irPara('treino', 'slide', this)"
-                category="A"
+                data-category="A"
               >
                 <span class="categoryTitle">A</span>
               </div>
@@ -376,8 +376,7 @@
               justify-content: center;
             "
           >
-
-          <span id="treino-test"></span>
+            <span id="treino-test"></span>
             <button class="btn" onclick="irPara('Lorem-Ipsum')">
               Ir para Lorem-Ipsum ➜
             </button>
@@ -527,11 +526,14 @@
       let titleScreen = document.getElementById("titleScreen");
 
       // Executa uma única vez quando a página carrega
-      function obterCategoriaTreino(elemento) {
+      function obterCategoriaTreinoOld(elemento) {
         const categoria = elemento.getAttribute("category");
         console.log("Categoria Nova:", categoria);
         return categoria;
       }
+
+      //Obtem dados via data-attributes
+
 
       // obterCategoriaTreino();
       // function irPara(destino, efeito = "slide") {
@@ -576,43 +578,45 @@
 
 
 
-      function irPara(destino, efeito = "slide", elemento = null) {
-        if (elemento) obterCategoriaTreino(elemento);
-        console.log("Elemento passado:", obterCategoriaTreino(elemento));
 
-        const telaAtual = historico[historico.length - 1];
-        if (destino === telaAtual) return;
+      // function irPara(destino, efeito = "slide", elemento = null) {
+      //   if (elemento) obterCategoriaTreino(elemento);
+      //   console.log("Elemento passado:", obterCategoriaTreino(elemento));
 
-        const atual = document.getElementById(`tela-${telaAtual}`);
-        const proxima = document.getElementById(`tela-${destino}`);
-        if (!proxima) {
-          console.warn(`Tela '${destino}' não encontrada!`);
-          return;
-        }
+      //   const telaAtual = historico[historico.length - 1];
+      //   if (destino === telaAtual) return;
 
-        const titleScreen = document.getElementById("titleScreen");
-        const novoTitulo = proxima.getAttribute("name") || destino;
-        if (titleScreen) titleScreen.textContent = novoTitulo;
+      //   const atual = document.getElementById(`tela-${telaAtual}`);
+      //   const proxima = document.getElementById(`tela-${destino}`);
+      //   if (!proxima) {
+      //     console.warn(`Tela '${destino}' não encontrada!`);
+      //     return;
+      //   }
 
-        history.pushState({ tela: destino, efeito }, "", `#${destino}`);
+      //   const titleScreen = document.getElementById("titleScreen");
+      //   const novoTitulo = proxima.getAttribute("name") || destino;
+      //   if (titleScreen) titleScreen.textContent = novoTitulo;
 
-        if (efeito === "dissolve") {
-          historico.push(destino);
-          animarDissolve(atual, proxima);
-          return;
-        }
+      //   history.pushState({ tela: destino, efeito }, "", `#${destino}`);
 
-        const indiceDestino = historico.indexOf(destino);
-        const indoParaFrente = indiceDestino === -1;
+      //   if (efeito === "dissolve") {
+      //     historico.push(destino);
+      //     animarDissolve(atual, proxima);
+      //     return;
+      //   }
 
-        if (indoParaFrente) {
-          historico.push(destino);
-          animarTransicao(atual, proxima, "esquerda");
-        } else {
-          historico = historico.slice(0, indiceDestino + 1);
-          animarTransicao(atual, proxima, "direita");
-        }
-      }
+      //   const indiceDestino = historico.indexOf(destino);
+      //   const indoParaFrente = indiceDestino === -1;
+
+      //   if (indoParaFrente) {
+      //     historico.push(destino);
+      //     animarTransicao(atual, proxima, "esquerda");
+      //   } else {
+      //     historico = historico.slice(0, indiceDestino + 1);
+      //     animarTransicao(atual, proxima, "direita");
+      //   }
+      // }
+
 
       function voltar() {
         if (historico.length < 2) return;
@@ -712,7 +716,7 @@
       }
 
       // 🔹 Suporte ao botão físico de voltar (mobile / navegador)
-      window.addEventListener("popstate", event => {
+      window.addEventListener("popstate", (event) => {
         if (event.state && event.state.tela) {
           const destino = event.state.tela;
           const efeito = event.state.efeito || "slide";
