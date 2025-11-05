@@ -368,6 +368,9 @@
         <div class="tela__conteudo">
           <h1>🏠 Home</h1>
           <p>Bem-vindo — abra o Lorem-Ipsum para ver a transição.</p>
+          <div id="exercicesContainer">
+            <!-- Exercícios serão inseridos aqui -->
+          </div>
           <div
             style="
               display: flex;
@@ -395,6 +398,25 @@
           </div>
         </div>
         <h1>Está fixo em baixo</h1>
+      </div>
+
+      <!-- 📄 Tela Lorem-Ipsum -->
+      <div id="tela-exercicio-detalhes" class="tela" name="Detalhes">
+        <div class="tela__conteudo">
+          <div id="exercicio-detalhes-container"></div>
+          <!-- <h1>Lorem-Ipsum</h1>
+          <p>Exercícios detalhes</p>
+          <div style="display: flex; gap: 10px">
+            <button class="btn secondary" onclick="voltar()">⬅ Voltar</button>
+            <button class="btn" onclick="irPara('home')">🏠 Home</button>
+            <button class="btn" onclick="irPara('categories')">
+              Categorias
+            </button>
+            <button class="btn" onclick="irPara('outraTela')">
+              Ir para Outra Tela
+            </button> -->
+          </div>
+        </div>
       </div>
 
       <!-- 📄 Tela Lorem-Ipsum -->
@@ -521,7 +543,7 @@
     </div>
 
     <script>
-      const DUR = 560;
+      const DUR = 360;
       let historico = ["categories"];
       let titleScreen = document.getElementById("titleScreen");
 
@@ -533,7 +555,6 @@
       }
 
       //Obtem dados via data-attributes
-
 
       // obterCategoriaTreino();
       // function irPara(destino, efeito = "slide") {
@@ -576,9 +597,6 @@
       //   }
       // }
 
-
-
-
       // function irPara(destino, efeito = "slide", elemento = null) {
       //   if (elemento) obterCategoriaTreino(elemento);
       //   console.log("Elemento passado:", obterCategoriaTreino(elemento));
@@ -616,7 +634,6 @@
       //     animarTransicao(atual, proxima, "direita");
       //   }
       // }
-
 
       function voltar() {
         if (historico.length < 2) return;

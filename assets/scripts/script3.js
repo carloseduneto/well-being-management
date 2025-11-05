@@ -111,6 +111,7 @@ getExerciseData2().then((exerciseDataGlobal) => {
   console.log("exerciseDataGlobal in then():");
 
   let allCategoriesCards = document.getElementById("allCategoriesCards");
+  let exercicesContainer = document.getElementById("exercicesContainer");
 
   const categoriasUnicas = [
     ...new Map(
@@ -315,50 +316,98 @@ function obterCategoriaTreino(elemento) {
 }
 
 function mudarTreino(categoria) {
-  let treinoTest = document.getElementById("treino-test");
-  treinoTest.innerHTML = `Categoria selecionada: ${categoria}<br><br><br>`;
+  if (categoria!=null || categoria!=undefined) {
+    let treinoTest = document.getElementById("treino-test");
+    treinoTest.innerHTML = `Categoria selecionada: ${categoria}<br><br><br>`;
+    getExerciseData2().then((exerciseDataGlobal) => {
+      exerciseDataGlobal.forEach((element) => {
+        if (element.categoria.id == categoria) {
+          treinoTest.innerHTML += `
+          <div class="exerciseCard">
+            <div class="exerciseInfo" onclick="irPara('exercicio-detalhes', 'slide', this)" data-exercise-id="${element.exercicio.id}">
+              <span class="exerciseInfoTitle">${element.exercicio.nome}</span>
+              <span>${element.exercicio.grupos_musculares.nome}</span>
+            </div>
+          </div>
+        `;
+        }
+      });
+    });
+  }
 }
 
-      function irPara(destino, efeito = "slide", elemento = null) {
-        // Só chama obterCategoriaTreino se um elemento foi realmente passado
-        if (elemento) {
-          obterCategoriaTreino(elemento);
-          console.log("Elemento passado:", elemento);
-          mudarTreino(obterCategoriaTreino(elemento));
+function mudarExercicioDetalhes(exerciseId) {
+  if (exerciseId!=null || exerciseId!=undefined) {
+    let exercicioDetalhes = document.getElementById("exercicio-detalhes-container"); 
+    exercicioDetalhes.innerHTML = `Exercício selecionado no HTML: ${exerciseId}<br><br><br>`;
+    getExerciseData2().then((exerciseDataGlobal) => {
+      exerciseDataGlobal.forEach((element) => {
+        if (element.exercicio.id == exerciseId) {
+          let recomendadasHtml = "";
+          if (
+            element.series_recomendadas &&
+            (element.series_recomendadas.nome || element.series_recomendadas.valor)
+          ) {
+            const nomeRec = element.series_recomendadas.nome ?? "";
+            const valorRec = element.series_recomendadas.valor ?? "";
+            recomendadasHtml = `<p>Séries Recomendadas: ${nomeRec}${
+              nomeRec && valorRec ? ` (${valorRec})` : valorRec ? `(${valorRec})` : ""
+            }</p>`;
+          }
+
+          exercicioDetalhes.innerHTML += `
+          <h2>${element.exercicio.nome}</h2>
+          <p>Grupos Musculares: ${element.exercicio.grupos_musculares.nome}</p>
+          <p>Séries e Repetições: ${element.series_repeticoes.nome}</p>
+          ${recomendadasHtml}
+        `;
         }
+      });
+    });
+  }
+}
 
-        const telaAtual = historico[historico.length - 1];
-        if (destino === telaAtual) return;
+function irPara(destino, efeito = "slide", elemento = null) {
+  // Só chama obterCategoriaTreino se um elemento foi realmente passado
+  if (elemento) {
+    obterCategoriaTreino(elemento);
+    console.log("Elemento passado:", elemento);
+    mudarTreino(obterCategoriaTreino(elemento));
+    mudarExercicioDetalhes(elemento.dataset.exerciseId);
+  }
 
-        const atual = document.getElementById(`tela-${telaAtual}`);
-        const proxima = document.getElementById(`tela-${destino}`);
-        if (!proxima) {
-          console.warn(`Tela '${destino}' não encontrada!`);
-          return;
-        }
+  const telaAtual = historico[historico.length - 1];
+  if (destino === telaAtual) return;
 
-        // 🔹 Atualiza o título automaticamente
-        const titleScreen = document.getElementById("titleScreen");
-        const novoTitulo = proxima.getAttribute("name") || destino;
-        if (titleScreen) titleScreen.textContent = novoTitulo;
+  const atual = document.getElementById(`tela-${telaAtual}`);
+  const proxima = document.getElementById(`tela-${destino}`);
+  if (!proxima) {
+    console.warn(`Tela '${destino}' não encontrada!`);
+    return;
+  }
 
-        // Atualiza o histórico do navegador
-        history.pushState({ tela: destino, efeito }, "", `#${destino}`);
+  // 🔹 Atualiza o título automaticamente
+  const titleScreen = document.getElementById("titleScreen");
+  const novoTitulo = proxima.getAttribute("name") || destino;
+  if (titleScreen) titleScreen.textContent = novoTitulo;
 
-        if (efeito === "dissolve") {
-          historico.push(destino);
-          animarDissolve(atual, proxima);
-          return;
-        }
+  // Atualiza o histórico do navegador
+  history.pushState({ tela: destino, efeito }, "", `#${destino}`);
 
-        const indiceDestino = historico.indexOf(destino);
-        const indoParaFrente = indiceDestino === -1;
+  if (efeito === "dissolve") {
+    historico.push(destino);
+    animarDissolve(atual, proxima);
+    return;
+  }
 
-        if (indoParaFrente) {
-          historico.push(destino);
-          animarTransicao(atual, proxima, "esquerda");
-        } else {
-          historico = historico.slice(0, indiceDestino + 1);
-          animarTransicao(atual, proxima, "direita");
-        }
-      }
+  const indiceDestino = historico.indexOf(destino);
+  const indoParaFrente = indiceDestino === -1;
+
+  if (indoParaFrente) {
+    historico.push(destino);
+    animarTransicao(atual, proxima, "esquerda");
+  } else {
+    historico = historico.slice(0, indiceDestino + 1);
+    animarTransicao(atual, proxima, "direita");
+  }
+}
