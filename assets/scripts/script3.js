@@ -128,7 +128,7 @@ getExerciseData2().then((exerciseDataGlobal) => {
   categoriasUnicas.forEach((categoria) => {
     allCategoriesCards.innerHTML +=
       '<div class="categoryContainer">' +
-      `<div class="categoryCard"  onclick="irPara('treino') " style='background-image: url("${categoria.image}");' category="${categoria.id}">` +
+      `<div class="categoryCard"  onclick="irPara('treino', 'slide', this)" " style='background-image: url("${categoria.image}");' category="${categoria.id}">` +
       `<span class="categoryTitle">${categoria.nome}</span>` +
       "</div>" +
       "</div>"; 
@@ -305,3 +305,58 @@ function generateCategories() {
 }
 
 generateCategories();
+
+
+function obterCategoriaTreino(elemento) {
+        const categoria = elemento.getAttribute("category");
+        console.log("Categoria Nova:", categoria);
+        return categoria;
+}
+
+function mudarTreino(categoria) {
+  let treinoTest = document.getElementById("treino-test");
+  treinoTest.innerHTML = `Categoria selecionada: ${categoria}`;
+}     
+
+
+function irPara(destino, efeito = "slide", elemento = null) {
+  if (elemento) obterCategoriaTreino(elemento);
+  console.log("Elemento passado WWW:", obterCategoriaTreino(elemento));
+
+  mudarTreino(obterCategoriaTreino(elemento));
+
+        const telaAtual = historico[historico.length - 1];
+        if (destino === telaAtual) return;
+
+        const atual = document.getElementById(`tela-${telaAtual}`);
+        const proxima = document.getElementById(`tela-${destino}`);
+        if (!proxima) {
+          console.warn(`Tela '${destino}' não encontrada!`);
+          return;
+        }
+
+        const titleScreen = document.getElementById("titleScreen");
+        const novoTitulo = proxima.getAttribute("name") || destino;
+        if (titleScreen) titleScreen.textContent = novoTitulo;
+
+        history.pushState({ tela: destino, efeito }, "", `#${destino}`);
+
+        if (efeito === "dissolve") {
+          historico.push(destino);
+          animarDissolve(atual, proxima);
+          return;
+        }
+
+        const indiceDestino = historico.indexOf(destino);
+        const indoParaFrente = indiceDestino === -1;
+
+        if (indoParaFrente) {
+          historico.push(destino);
+          animarTransicao(atual, proxima, "esquerda");
+        } else {
+          historico = historico.slice(0, indiceDestino + 1);
+          animarTransicao(atual, proxima, "direita");
+        }
+      }
+
+

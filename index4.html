@@ -270,7 +270,11 @@
           <!-- Content to copy categories -->
           <div class="content">
             <div class="categoryContainer">
-              <div class="categoryCard" onclick="irPara('treino')" category="A">
+              <div
+                class="categoryCard"
+                onclick="irPara('treino', 'slide', this)"
+                category="A"
+              >
                 <span class="categoryTitle">A</span>
               </div>
             </div>
@@ -372,6 +376,8 @@
               justify-content: center;
             "
           >
+
+          <span id="treino-test"></span>
             <button class="btn" onclick="irPara('Lorem-Ipsum')">
               Ir para Lorem-Ipsum ➜
             </button>
@@ -520,10 +526,61 @@
       let historico = ["categories"];
       let titleScreen = document.getElementById("titleScreen");
 
-      obterCategoriaTreino()
-      function irPara(destino, efeito = "slide") {
+      // Executa uma única vez quando a página carrega
+      function obterCategoriaTreino(elemento) {
+        const categoria = elemento.getAttribute("category");
+        console.log("Categoria Nova:", categoria);
+        return categoria;
+      }
+
+      // obterCategoriaTreino();
+      // function irPara(destino, efeito = "slide") {
+      //   obterCategoriaTreino();
+      //   const telaAtual = historico[historico.length - 1];
+      //   if (destino === telaAtual) return;
+
+      //   const atual = document.getElementById(`tela-${telaAtual}`);
+      //   const proxima = document.getElementById(`tela-${destino}`);
+      //   if (!proxima) {
+      //     console.warn(`Tela '${destino}' não encontrada!`);
+      //     return;
+      //   }
+
+      //   // 🔹 Atualiza o título automaticamente
+      //   const titleScreen = document.getElementById("titleScreen");
+      //   const novoTitulo = proxima.getAttribute("name") || destino;
+      //   if (titleScreen) {
+      //     titleScreen.textContent = novoTitulo;
+      //   }
+
+      //   // Atualiza o histórico do navegador
+      //   history.pushState({ tela: destino, efeito }, "", `#${destino}`);
+
+      //   if (efeito === "dissolve") {
+      //     historico.push(destino);
+      //     animarDissolve(atual, proxima);
+      //     return;
+      //   }
+
+      //   const indiceDestino = historico.indexOf(destino);
+      //   const indoParaFrente = indiceDestino === -1;
+
+      //   if (indoParaFrente) {
+      //     historico.push(destino);
+      //     animarTransicao(atual, proxima, "esquerda");
+      //   } else {
+      //     historico = historico.slice(0, indiceDestino + 1);
+      //     animarTransicao(atual, proxima, "direita");
+      //   }
+      // }
+
+
+
+      function irPara(destino, efeito = "slide", elemento = null) {
+        if (elemento) obterCategoriaTreino(elemento);
+        console.log("Elemento passado:", obterCategoriaTreino(elemento));
+
         const telaAtual = historico[historico.length - 1];
-        obterCategoriaTreino()
         if (destino === telaAtual) return;
 
         const atual = document.getElementById(`tela-${telaAtual}`);
@@ -533,15 +590,10 @@
           return;
         }
 
-        // 🔹 Atualiza o título automaticamente
         const titleScreen = document.getElementById("titleScreen");
         const novoTitulo = proxima.getAttribute("name") || destino;
-        if (titleScreen) {
-          titleScreen.textContent = novoTitulo;
-        }
+        if (titleScreen) titleScreen.textContent = novoTitulo;
 
-
-        // Atualiza o histórico do navegador
         history.pushState({ tela: destino, efeito }, "", `#${destino}`);
 
         if (efeito === "dissolve") {
@@ -597,19 +649,6 @@
       }
 
       atualizarTitulo();
-
-      // Executa uma única vez quando a página carrega
-      function obterCategoriaTreino() {
-        document.querySelectorAll(".categoryCard[category]").forEach(card => {
-          if (!card.dataset.listenerAdicionado) {
-            card.addEventListener("click", () => {
-              const categoria = card.getAttribute("category");
-              console.log("Categoria Nova:", categoria);
-            });
-            card.dataset.listenerAdicionado = "true";
-          }
-        });
-      }
 
       // document.addEventListener("DOMContentLoaded", () => {
       //   document.querySelectorAll(".categoryCard[category]").forEach(card => {
