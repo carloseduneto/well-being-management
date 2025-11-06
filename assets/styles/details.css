@@ -1,16 +1,23 @@
 /* Details screen */
 .exerciseDetail {
-    background-color: #ffffff;
+    background-color: #f1ff70;
     box-shadow: 0 4px 4px #00000029;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     /* margin: 0; */
     /* position: fixed;
     top: 10%;
     left: 0%;
     right: 0%; */
-    width: auto;
-    z-index: 99999;
+    width: 100%;
+    z-index: 9;
     transform: translateZ(0);
+    position: fixed;
+    top: 60px;
+    padding-top: 10px;
+}
+
+#exercicio-detalhes-container{
+    margin-top: 50px;
 }
 
 .contentDetails {

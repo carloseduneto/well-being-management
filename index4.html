@@ -6,6 +6,9 @@
     <title>Gestão de treino</title>
     <link rel="stylesheet" href="./assets/styles/style.css" />
     <link rel="stylesheet" href="./assets/styles/categories.css" />
+    <link rel="stylesheet" href="./assets/styles/percent.css" />
+    <link rel="stylesheet" href="./assets/styles/details.css" />
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -72,10 +75,10 @@
 
       .tela__conteudo {
         /* position: relative; */
-        background-color: pink;
+        background-color: rgb(216, 149, 163);
         height: 100%;
         width: 100%;
-        text-align: center;
+        /* text-align: center; */
         overflow-y: auto;
         padding-top: 70px;
         padding-bottom: 150px;
@@ -124,7 +127,7 @@
 
       .testeFixed {
         position: fixed;
-        top: 0;
+        top: 60px;
         background-color: yellow;
         /* border-radius: 25px; */
         height: 50px;
@@ -259,7 +262,7 @@
       </div>
 
       <!-- 🔣 Tela Categorias Principal -->
-      <div class="tela active" id="tela-categories" name="Categorias">
+      <div class="tela" id="tela-categories" name="Categorias">
         <!-- <h1>Está fixo em cima</h1> -->
 
         <div class="tela__conteudo">
@@ -361,25 +364,45 @@
         <!-- <h1>Está fixo em baixo</h1> -->
       </div>
 
-      <!-- 🏠 Tela Home Diferente -->
-      <div class="tela" id="tela-treino" name="Treino">
-        <h1>Está fixo em cima dif</h1>
-
+      <!-- 🏠 Tela Treino -->
+      <div class="tela active" id="tela-treino" name="Treino">
         <div class="tela__conteudo">
-          <h1>🏠 Home</h1>
-          <p>Bem-vindo — abra o Lorem-Ipsum para ver a transição.</p>
-          <div id="exercicesContainer">
-            <!-- Exercícios serão inseridos aqui -->
+          <!-- <h1 class="testeFixed">Está fixo em cima dif</h1> -->
+          <div class="exerciseCard">
+            <div class="card" data-progress="70">
+              <div class="box">
+                <div class="percent">
+                  <svg>
+                    <circle cx="29" cy="29" r="29"></circle>
+                    <circle cx="29" cy="29" r="29"></circle>
+                  </svg>
+                  <div class="num">
+                    <h2>4<span>/5</span></h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="exerciseInfo">
+              <span class="exerciseInfoTitle">Supino inclinado com halter</span>
+              <span>Peito</span>
+            </div>
           </div>
-          <div
+          
+
+          <!-- <div
             style="
               display: flex;
               gap: 10px;
               flex-wrap: wrap;
               justify-content: center;
             "
-          >
-            <span id="treino-test"></span>
+            > -->
+          <div>
+            <span id="treino-test">
+              <!-- Exercícios serão inseridos aqui -->
+            </span>
+            <!-- Botões de navegação -->
+            <!--             
             <button class="btn" onclick="irPara('Lorem-Ipsum')">
               Ir para Lorem-Ipsum ➜
             </button>
@@ -394,16 +417,22 @@
             </button>
             <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
               🏡 Ir para Home Alt 2
-            </button>
+            </button> -->
           </div>
         </div>
-        <h1>Está fixo em baixo</h1>
+        <!-- <h1>Está fixo em baixo</h1> -->
       </div>
 
       <!-- 📄 Tela Lorem-Ipsum -->
       <div id="tela-exercicio-detalhes" class="tela" name="Detalhes">
         <div class="tela__conteudo">
+          
+          
           <div id="exercicio-detalhes-container"></div>
+          <div> Valor <br><br><br><br><br></div>
+          <div> Valor <br><br><br><br><br></div>
+          <div> Valor <br><br><br><br><br></div>
+          <div> Valor <br><br><br><br><br></div>
           <!-- <h1>Lorem-Ipsum</h1>
           <p>Exercícios detalhes</p>
           <div style="display: flex; gap: 10px">
@@ -415,7 +444,6 @@
             <button class="btn" onclick="irPara('outraTela')">
               Ir para Outra Tela
             </button> -->
-          </div>
         </div>
       </div>
 
@@ -520,8 +548,8 @@
         </div>
       </div>
       <div class="testeFixed2">
-        <!-- Bottom navigation -->
-        <footer>
+        <!-- Bottom navigation footer-->
+        <!-- <footer>
           <div class="navButtons navButtonsActive">
             <span class="material-symbols-rounded"> exercise </span>
             <span>Treino</span>
@@ -538,7 +566,7 @@
             <span class="material-symbols-rounded"> restaurant </span>
             <span>Refeições</span>
           </div>
-        </footer>
+        </footer> -->
       </div>
     </div>
 

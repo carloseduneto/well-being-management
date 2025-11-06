@@ -82,7 +82,7 @@ async function getExerciseData() {
   console.log("Teste");
   setTimeout(() => {
     console.log("Waited for 3 seconds");
-    animateProgressCircles();
+    // animateProgressCircles();
   }, 250); // Delay of 3000 milliseconds (3 seconds)
 }
 getExerciseData();
@@ -142,7 +142,6 @@ getExerciseData2().then((exerciseDataGlobal) => {
   console.log(categoriasUnicas);
 });
 
-
 function animateProgressCircles() {
   document.querySelectorAll(".card").forEach((card) => {
     const circle = card.querySelector("circle:nth-child(2)");
@@ -161,7 +160,7 @@ function animateProgressCircles() {
   });
 }
 
-animateProgressCircles();
+// animateProgressCircles();
 
 // const DUR = 560;
 // let historico = ["home"];
@@ -303,13 +302,6 @@ animateProgressCircles();
 // // Estado inicial
 // history.replaceState({ tela: "home" }, "", "#home");
 
-function generateCategories() {
-  console.log("Generating categories...");
-  console.log(exerciseDataGlobal);
-}
-
-generateCategories();
-
 function obterCategoriaTreino(elemento) {
   console.log("Elemento recebido:", elemento);
   const categoria = elemento.dataset.category;
@@ -319,19 +311,35 @@ function obterCategoriaTreino(elemento) {
 }
 
 function mudarTreino(categoria) {
-  if (categoria!=null || categoria!=undefined) {
+  console.log("Categoria recebida em mudarTreino:", categoria);
+  if (categoria != null || categoria != undefined) {
     let treinoTest = document.getElementById("treino-test");
-    treinoTest.innerHTML = `Categoria selecionada: ${categoria}<br><br><br>`;
+    // treinoTest.innerHTML = `Categoria selecionada: ${categoria}<br><br><br>`;
     getExerciseData2().then((exerciseDataGlobal) => {
       exerciseDataGlobal.forEach((element) => {
         if (element.categoria.id == categoria) {
           treinoTest.innerHTML += `
-          <div class="exerciseCard">
-            <div class="exerciseInfo" onclick="irPara('exercicio-detalhes', 'slide', this)" data-exercise-id="${element.exercicio.id}">
-              <span class="exerciseInfoTitle">${element.exercicio.nome}</span>
-              <span>${element.exercicio.grupos_musculares.nome}</span>
+
+                  <div class="exerciseCard">
+          <div class="card" data-progress="100">
+            <div class="box">
+              <div class="percent">
+                <svg>
+                  <circle cx="29" cy="29" r="29"></circle>
+                  <circle cx="29" cy="29" r="29"></circle>
+                </svg>
+                <div class="num">
+                  <h2>4<span>/5</span></h2>
+                </div>
+              </div>
             </div>
           </div>
+          <div class="exerciseInfo" onclick="irPara('exercicio-detalhes', 'slide', this)" data-exercise-id="${element.exercicio.id}">
+            <span class="exerciseInfoTitle">${element.exercicio.nome}</span>
+            <span>${element.exercicio.grupos_musculares.nome}</span>
+          </div>
+  
+        </div>
         `;
         }
       });
@@ -339,9 +347,13 @@ function mudarTreino(categoria) {
   }
 }
 
+mudarTreino("1");
+
 function mudarExercicioDetalhes(exerciseId) {
-  if (exerciseId!=null || exerciseId!=undefined) {
-    let exercicioDetalhes = document.getElementById("exercicio-detalhes-container"); 
+  if (exerciseId != null || exerciseId != undefined) {
+    let exercicioDetalhes = document.getElementById(
+      "exercicio-detalhes-container"
+    );
     exercicioDetalhes.innerHTML = `Exercício selecionado no HTML: ${exerciseId}<br><br><br>`;
     getExerciseData2().then((exerciseDataGlobal) => {
       exerciseDataGlobal.forEach((element) => {
@@ -349,17 +361,43 @@ function mudarExercicioDetalhes(exerciseId) {
           let recomendadasHtml = "";
           if (
             element.series_recomendadas &&
-            (element.series_recomendadas.nome || element.series_recomendadas.valor)
+            (element.series_recomendadas.nome ||
+              element.series_recomendadas.valor)
           ) {
             const nomeRec = element.series_recomendadas.nome ?? "";
             const valorRec = element.series_recomendadas.valor ?? "";
             recomendadasHtml = `<p>Séries Recomendadas: ${nomeRec}${
-              nomeRec && valorRec ? ` (${valorRec})` : valorRec ? `(${valorRec})` : ""
+              nomeRec && valorRec
+                ? ` (${valorRec})`
+                : valorRec
+                ? `(${valorRec})`
+                : ""
             }</p>`;
           }
 
           exercicioDetalhes.innerHTML += `
-          <h2>${element.exercicio.nome}</h2>
+          <div class="exerciseDetail">
+            <div class="exerciseDetailCard">
+              <div class="swapExercise">
+                <span class="material-symbols-rounded swapExerciseIcon">
+                  arrow_back_ios
+                </span>
+                <span class="material-symbols-rounded swapExerciseIconRight">
+                  arrow_back_ios
+                </span>
+              </div>
+              <div class="swapExerciseDetail">
+                <span class="exerciseTitle">${element.exercicio.nome}</span>
+
+                <div class="progressExerciseDetail">
+                  <div class="progressBarExerciseDetail"></div>
+                  <span class="progressExerciseNumber">3/5</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
           <p>Grupos Musculares: ${element.exercicio.grupos_musculares.nome}</p>
           <p>Séries e Repetições: ${element.series_repeticoes.nome}</p>
           ${recomendadasHtml}
