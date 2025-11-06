@@ -543,7 +543,7 @@
     </div>
 
     <script>
-      const DUR = 360;
+      const DUR = 560;
       let historico = ["categories"];
       let titleScreen = document.getElementById("titleScreen");
 
@@ -717,8 +717,8 @@
         entrando.classList.add("active");
 
         requestAnimationFrame(() => {
-          saindo.style.transition = `opacity ${DUR}ms ease`;
-          entrando.style.transition = `opacity ${DUR}ms ease`;
+          saindo.style.transition = `opacity ${DUR}ms ease-in-out`;
+          entrando.style.transition = `opacity ${DUR}ms ease-in-out`;
           saindo.style.opacity = 0;
           entrando.style.opacity = 1;
         });

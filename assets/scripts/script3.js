@@ -124,21 +124,24 @@ getExerciseData2().then((exerciseDataGlobal) => {
         },
       ])
     ).values(),
-  ];
+  ]
+    // 🔹 Ordena alfabeticamente por nome (A → Z)
+    .sort((a, b) =>
+      a.nome.localeCompare(b.nome, "pt", { sensitivity: "base" })
+    );
 
   categoriasUnicas.forEach((categoria) => {
     allCategoriesCards.innerHTML +=
       '<div class="categoryContainer">' +
-      `<div class="categoryCard"  onclick="irPara('treino', 'slide', this)" " style='background-image: url("${categoria.image}");' data-category="${categoria.id}">` +
+      `<div class="categoryCard" onclick="irPara('treino', 'slide', this)" style='background-image: url("${categoria.image}");' data-category="${categoria.id}">` +
       `<span class="categoryTitle">${categoria.nome}</span>` +
       "</div>" +
       "</div>";
   });
 
   console.log(categoriasUnicas);
-
-  // console.log(exerciseDataGlobal.id);
 });
+
 
 function animateProgressCircles() {
   document.querySelectorAll(".card").forEach((card) => {
