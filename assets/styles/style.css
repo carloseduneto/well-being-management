@@ -27,11 +27,12 @@ body {
     padding-right: 5%;
     padding-left: 5%;
     /* margin-right: 2%; */
-    /* width: 100%; */
+    width: 100%;
     height: 60px;
+    /* background-color: blanchedalmond; */
 }
 
-header{
+header {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -42,12 +43,12 @@ header{
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-right: 20%;
-    padding-left: 5%;
+    padding-right: 20%;
+    /* padding-left: 5%; */
     /* background-color: aqua; */
     /* padding-right: 5%; */
-    margin-right: 20%;
-    width: 50%;
+    /* margin-right: 20%; */
+    width: 100%;
     /* background-color: #23D200; */
 }
 
@@ -59,7 +60,7 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 50%;
+    width: 100%;
     /* background-color: aqua; */
 
 }
@@ -134,7 +135,7 @@ footer {
     flex: 1;
     margin-top: 80px;
     padding-bottom: 200px;
-    
+
 }
 
 
@@ -256,13 +257,22 @@ a:active {
     color: black;
 }
 
-a, button {
+a,
+button,
+[onclick],
+div,
+span {
     outline: none;
     -webkit-tap-highlight-color: transparent;
+    box-shadow: none;
 }
 
 a:focus,
-a:active {
+a:active,
+button:focus,
+button:active,
+[onclick]:focus,
+[onclick]:active {
     outline: none;
     box-shadow: none;
 }
@@ -286,7 +296,7 @@ a:active {
     font-size: 100px;
 }
 
-.primaryIconAction{
+.primaryIconAction {
     font-size: 100px;
     font-variation-settings:
         'FILL' 0,
