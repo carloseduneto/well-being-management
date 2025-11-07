@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="./assets/styles/percent.css" />
     <link rel="stylesheet" href="./assets/styles/details.css" />
 
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -367,6 +366,8 @@
       <!-- 🏠 Tela Treino -->
       <div class="tela active" id="tela-treino" name="Treino">
         <div class="tela__conteudo">
+          <div id="exercicesContainer"></div>
+
           <!-- <h1 class="testeFixed">Está fixo em cima dif</h1> -->
           <div class="exerciseCard">
             <div class="card" data-progress="70">
@@ -387,7 +388,6 @@
               <span>Peito</span>
             </div>
           </div>
-          
 
           <!-- <div
             style="
@@ -426,13 +426,11 @@
       <!-- 📄 Tela Lorem-Ipsum -->
       <div id="tela-exercicio-detalhes" class="tela" name="Detalhes">
         <div class="tela__conteudo">
-          
-          
           <div id="exercicio-detalhes-container"></div>
-          <div> Valor <br><br><br><br><br></div>
-          <div> Valor <br><br><br><br><br></div>
-          <div> Valor <br><br><br><br><br></div>
-          <div> Valor <br><br><br><br><br></div>
+          <div>Valor <br /><br /><br /><br /><br /></div>
+          <div>Valor <br /><br /><br /><br /><br /></div>
+          <div>Valor <br /><br /><br /><br /><br /></div>
+          <div>Valor <br /><br /><br /><br /><br /></div>
           <!-- <h1>Lorem-Ipsum</h1>
           <p>Exercícios detalhes</p>
           <div style="display: flex; gap: 10px">
@@ -802,5 +800,6 @@
       history.replaceState({ tela: "categories" }, "", "#categories");
     </script>
     <script src="./assets/scripts/script3.js"></script>
+    <script type="module" src="./assets/scripts/main.js"></script>
   </body>
 </html>
