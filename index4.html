@@ -33,7 +33,6 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        /* font-family: Inter, system-ui, sans-serif; */
       }
       html,
       body {
@@ -55,13 +54,9 @@
 
       .tela {
         position: absolute;
-        /* inset: 0; */
         width: 100%;
         height: 100%;
         background: #ffffff;
-        /* background-color: rgb(174, 21, 174); */
-        /* padding: 0.5rem;  */
-        /* Se quiser adicionar uma miniborda */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -73,11 +68,9 @@
       }
 
       .tela__conteudo {
-        /* position: relative; */
         background-color: rgb(216, 149, 163);
         height: 100%;
         width: 100%;
-        /* text-align: center; */
         overflow-y: auto;
         padding-top: 70px;
         padding-bottom: 150px;
@@ -128,24 +121,16 @@
         position: fixed;
         top: 60px;
         background-color: yellow;
-        /* border-radius: 25px; */
         height: 50px;
         width: 100%;
-        /* margin-top: 10px; */
       }
 
       .testeFixed2 {
         position: fixed;
         bottom: 0;
         left: 0;
-        /* background-color: orange; */
-        /* border-radius: 25px; */
-        /* height: 50px; */
-        /* width: 100%; */
-        /* margin-bottom: 10px; */
         align-self: center;
         text-align: center;
-        /* padding: 10px; */
       }
 
       .pointer {
@@ -366,7 +351,6 @@
       <!-- 🏠 Tela Treino -->
       <div class="tela active" id="tela-treino" name="Treino">
         <div class="tela__conteudo">
-          <div id="exercicesContainer"></div>
 
           <!-- <h1 class="testeFixed">Está fixo em cima dif</h1> -->
           <div class="exerciseCard">
@@ -401,29 +385,12 @@
             <span id="treino-test">
               <!-- Exercícios serão inseridos aqui -->
             </span>
-            <!-- Botões de navegação -->
-            <!--             
-            <button class="btn" onclick="irPara('Lorem-Ipsum')">
-              Ir para Lorem-Ipsum ➜
-            </button>
-            <button class="btn" onclick="irPara('perfil')">
-              👤 Ir para Perfil
-            </button>
-            <button class="btn" onclick="irPara('outraTela2')">
-              outraTela2
-            </button>
-            <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
-              🏡 Ir para Home Alt 1
-            </button>
-            <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
-              🏡 Ir para Home Alt 2
-            </button> -->
           </div>
         </div>
         <!-- <h1>Está fixo em baixo</h1> -->
       </div>
 
-      <!-- 📄 Tela Lorem-Ipsum -->
+      <!-- Exercícios detalhes -->
       <div id="tela-exercicio-detalhes" class="tela" name="Detalhes">
         <div class="tela__conteudo">
           <div id="exercicio-detalhes-container"></div>
@@ -431,17 +398,6 @@
           <div>Valor <br /><br /><br /><br /><br /></div>
           <div>Valor <br /><br /><br /><br /><br /></div>
           <div>Valor <br /><br /><br /><br /><br /></div>
-          <!-- <h1>Lorem-Ipsum</h1>
-          <p>Exercícios detalhes</p>
-          <div style="display: flex; gap: 10px">
-            <button class="btn secondary" onclick="voltar()">⬅ Voltar</button>
-            <button class="btn" onclick="irPara('home')">🏠 Home</button>
-            <button class="btn" onclick="irPara('categories')">
-              Categorias
-            </button>
-            <button class="btn" onclick="irPara('outraTela')">
-              Ir para Outra Tela
-            </button> -->
         </div>
       </div>
 
@@ -580,87 +536,6 @@
         return categoria;
       }
 
-      //Obtem dados via data-attributes
-
-      // obterCategoriaTreino();
-      // function irPara(destino, efeito = "slide") {
-      //   obterCategoriaTreino();
-      //   const telaAtual = historico[historico.length - 1];
-      //   if (destino === telaAtual) return;
-
-      //   const atual = document.getElementById(`tela-${telaAtual}`);
-      //   const proxima = document.getElementById(`tela-${destino}`);
-      //   if (!proxima) {
-      //     console.warn(`Tela '${destino}' não encontrada!`);
-      //     return;
-      //   }
-
-      //   // 🔹 Atualiza o título automaticamente
-      //   const titleScreen = document.getElementById("titleScreen");
-      //   const novoTitulo = proxima.getAttribute("name") || destino;
-      //   if (titleScreen) {
-      //     titleScreen.textContent = novoTitulo;
-      //   }
-
-      //   // Atualiza o histórico do navegador
-      //   history.pushState({ tela: destino, efeito }, "", `#${destino}`);
-
-      //   if (efeito === "dissolve") {
-      //     historico.push(destino);
-      //     animarDissolve(atual, proxima);
-      //     return;
-      //   }
-
-      //   const indiceDestino = historico.indexOf(destino);
-      //   const indoParaFrente = indiceDestino === -1;
-
-      //   if (indoParaFrente) {
-      //     historico.push(destino);
-      //     animarTransicao(atual, proxima, "esquerda");
-      //   } else {
-      //     historico = historico.slice(0, indiceDestino + 1);
-      //     animarTransicao(atual, proxima, "direita");
-      //   }
-      // }
-
-      // function irPara(destino, efeito = "slide", elemento = null) {
-      //   if (elemento) obterCategoriaTreino(elemento);
-      //   console.log("Elemento passado:", obterCategoriaTreino(elemento));
-
-      //   const telaAtual = historico[historico.length - 1];
-      //   if (destino === telaAtual) return;
-
-      //   const atual = document.getElementById(`tela-${telaAtual}`);
-      //   const proxima = document.getElementById(`tela-${destino}`);
-      //   if (!proxima) {
-      //     console.warn(`Tela '${destino}' não encontrada!`);
-      //     return;
-      //   }
-
-      //   const titleScreen = document.getElementById("titleScreen");
-      //   const novoTitulo = proxima.getAttribute("name") || destino;
-      //   if (titleScreen) titleScreen.textContent = novoTitulo;
-
-      //   history.pushState({ tela: destino, efeito }, "", `#${destino}`);
-
-      //   if (efeito === "dissolve") {
-      //     historico.push(destino);
-      //     animarDissolve(atual, proxima);
-      //     return;
-      //   }
-
-      //   const indiceDestino = historico.indexOf(destino);
-      //   const indoParaFrente = indiceDestino === -1;
-
-      //   if (indoParaFrente) {
-      //     historico.push(destino);
-      //     animarTransicao(atual, proxima, "esquerda");
-      //   } else {
-      //     historico = historico.slice(0, indiceDestino + 1);
-      //     animarTransicao(atual, proxima, "direita");
-      //   }
-      // }
-
       function voltar() {
         if (historico.length < 2) return;
         const atual = historico.pop();
@@ -696,15 +571,6 @@
       }
 
       atualizarTitulo();
-
-      // document.addEventListener("DOMContentLoaded", () => {
-      //   document.querySelectorAll(".categoryCard[category]").forEach(card => {
-      //     card.addEventListener("click", () => {
-      //       const categoria = card.getAttribute("category");
-      //       console.log("Categoria Nova:", categoria);
-      //     });
-      //   });
-      // });
 
       // 🔹 Slide animation
       function animarTransicao(saindo, entrando, direcao) {
@@ -799,7 +665,7 @@
       // Estado inicial
       history.replaceState({ tela: "categories" }, "", "#categories");
     </script>
-    <script src="./assets/scripts/script3.js"></script>
     <script type="module" src="./assets/scripts/main.js"></script>
+    <script src="./assets/scripts/script3.js"></script>
   </body>
 </html>
