@@ -205,7 +205,7 @@ function mudarExercicioDetalhes(exerciseId) {
     let exercicioDetalhes = document.getElementById(
       "exercicio-detalhes-container"
     );
-    exercicioDetalhes.innerHTML = `Exercício selecionado no HTML: ${exerciseId}<br><br><br>`;
+    // exercicioDetalhes.innerHTML = `Exercício selecionado no HTML: ${exerciseId}<br><br><br>`;
     getExerciseData2().then((exerciseDataGlobal) => {
       exerciseDataGlobal.forEach((element) => {
         if (element.exercicio.id == exerciseId) {
@@ -217,16 +217,19 @@ function mudarExercicioDetalhes(exerciseId) {
           ) {
             const nomeRec = element.series_recomendadas.nome ?? "";
             const valorRec = element.series_recomendadas.valor ?? "";
-            recomendadasHtml = `<p>Séries Recomendadas: ${nomeRec}${
+            recomendadasHtml = `<span>${nomeRec}${
               nomeRec && valorRec
                 ? ` (${valorRec})`
                 : valorRec
                 ? `(${valorRec})`
                 : ""
-            }</p>`;
+            }</span>`;
           }
 
-          exercicioDetalhes.innerHTML += `
+          let grupos_musculares =
+            "          <p>Grupos Musculares: ${element.exercicio.grupos_musculares.nome}</p>";
+
+          exercicioDetalhes.innerHTML = `
           <div class="exerciseDetail">
             <div class="exerciseDetailCard">
               <div class="swapExercise">
@@ -249,9 +252,202 @@ function mudarExercicioDetalhes(exerciseId) {
           </div>
 
           
-          <p>Grupos Musculares: ${element.exercicio.grupos_musculares.nome}</p>
-          <p>Séries e Repetições: ${element.series_repeticoes.nome}</p>
-          ${recomendadasHtml}
+
+          
+
+                    <div class="contentDetails">
+            <div class="recomendation">
+              <span class="detalisTitleInput">Recomendações</span>
+              <span class="detalisTitleInputRecomendation"
+                >${recomendadasHtml}</span
+              >
+            </div>
+
+            <div class="inputData">
+              <label class="detalisTitleInput" for="weightInput"
+                >Séries recomendadas</label
+              >
+              <select
+                name=""
+                id="recomendationSeries"
+                class="inputDetails selectDetails"
+              >
+                <option value="" disabled selected>2x6a8</option>
+                <option value="8">2x6a8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+
+              <!-- Repetições e carga inputs -->
+              <div class="shortInputContainer">
+                <div class="inputData shortInputData">
+                  <label class="detalisTitleInput" for="repetition"
+                    >Repetições</label
+                  >
+                  <input
+                    class="inputDetails"
+                    type="number"
+                    id="repetition"
+                    placeholder=""
+                  />
+                </div>
+
+                <div class="inputData shortInputData">
+                  <label class="detalisTitleInput" for="weightInputCarga"
+                    >Carga (kg)</label
+                  >
+                  <input
+                    class="inputDetails weight-mask"
+                    type="text"
+                    id="weightInputCarga"
+                    inputmode="decimal"
+                    placeholder="Ex: 20"
+                    aria-label="Carga em quilogramas"
+                  />
+                </div>
+              </div>
+
+              <div class="shortInputContainer">
+                <div class="inputData shortInputData">
+                  <label class="detalisTitleInput" for="repetition"
+                    >Esforço (RPE)</label
+                  >
+                  <input
+                    class="inputDetails"
+                    type="number"
+                    id="repetition"
+                    placeholder=""
+                  />
+                </div>
+
+                <div class="inputData shortInputData">
+                  <label class="detalisTitleInput" for="weightInputCarga"
+                    >Até a falha (RPI)</label
+                  >
+                  <input
+                    class="inputDetails weight-mask"
+                    type="text"
+                    id="weightInputCarga2"
+                    inputmode="decimal"
+                    placeholder=""
+                    aria-label="Carga em quilogramas"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <label class="detalisTitleInput" for="historico">Histórico</label>
+
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Data</th>
+                    <th>Repetições</th>
+                    <th>Carga (kg)</th>
+                    <th>RPE</th>
+                    <th>RPI</th>
+                    <th>Intervalo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>10/06/2024</td>
+                    <td>8</td>
+                    <td>20</td>
+                    <td>10</td>
+                    <td>7</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>12/06/2024</td>
+                    <td>8</td>
+                    <td>25</td>
+                    <td>8</td>
+                    <td>8</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>14/06/2024</td>
+                    <td>6</td>
+                    <td>30</td>
+                    <td>6</td>
+                    <td>9</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <td>14/06/2024</td>
+                    <td>6</td>
+                    <td>30</td>
+                    <td>6</td>
+                    <td>9</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <td>14/06/2024</td>
+                    <td>6</td>
+                    <td>30</td>
+                    <td>6</td>
+                    <td>9</td>
+                    <td>0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <label class="detalisTitleInput" for="comentarios"
+              >Comentários</label
+            >
+            <textarea
+              class="inputDetails textAreaDetails"
+              id="comentarios"
+              placeholder="Escreva aqui seus comentários sobre o exercício..."
+            ></textarea>
+
+            <section class="commentsSection">
+              <div class="commentsHistoryContainer">
+                <div class="commentsHistory">
+                  <span class="commentDate">segunda-feira - 10/06/2024</span>
+                  <span class="commentText">
+                    Senti que consegui aumentar a carga dessa vez, mas poderia
+                    ter feito mais repetições.
+                  </span>
+                </div>
+
+                <div class="commentsHistory">
+                  <span class="commentDate">quarta-feira - 12/06/2024</span>
+                  <span class="commentText">
+                    Consegui completar todas as séries com a carga recomendada.
+                    Me senti bem durante o exercício.
+                  </span>
+                </div>
+
+                <div class="commentsHistory">
+                  <span class="commentDate">sexta-feira - 14/06/2024</span>
+                  <span class="commentText">
+                    Tive dificuldade na última série, talvez precise ajustar a
+                    carga para a próxima vez.
+                  </span>
+                </div>
+              </div>
+
+              <button class="seeMoreComments">
+                <span>Ver mais comentários</span>
+              </button>
+            </section>
+
+            <button class="primaryButtonAction">
+              <span class="material-symbols-rounded primaryIconAction">
+                check
+              </span>
+            </button>
+          </div>
+
+
+
+
         `;
         }
       });
@@ -303,3 +499,5 @@ function irPara(destino, efeito = "slide", elemento = null) {
     animarTransicao(atual, proxima, "direita");
   }
 }
+
+
