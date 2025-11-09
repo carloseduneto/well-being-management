@@ -1,4 +1,4 @@
- function mascaraKg() {
+export function mascaraKg() {
   const input = document.getElementById("weightInputCarga");
   const formatter = new Intl.NumberFormat("pt-BR", {
     minimumFractionDigits: 0,
@@ -57,6 +57,4 @@
     input.value = raw === "" ? "" : String(raw).replace(".", ",");
   });
 }
-
-mascaraKg();  
 

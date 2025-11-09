@@ -137,5 +137,3 @@ window.addEventListener("popstate", event => {
 
 // Estado inicial
 history.replaceState({ tela: "categories" }, "", "#categories");
-
-

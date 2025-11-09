@@ -9,7 +9,7 @@ async function getExerciseData() {
 
   let allExercises = "";
 
-  resultado.forEach((element) => {
+  resultado.forEach(element => {
     console.log(element.exercicio.nome);
 
     var amoutSeriesStandardJSON = element?.series_repeticoes?.nome || "0x0";
@@ -22,7 +22,7 @@ async function getExerciseData() {
 
     const hoje = new Date().toISOString().split("T")[0]; // pega AAAA-MM-DD de hoje
 
-    const qtdHistoricoHoje = element?.exercicio.treino_historico.filter((h) =>
+    const qtdHistoricoHoje = element?.exercicio.treino_historico.filter(h =>
       h.created_at.startsWith(hoje)
     ).length;
     var qtdHistorico = qtdHistoricoHoje;
@@ -87,6 +87,7 @@ async function getExerciseData() {
 }
 getExerciseData();
 
+
 async function getExerciseData2() {
   const resposta = await fetch("http://localhost:3000/treino", {
     method: "GET",
@@ -99,7 +100,7 @@ async function getExerciseData2() {
   return exerciseDataGlobal;
 }
 
-getExerciseData2().then((exerciseDataGlobal) => {
+getExerciseData2().then(exerciseDataGlobal => {
   console.log("exerciseDataGlobal in then():");
 
   let allCategoriesCards = document.getElementById("allCategoriesCards");
@@ -107,7 +108,7 @@ getExerciseData2().then((exerciseDataGlobal) => {
 
   const categoriasUnicas = [
     ...new Map(
-      exerciseDataGlobal.map((exercise) => [
+      exerciseDataGlobal.map(exercise => [
         exercise.categoria.nome,
         {
           id: exercise.categoria.id,
@@ -122,7 +123,7 @@ getExerciseData2().then((exerciseDataGlobal) => {
       a.nome.localeCompare(b.nome, "pt", { sensitivity: "base" })
     );
 
-  categoriasUnicas.forEach((categoria) => {
+  categoriasUnicas.forEach(categoria => {
     allCategoriesCards.innerHTML +=
       '<div class="categoryContainer">' +
       `<div class="categoryCard" onclick="irPara('treino', 'slide', this)" style='background-image: url("${categoria.image}");' data-category="${categoria.id}">` +
@@ -135,7 +136,7 @@ getExerciseData2().then((exerciseDataGlobal) => {
 });
 
 function animateProgressCircles() {
-  document.querySelectorAll(".card").forEach((card) => {
+  document.querySelectorAll(".card").forEach(card => {
     const circle = card.querySelector("circle:nth-child(2)");
     const progress = card.dataset.progress;
     if (progress != 0) {
@@ -152,7 +153,6 @@ function animateProgressCircles() {
   });
 }
 
-
 function obterCategoriaTreino(elemento) {
   console.log("Elemento recebido:", elemento);
   const categoria = elemento.dataset.category;
@@ -166,8 +166,8 @@ function mudarTreino(categoria) {
   if (categoria != null || categoria != undefined) {
     let treinoTest = document.getElementById("treino-test");
     // treinoTest.innerHTML = `Categoria selecionada: ${categoria}<br><br><br>`;
-    getExerciseData2().then((exerciseDataGlobal) => {
-      exerciseDataGlobal.forEach((element) => {
+    getExerciseData2().then(exerciseDataGlobal => {
+      exerciseDataGlobal.forEach(element => {
         if (element.categoria.id == categoria) {
           treinoTest.innerHTML += `
 
@@ -206,8 +206,8 @@ function mudarExercicioDetalhes(exerciseId) {
       "exercicio-detalhes-container"
     );
     // exercicioDetalhes.innerHTML = `Exercício selecionado no HTML: ${exerciseId}<br><br><br>`;
-    getExerciseData2().then((exerciseDataGlobal) => {
-      exerciseDataGlobal.forEach((element) => {
+    getExerciseData2().then(exerciseDataGlobal => {
+      exerciseDataGlobal.forEach(element => {
         if (element.exercicio.id == exerciseId) {
           let recomendadasHtml = "";
           if (
@@ -499,5 +499,3 @@ function irPara(destino, efeito = "slide", elemento = null) {
     animarTransicao(atual, proxima, "direita");
   }
 }
-
-
