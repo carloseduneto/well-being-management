@@ -51,7 +51,7 @@
 }
 
 .exerciseTitle {
-    background-color: thistle;
+    background-color: rgb(255, 221, 255);
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 10px;
@@ -154,7 +154,8 @@
     width: 95%;
     height: 40px;
     border-radius: 8px;
-    border: solid #E3E3E3 1px;
+    border: solid #747474 1px;
+    background-color: #ffffff;
     padding-left: 15px;
     font-size: 16px;
 }

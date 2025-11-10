@@ -82,7 +82,7 @@ async function getExerciseData() {
   console.log("Teste");
   setTimeout(() => {
     console.log("Waited for 3 seconds");
-    // animateProgressCircles();
+    animateProgressCircles();
   }, 250); // Delay of 3000 milliseconds (3 seconds)
 }
 getExerciseData();
@@ -167,12 +167,33 @@ function mudarTreino(categoria) {
     let treinoTest = document.getElementById("treino-test");
     // treinoTest.innerHTML = `Categoria selecionada: ${categoria}<br><br><br>`;
     getExerciseData2().then(exerciseDataGlobal => {
+      
       exerciseDataGlobal.forEach(element => {
+        var amoutSeriesStandardJSON = element?.series_repeticoes?.nome || "0x0";
+        var amoutSeriesStandard = parseInt(
+          amoutSeriesStandardJSON.split("x")[0]
+        );
+
+        var recomendedSeriesJSON = element?.series_recomendadas?.valor || "0";
+        var recomendedSeries = parseInt(recomendedSeriesJSON);
+        console.log(amoutSeriesStandard + recomendedSeries);
+        var totalSeries = amoutSeriesStandard + recomendedSeries;
+
+        const hoje = new Date().toISOString().split("T")[0]; // pega AAAA-MM-DD de hoje
+
+        const qtdHistoricoHoje = element?.exercicio.treino_historico.filter(
+          (h) => h.created_at.startsWith(hoje)
+        ).length;
+        var qtdHistorico = qtdHistoricoHoje;
+        const percentage =
+          totalSeries > 0 ? Math.round((qtdHistorico / totalSeries) * 100) : 0;
+
         if (element.categoria.id == categoria) {
+          if (qtdHistorico <= 0) {
           treinoTest.innerHTML += `
 
                   <div class="exerciseCard">
-          <div class="card" data-progress="100">
+          <div class="card" data-progress="${percentage}">
             <div class="box">
               <div class="percent">
                 <svg>
@@ -180,7 +201,7 @@ function mudarTreino(categoria) {
                   <circle cx="29" cy="29" r="29"></circle>
                 </svg>
                 <div class="num">
-                  <h2>4<span>/5</span></h2>
+                  <h2>${totalSeries}</h2>
                 </div>
               </div>
             </div>
@@ -192,7 +213,38 @@ function mudarTreino(categoria) {
   
         </div>
         `;
+          } else {
+                      treinoTest.innerHTML += `
+
+                  <div class="exerciseCard">
+          <div class="card" data-progress="${percentage}">
+            <div class="box">
+              <div class="percent">
+                <svg>
+                  <circle cx="29" cy="29" r="29"></circle>
+                  <circle cx="29" cy="29" r="29"></circle>
+                </svg>
+                <div class="num">
+                  <h2>${qtdHistorico}<span>/${totalSeries}</span></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="exerciseInfo" onclick="irPara('exercicio-detalhes', 'slide', this)" data-exercise-id="${element.exercicio.id}">
+            <span class="exerciseInfoTitle">${element.exercicio.nome}</span>
+            <span>${element.exercicio.grupos_musculares.nome}</span>
+          </div>
+  
+        </div>
+        `;
+          }
         }
+
+        setTimeout(() => {
+          console.log("Waited for 3 seconds");
+          // Descomentar a linha abaixo para ativar a animação dos círculos de progresso
+          // animateProgressCircles();
+        }, 250); // Delay of 3000 milliseconds (3 seconds)
       });
     });
   }
@@ -282,12 +334,12 @@ function mudarExercicioDetalhes(exerciseId) {
 
               <!-- Repetições e carga inputs -->
               <div class="shortInputContainer">
-                <div class="inputData shortInputData">
+                <div class="inputData shortInputData auto-select">
                   <label class="detalisTitleInput" for="repetition"
                     >Repetições</label
                   >
                   <input
-                    class="inputDetails"
+                    class="inputDetails auto-select"
                     type="number"
                     id="repetition"
                     placeholder=""
@@ -299,7 +351,7 @@ function mudarExercicioDetalhes(exerciseId) {
                     >Carga (kg)</label
                   >
                   <input
-                    class="inputDetails weight-mask"
+                    class="inputDetails weight-mask auto-select"
                     type="text"
                     id="weightInputCarga"
                     inputmode="decimal"
@@ -315,7 +367,7 @@ function mudarExercicioDetalhes(exerciseId) {
                     >Esforço (RPE)</label
                   >
                   <input
-                    class="inputDetails"
+                    class="inputDetails auto-select"
                     type="number"
                     id="repetition"
                     placeholder=""
@@ -327,7 +379,7 @@ function mudarExercicioDetalhes(exerciseId) {
                     >Até a falha (RPI)</label
                   >
                   <input
-                    class="inputDetails weight-mask"
+                    class="inputDetails weight-mask auto-select"
                     type="text"
                     id="weightInputCarga2"
                     inputmode="decimal"
@@ -449,6 +501,7 @@ function mudarExercicioDetalhes(exerciseId) {
 
 
         `;
+        mascaraKg();
         }
       });
     });
@@ -499,3 +552,74 @@ function irPara(destino, efeito = "slide", elemento = null) {
     animarTransicao(atual, proxima, "direita");
   }
 }
+
+function mascaraKg() {
+  const input = document.getElementById("weightInputCarga");
+  const formatter = new Intl.NumberFormat("pt-BR", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  });
+
+  // Converte entrada "bruta" em número (ponto decimal internamente)
+  function parseNumberRaw(raw) {
+    if (!raw) return "";
+    const cleaned = String(raw)
+      .replace(/[^\d,.\-]/g, "")
+      .replace(",", ".");
+    const n = Number(cleaned);
+    return isNaN(n) ? "" : n;
+  }
+
+  // Atualiza exibição: "12,5 kg" com formatação PT-BR, mantém valor numérico em dataset
+  function updateDisplay(value) {
+    if (value === "" || value == null) {
+      input.value = "";
+      input.dataset.value = "";
+      return;
+    }
+    const num = Number(value);
+    input.value = formatter.format(num) + " kg";
+    input.dataset.value = String(num);
+  }
+
+  // Enquanto digita, permite só números, vírgula/ponto e sinal, mostra versão "crua" (sem 'kg')
+  input.addEventListener("input", () => {
+    const raw = input.value;
+    const parsed = parseNumberRaw(raw);
+    // Mostra o texto cru para facilitar edição (substitui por vírgula se veio com ponto)
+    if (parsed === "") {
+      input.value = raw.replace(/[^\d,.\-]/g, "");
+      input.dataset.value = "";
+    } else {
+      // exibe sem sufixo enquanto o usuário digita
+      const display = String(raw)
+        .replace(/[^\d,.\-]/g, "")
+        .replace(".", ",");
+      input.value = display;
+      input.dataset.value = String(parsed);
+    }
+  });
+
+  // Ao perder foco, formata e adiciona " kg"
+  input.addEventListener("blur", () => {
+    const parsed = input.dataset.value || parseNumberRaw(input.value);
+    if (parsed === "") {
+      updateDisplay("");
+    } else {
+      updateDisplay(parsed);
+    }
+  });
+
+  // Ao focar, remove o sufixo para facilitar edição
+  input.addEventListener("focus", () => {
+    const raw = input.dataset.value || "";
+    input.value = raw === "" ? "" : String(raw).replace(".", ",");
+  });
+}
+
+document.addEventListener("focusin", (e) => {
+  const el = e.target;
+  if (el.classList.contains("auto-select")) {
+    setTimeout(() => el.select(), 10);
+  }
+});

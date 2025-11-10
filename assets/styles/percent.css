@@ -158,5 +158,6 @@ circle:nth-child(2) {
     stroke: #23D200;
     stroke-dasharray: 180;
     stroke-dashoffset: 180;
+    /* Descomentar  */
     /* transition: stroke-dashoffset 4s ease-in-out; */
 }
