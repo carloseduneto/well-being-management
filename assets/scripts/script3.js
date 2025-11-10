@@ -9,7 +9,7 @@ async function getExerciseData() {
 
   let allExercises = "";
 
-  resultado.forEach(element => {
+  resultado.forEach((element) => {
     console.log(element.exercicio.nome);
 
     var amoutSeriesStandardJSON = element?.series_repeticoes?.nome || "0x0";
@@ -22,7 +22,7 @@ async function getExerciseData() {
 
     const hoje = new Date().toISOString().split("T")[0]; // pega AAAA-MM-DD de hoje
 
-    const qtdHistoricoHoje = element?.exercicio.treino_historico.filter(h =>
+    const qtdHistoricoHoje = element?.exercicio.treino_historico.filter((h) =>
       h.created_at.startsWith(hoje)
     ).length;
     var qtdHistorico = qtdHistoricoHoje;
@@ -87,7 +87,6 @@ async function getExerciseData() {
 }
 getExerciseData();
 
-
 async function getExerciseData2() {
   const resposta = await fetch("http://localhost:3000/treino", {
     method: "GET",
@@ -100,7 +99,7 @@ async function getExerciseData2() {
   return exerciseDataGlobal;
 }
 
-getExerciseData2().then(exerciseDataGlobal => {
+getExerciseData2().then((exerciseDataGlobal) => {
   console.log("exerciseDataGlobal in then():");
 
   let allCategoriesCards = document.getElementById("allCategoriesCards");
@@ -108,7 +107,7 @@ getExerciseData2().then(exerciseDataGlobal => {
 
   const categoriasUnicas = [
     ...new Map(
-      exerciseDataGlobal.map(exercise => [
+      exerciseDataGlobal.map((exercise) => [
         exercise.categoria.nome,
         {
           id: exercise.categoria.id,
@@ -123,7 +122,7 @@ getExerciseData2().then(exerciseDataGlobal => {
       a.nome.localeCompare(b.nome, "pt", { sensitivity: "base" })
     );
 
-  categoriasUnicas.forEach(categoria => {
+  categoriasUnicas.forEach((categoria) => {
     allCategoriesCards.innerHTML +=
       '<div class="categoryContainer">' +
       `<div class="categoryCard" onclick="irPara('treino', 'slide', this)" style='background-image: url("${categoria.image}");' data-category="${categoria.id}">` +
@@ -136,7 +135,7 @@ getExerciseData2().then(exerciseDataGlobal => {
 });
 
 function animateProgressCircles() {
-  document.querySelectorAll(".card").forEach(card => {
+  document.querySelectorAll(".card").forEach((card) => {
     const circle = card.querySelector("circle:nth-child(2)");
     const progress = card.dataset.progress;
     if (progress != 0) {
@@ -153,6 +152,38 @@ function animateProgressCircles() {
   });
 }
 
+// 1️⃣ Extrai e converte as séries padrão (ex: "3x10" → 3)
+function getAmoutSeriesStandard(element) {
+  const amoutSeriesStandardJSON = element?.series_repeticoes?.nome || "0x0";
+  return parseInt(amoutSeriesStandardJSON.split("x")[0]);
+}
+
+// 2️⃣ Extrai e converte as séries recomendadas
+function getRecomendedSeries(element) {
+  const recomendedSeriesJSON = element?.series_recomendadas?.valor || "0";
+  return parseInt(recomendedSeriesJSON);
+}
+
+// 3️⃣ Soma total de séries
+function getTotalSeries(element) {
+  const amoutSeriesStandard = getAmoutSeriesStandard(element);
+  const recomendedSeries = getRecomendedSeries(element);
+  return amoutSeriesStandard + recomendedSeries;
+}
+
+// 4️⃣ Conta quantos históricos existem hoje
+function getQtdHistoricoHoje(element) {
+  const hoje = new Date().toISOString().split("T")[0]; // formato AAAA-MM-DD
+  return element?.exercicio.treino_historico.filter((h) =>
+    h.created_at.startsWith(hoje)
+  ).length;
+}
+
+// 5️⃣ Calcula a porcentagem de execução
+function getPercentage(qtdHistorico, totalSeries) {
+  return totalSeries > 0 ? Math.round((qtdHistorico / totalSeries) * 100) : 0;
+}
+
 function obterCategoriaTreino(elemento) {
   console.log("Elemento recebido:", elemento);
   const categoria = elemento.dataset.category;
@@ -166,9 +197,8 @@ function mudarTreino(categoria) {
   if (categoria != null || categoria != undefined) {
     let treinoTest = document.getElementById("treino-test");
     // treinoTest.innerHTML = `Categoria selecionada: ${categoria}<br><br><br>`;
-    getExerciseData2().then(exerciseDataGlobal => {
-      
-      exerciseDataGlobal.forEach(element => {
+    getExerciseData2().then((exerciseDataGlobal) => {
+      exerciseDataGlobal.forEach((element) => {
         var amoutSeriesStandardJSON = element?.series_repeticoes?.nome || "0x0";
         var amoutSeriesStandard = parseInt(
           amoutSeriesStandardJSON.split("x")[0]
@@ -190,7 +220,7 @@ function mudarTreino(categoria) {
 
         if (element.categoria.id == categoria) {
           if (qtdHistorico <= 0) {
-          treinoTest.innerHTML += `
+            treinoTest.innerHTML += `
 
                   <div class="exerciseCard">
           <div class="card" data-progress="${percentage}">
@@ -214,7 +244,7 @@ function mudarTreino(categoria) {
         </div>
         `;
           } else {
-                      treinoTest.innerHTML += `
+            treinoTest.innerHTML += `
 
                   <div class="exerciseCard">
           <div class="card" data-progress="${percentage}">
@@ -258,8 +288,8 @@ function mudarExercicioDetalhes(exerciseId) {
       "exercicio-detalhes-container"
     );
     // exercicioDetalhes.innerHTML = `Exercício selecionado no HTML: ${exerciseId}<br><br><br>`;
-    getExerciseData2().then(exerciseDataGlobal => {
-      exerciseDataGlobal.forEach(element => {
+    getExerciseData2().then((exerciseDataGlobal) => {
+      exerciseDataGlobal.forEach((element) => {
         if (element.exercicio.id == exerciseId) {
           let recomendadasHtml = "";
           if (
@@ -277,6 +307,18 @@ function mudarExercicioDetalhes(exerciseId) {
                 : ""
             }</span>`;
           }
+
+          let amoutSeriesStandard = getAmoutSeriesStandard(element);
+          let recomendedSeries = getRecomendedSeries(element);
+          let totalSeries = getTotalSeries(element);
+          let qtdHistorico = getQtdHistoricoHoje(element);
+          let percentage = getPercentage(qtdHistorico, totalSeries);
+
+          // Cálculo quantidade séries padrão + recomendadas, se fez retornará quantidade total se não houver histórico
+          let lastSeries = "";
+          
+            lastSeries = `<span class="progressExerciseNumber">${qtdHistorico} / ${totalSeries} </span>`;
+          
 
           let grupos_musculares =
             "          <p>Grupos Musculares: ${element.exercicio.grupos_musculares.nome}</p>";
@@ -296,8 +338,8 @@ function mudarExercicioDetalhes(exerciseId) {
                 <span class="exerciseTitle">${element.exercicio.nome}</span>
 
                 <div class="progressExerciseDetail">
-                  <div class="progressBarExerciseDetail"></div>
-                  <span class="progressExerciseNumber">3/5</span>
+                  <div class="progressBarExerciseDetail" style="--progress:${percentage}%;"></div>
+                  ${lastSeries}
                 </div>
               </div>
             </div>
@@ -501,7 +543,7 @@ function mudarExercicioDetalhes(exerciseId) {
 
 
         `;
-        mascaraKg();
+          mascaraKg();
         }
       });
     });

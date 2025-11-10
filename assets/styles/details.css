@@ -3,11 +3,6 @@
     background-color: #f1ff70;
     box-shadow: 0 4px 4px #00000029;
     border-radius: 0 0 10px 10px;
-    /* margin: 0; */
-    /* position: fixed;
-    top: 10%;
-    left: 0%;
-    right: 0%; */
     width: 100%;
     z-index: 9;
     transform: translateZ(0);
@@ -36,8 +31,6 @@
 
 
 .swapExercise {
-    /* top: 20px;
-    left: 20px; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -45,13 +38,11 @@
     font-size: 18px;
     cursor: pointer;
     width: 100%;
-    /* background-color: violet; */
     padding-left: 5%;
     padding-right: 5%;
 }
 
 .exerciseTitle {
-    background-color: rgb(255, 221, 255);
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 10px;
@@ -74,7 +65,7 @@
 }
 
 .progressExerciseDetail {
-    width: 100%;
+    width: 95%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -94,22 +85,35 @@
 }
 
 .progressBarExerciseDetail::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 60%;
-    height: 100%;
-    border-radius: inherit;
-    background-color: #23D200;
-    z-index: 5;
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #23D200;
+  border-radius: inherit;
+  pointer-events: none;
+  width: var(--progress, 0%);
+  animation: fillProgress 2s ease-in-out forwards;
+}
+
+
+/* anima do 0 até o valor final */
+@keyframes fillProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--progress, 0%);
+  }
 }
 
 .progressExerciseNumber {
     margin-left: 10px;
     font-weight: 600;
     font-size: 16px;
+    /* background-color: violet; */
+    width: 10%;
 }
 
 .detalisTitleInput {
