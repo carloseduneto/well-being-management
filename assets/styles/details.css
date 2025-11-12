@@ -94,19 +94,23 @@
   border-radius: inherit;
   pointer-events: none;
   width: var(--progress, 0%);
-  animation: fillProgress 2s ease-in-out forwards;
+  animation: fillProgress 2s ease-in-out;
 }
 
 
 /* anima do 0 até o valor final */
 @keyframes fillProgress {
-  from {
+  0% {
     width: 0%;
   }
-  to {
+  75% {
+    width: calc(var(--progress, 0%) + 1%);
+  }
+  100% {
     width: var(--progress, 0%);
   }
 }
+
 
 .progressExerciseNumber {
     margin-left: 10px;
