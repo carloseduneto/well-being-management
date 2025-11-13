@@ -1,9 +1,10 @@
 import axios from "axios";
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from "../config.js"; // ajuste se necessário
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from "../config/config.js";
 
 export const updateExample = async (req, res) => {
   try {
     const { id } = req.params;
+    const { access_token } = req;
 
     const { data } = await axios.patch(
       `${SUPABASE_URL}/rest/v1/example?id=eq.${id}`,
@@ -11,7 +12,7 @@ export const updateExample = async (req, res) => {
       {
         headers: {
           apikey: SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+          Authorization: `Bearer ${access_token}`,
           "Content-Type": "application/json",
         },
       }
