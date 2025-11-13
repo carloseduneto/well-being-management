@@ -7,3 +7,5 @@ export async function fetchItems() {
     { id: 3, title: "Ex. 3", body: "Descrição 3" },
   ];
 }
+
+

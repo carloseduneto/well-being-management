@@ -316,9 +316,8 @@ function mudarExercicioDetalhes(exerciseId) {
 
           // Cálculo quantidade séries padrão + recomendadas, se fez retornará quantidade total se não houver histórico
           let lastSeries = "";
-          
-            lastSeries = `<span class="progressExerciseNumber">${qtdHistorico} / ${totalSeries} </span>`;
-          
+
+          lastSeries = `<span class="progressExerciseNumber">${qtdHistorico} / ${totalSeries} </span>`;
 
           let grupos_musculares =
             "          <p>Grupos Musculares: ${element.exercicio.grupos_musculares.nome}</p>";
@@ -665,3 +664,17 @@ document.addEventListener("focusin", (e) => {
     setTimeout(() => el.select(), 10);
   }
 });
+
+document.getElementById("enviar").onclick = async () => {
+  const resposta = await fetch("http://localhost:3000/example", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      value: "Taylor swift, Fate of Ophelia",
+    }),
+  });
+
+  const resultado = await resposta.json();
+  console.log(resultado);
+  alert("Registro criado!");
+};

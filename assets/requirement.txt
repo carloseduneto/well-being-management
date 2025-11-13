@@ -1,0 +1,29 @@
+CRUD Necessários:
+
+Treinos
+Nome - backend, frontend
+C -
+R - ok, ok 
+U -
+D -
+
+Histórico Treinos
+Nome - backend, frontend
+C - 
+R - ok, 
+U -
+D -
+
+Exercícios 
+Nome - backend, frontend
+C -
+R - 
+U - 
+D - 
+
+Outras tabelas
+
+Categoria
+Séries e repetições
+Recomendações
+Grupos musculares
