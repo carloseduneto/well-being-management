@@ -14,7 +14,9 @@ app.use(cors());
 app.use("/", exemploRoutes);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Servidor rodando na porta ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`🚀 Servidor rodando na porta http://localhost:${PORT}`)
+);
 
 // const SUPABASE_URL = process.env.SUPABASE_URL;
 // const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;

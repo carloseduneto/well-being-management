@@ -24,3 +24,21 @@ export const updateExample = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+
+export const getExample = async (req, res) => {
+  try {
+    const { data } = await axios.get(
+      `${SUPABASE_URL}/rest/v1/example?select=*`,
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+          apikey: SUPABASE_ANON_KEY,
+        },
+      }
+    );
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
