@@ -1,5 +1,5 @@
 async function getExerciseData() {
-  const resposta = await fetch("http://localhost:3000/treino", {
+  const resposta = await fetch("http://localhost:3000/treino/all", {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
@@ -88,7 +88,7 @@ async function getExerciseData() {
 getExerciseData();
 
 async function getExerciseData2() {
-  const resposta = await fetch("http://localhost:3000/treino", {
+  const resposta = await fetch("http://localhost:3000/treino/all", {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
@@ -99,7 +99,7 @@ async function getExerciseData2() {
   return exerciseDataGlobal;
 }
 
-getExerciseData2().then((exerciseDataGlobal) => {
+getExerciseData2().then((exerciseDataGlobal) => {});
   console.log("exerciseDataGlobal in then():");
 
   let allCategoriesCards = document.getElementById("allCategoriesCards");

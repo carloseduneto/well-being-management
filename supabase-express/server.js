@@ -2,6 +2,10 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import exemploRoutes from "./routes/example.js";
+import treinoRoutes from "./routes/treino.js";
+import treinoHistoricoRoutes from "./routes/treinoHistorico.js";
+import treinoRecomendacoesRoutes from "./routes/treinoRecomendacoes.js";
+import seriesRepeticoesRoutes from "./routes/treinoSeriesRepeticoes.js";
 import NodeCache from "node-cache";
 
 dotenv.config();
@@ -12,6 +16,10 @@ app.use(cors());
 
 // Rotas
 app.use("/", exemploRoutes);
+app.use("/", treinoRoutes);
+app.use("/", treinoHistoricoRoutes);
+app.use("/", treinoRecomendacoesRoutes);
+app.use("/", seriesRepeticoesRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () =>
@@ -122,38 +130,38 @@ app.listen(PORT, () =>
 //       //         }
 //       //       );
 
-//       const [treino, historico] = await Promise.all([
-//         axios.get(
-//           `${SUPABASE_URL}/rest/v1/treino?select=id,order,exercicio(id,nome,grupos_musculares(nome)),categoria(id,nome, image),series_repeticoes(nome),series_recomendadas(nome,valor)&order=order.asc`,
-//           {
-//             headers: {
-//               Authorization: `Bearer ${access_token}`,
-//               apikey: SUPABASE_ANON_KEY,
-//             },
-//           }
-//         ),
-//         axios.get(
-//           `${SUPABASE_URL}/rest/v1/treino_historico?select=exercicio,carga,repeticoes,rpe,rir,created_at`,
-//           {
-//             headers: {
-//               Authorization: `Bearer ${access_token}`,
-//               apikey: SUPABASE_ANON_KEY,
-//             },
-//           }
-//         ),
-//       ]);
+      // const [treino, historico] = await Promise.all([
+      //   axios.get(
+      //     `${SUPABASE_URL}/rest/v1/treino?select=id,order,exercicio(id,nome,grupos_musculares(nome)),categoria(id,nome, image),series_repeticoes(nome),series_recomendadas(nome,valor)&order=order.asc`,
+      //     {
+      //       headers: {
+      //         Authorization: `Bearer ${access_token}`,
+      //         apikey: SUPABASE_ANON_KEY,
+      //       },
+      //     }
+      //   ),
+      //   axios.get(
+      //     `${SUPABASE_URL}/rest/v1/treino_historico?select=exercicio,carga,repeticoes,rpe,rir,created_at`,
+      //     {
+      //       headers: {
+      //         Authorization: `Bearer ${access_token}`,
+      //         apikey: SUPABASE_ANON_KEY,
+      //       },
+      //     }
+      //   ),
+      // ]);
 
-//       // Agrupa historicos dentro dos respectivos exercícios
-//       const treinoComHistorico = treino.data.map((t) => ({
-//         ...t,
-//         exercicio: {
-//           ...t.exercicio,
-//           treino_historico: historico.data.filter(
-//             (h) => h.exercicio === t.exercicio.id
-//           ),
-//         },
-//       }));
-//       const response = { data: treinoComHistorico };
+      // // Agrupa historicos dentro dos respectivos exercícios
+      // const treinoComHistorico = treino.data.map((t) => ({
+      //   ...t,
+      //   exercicio: {
+      //     ...t.exercicio,
+      //     treino_historico: historico.data.filter(
+      //       (h) => h.exercicio === t.exercicio.id
+      //     ),
+      //   },
+      // }));
+      // const response = { data: treinoComHistorico };
 
 //       data = response.data;
 //       cache.set(cacheKey, data);

@@ -310,7 +310,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             value:
-              "Taylor swift, Fate of Ophelia",
+              "Ah não, agora vai! Exemplo pelo front nº 3 " + Math.random().toString(36).substring(7),
           }),
         });
 
@@ -320,7 +320,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
       };
 
       document.getElementById("apagar").onclick = async () => {
-        const resposta = await fetch("http://localhost:3000/example/27", {
+        const resposta = await fetch("http://localhost:3000/example/30", {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           // body: JSON.stringify({
@@ -335,11 +335,11 @@ window.addEventListener('beforeinstallprompt', (e) => {
       };
 
       document.getElementById("atualizar").onclick = async () => {
-        const resposta = await fetch("http://localhost:3000/example/28", {
+        const resposta = await fetch("http://localhost:3000/example/30", {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            value: "Abracadabra" + "Tale of Ophelia",
+            value: "The fate of Ophelia",
           }),
         });
 
@@ -349,7 +349,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
       };
 
       document.getElementById("exibir").onclick = async () => {
-        const resposta = await fetch("http://localhost:3000/treino", {
+        const resposta = await fetch("http://localhost:3000/example", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });

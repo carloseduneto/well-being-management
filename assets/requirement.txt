@@ -2,10 +2,10 @@ CRUD Necessários:
 
 Treinos
 Nome - backend, frontend
-C -
+C - ok
 R - ok, ok 
-U -
-D -
+U - ok
+D - ok
 
 Histórico Treinos
 Nome - backend, frontend
