@@ -86,6 +86,8 @@ export const createTreino = async (req, res) => {
   }
 };
 
+//TODO : Separar o getTreinos de getHistoricoTreinos, para que essa função fique apenas com a lógica de buscar os treinos e não o histórico, e tenha uma  função que mapeie o histórico dentro dos treinos no front-end para evitar chamadas desnecessárias :)
+
 export const getAllTreinos = async (req, res) => {
   try {
     const { access_token } = req;
