@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import axios from "axios";
 
 export const SUPABASE_URL = process.env.SUPABASE_URL;

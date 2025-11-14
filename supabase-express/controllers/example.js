@@ -28,6 +28,8 @@ export const updateExample = async (req, res) => {
 
 export const getExample = async (req, res) => {
   try {
+    const { access_token } = req;
+
     const { data } = await axios.get(
       `${SUPABASE_URL}/rest/v1/example?select=*`,
       {
@@ -37,8 +39,10 @@ export const getExample = async (req, res) => {
         },
       }
     );
+
     res.json(data);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
+
