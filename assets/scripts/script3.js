@@ -576,6 +576,20 @@ function irPara(destino, efeito = "slide", elemento = null) {
   // Atualiza o histórico do navegador
   history.pushState({ tela: destino, efeito }, "", `#${destino}`);
 
+  // // Atualiza o histórico do navegador
+  // let hash = `#${destino}`;
+
+  // // Se tiver elemento (como na lista de exercícios), anexa o ID
+  // if (elemento && elemento.dataset.exerciseId) {
+  //   hash += `/${elemento.dataset.exerciseId}`;
+  // }
+
+  // history.pushState(
+  //   { tela: destino, efeito, id: elemento?.dataset.exerciseId },
+  //   "",
+  //   hash
+  // );
+
   if (efeito === "dissolve") {
     historico.push(destino);
     animarDissolve(atual, proxima);

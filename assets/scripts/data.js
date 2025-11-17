@@ -1,3 +1,6 @@
+
+
+
 // assets/scripts/data.js
 export async function fetchItems() {
   // substitua pela sua fonte real (fetch / localStorage / etc.)
@@ -7,5 +10,8 @@ export async function fetchItems() {
     { id: 3, title: "Ex. 3", body: "Descrição 3" },
   ];
 }
+
+
+
 
 
