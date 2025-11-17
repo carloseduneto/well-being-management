@@ -31,7 +31,7 @@ export const getTreino = async (req, res) => {
     const { access_token } = req;
 
     const { data } = await axios.get(
-      `${SUPABASE_URL}/rest/v1/treino?select=*`,
+      `${SUPABASE_URL}/rest/v1/treino?select=id,order,exercicio(id,nome,grupos_musculares(nome)),categoria(id,nome,image),series_repeticoes(nome),series_recomendadas(nome,valor)&order=order.asc`,
       {
         headers: {
           Authorization: `Bearer ${access_token}`,

@@ -99,7 +99,7 @@ async function getExerciseData2() {
   return exerciseDataGlobal;
 }
 
-getExerciseData2().then((exerciseDataGlobal) => {});
+getExerciseData2().then((exerciseDataGlobal) => {
   console.log("exerciseDataGlobal in then():");
 
   let allCategoriesCards = document.getElementById("allCategoriesCards");
