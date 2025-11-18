@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Gestão de treino</title>
     <link rel="stylesheet" href="./assets/styles/style.css" />
-    <link rel="stylesheet" href="./assets/styles/details.css" />
     <link rel="stylesheet" href="./assets/styles/categories.css" />
     <link rel="stylesheet" href="./assets/styles/percent.css" />
+    <link rel="stylesheet" href="./assets/styles/details.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,354 +28,500 @@
 
     <link rel="manifest" href="./manifest.json" />
     <meta name="theme-color" content="#ff6314" />
-  </head>
-  <body>
-    <h1>Enviar dados pro backend</h1>
-    <button id="enviar">Criar exemplo</button>
-  <button id="apagar">Apagar registro 7</button>
-  <button id="atualizar">Atualizar</button>
-  <button id="exibir">Exibir no console</button>
-    <header>
-      <div class="header">
-        <div class="headerLeft">
-          <span
-            class="material-symbols-rounded"
-            onclick="location.href='categorias.html'"
-          >
-            arrow_back_ios
-          </span>
-          <h2 class="titleScreen">Treino</h2>
-        </div>
-
-        <div class="headerRight">
-          <span class="material-symbols-rounded"> format_line_spacing </span>
-          <span class="material-symbols-rounded"> search </span>
-          <span class="material-symbols-rounded"> select_check_box </span>
-        </div>
-      </div>
-    </header>
-
-    <div class="content">
-      <a href="./exercicio-detalhes.html" >
-        <div class="exerciseCard">
-          <div class="card" data-progress="80">
-            <div class="box">
-              <div class="percent">
-                <svg>
-                  <circle cx="29" cy="29" r="29"></circle>
-                  <circle cx="29" cy="29" r="29"></circle>
-                </svg>
-                <div class="num">
-                  <h2>3<span>/5</span></h2>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Supino inclinado com halter</span>
-            <span>Peito</span>
-          </div>
-          
-        </div>
-      </a>
-
-      
-      <a href="./exercicio-detalhes.html">
-        <div class="exerciseCard">
-          <div class="card" data-progress="100">
-            <div class="box">
-              <div class="percent">
-                <svg>
-                  <circle cx="29" cy="29" r="29"></circle>
-                  <circle cx="29" cy="29" r="29"></circle>
-                </svg>
-                <div class="num">
-                  <h2>2<span>/4</span></h2>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Supino inclinado com halter</span>
-            <span>Peito</span>
-          </div>
-          
-        </div>
-      </a>
-      
-      <a href="./exercicio-detalhes.html">
-        <div class="exerciseCard">
-          <div class="card" data-progress="70">
-            <div class="box">
-              <div class="percent">
-                <svg>
-                  <circle cx="29" cy="29" r="29"></circle>
-                  <circle cx="29" cy="29" r="29"></circle>
-                </svg>
-                <div class="num">
-                  <h2>4</h2>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Supino inclinado com halter</span>
-            <span>Peito</span>
-          </div>
-  
-        </div>
-      </a>
-
-      <div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Crucifixo inclinado no Cross</span>
-            <span>Peito</span>
-          </div>
-
-        </div>
-
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Supino reto smith</span>
-            <span>Peito</span>
-          </div>
-          
-        </div>
-
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Desenvolvimento no smith</span>
-            <span>Ombros</span>
-          </div>
-          
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Elevação lateral</span>
-            <span>Ombros</span>
-          </div>
-          
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Tríceps barra W</span>
-            <span>Tríceps</span>
-          </div>
-          
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Tríceps banco</span>
-            <span>Tríceps</span>
-          </div>
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Panturrilha sentada</span>
-            <span>Pernas</span>
-          </div>
-        </div>
-        <div class="exerciseCard">
-          <div class="exerciseProgress">
-            <span> 4 </span>
-            <span> </span>
-          </div>
-          <div class="exerciseInfo">
-            <span class="exerciseInfoTitle">Panturrilha em pés</span>
-            <span>Pernas</span>
-          </div>
-        </div>
-
-        <!-- Apagar caso não precise mais -->
-        <!-- <button id="installButton">Instalar Aplicativo</button> -->
-      </div>
-
-      <button class="primaryButtonAction">
-        <span class="material-symbols-rounded primaryIconAction"> add </span>
-      </button>
-    </div>
-
-    <script>
-      if (typeof navigator.serviceWorker !== "undefined") {
-        navigator.serviceWorker
-          .register("./service-worker.js")
-          .then(() => console.log("Service Worker registrado"))
-          .catch(err =>
-            console.error("Erro ao registrar Service Worker:", err)
-          );
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        background: #f6f6f6;
+        overflow: hidden;
+        display: flex;
+        align-items: stretch;
       }
 
-document.querySelectorAll('.card').forEach(card => {
-  const circle = card.querySelector('circle:nth-child(2)');
-  const progress = card.dataset.progress;
-  if(progress != 0){
-    const dashoffset = 180 - (180 * progress) / 100;
-  
-    // força o início da animação (0%)
-    circle.style.strokeDashoffset = 180;
-    requestAnimationFrame(() => {
-      circle.style.strokeDashoffset = dashoffset;
-    });
-    
-  }
-  else {
-    circle.style.stroke = "#E3E3E3";
-  }
-});
+      .app {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
 
+      .tela {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform 460ms cubic-bezier(0.22, 0.9, 0.33, 1),
+          opacity 460ms ease-in-out;
+      }
 
-      /*
-      //Apagar caso não precise mais desses exemplos de requisições fetch
-      let deferredPrompt;
+      .tela__conteudo {
+        background-color: rgb(216, 149, 163);
+        height: 100%;
+        width: 100%;
+        overflow-y: auto;
+        padding-top: 70px;
+        padding-bottom: 150px;
+      }
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Impede o Chrome de mostrar o pop-up automático
-  e.preventDefault();
-  deferredPrompt = e;
+      .tela__conteudo::-webkit-scrollbar {
+        width: 6px;
+      }
+      .tela__conteudo::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+      }
+      .tela__conteudo::-webkit-scrollbar-track {
+        background: transparent;
+      }
 
-  // Exibe seu botão de instalar
-  const installBtn = document.getElementById('installBtn');
-  installBtn.style.display = 'block';
-  
-  installBtn.addEventListener('click', async () => {
-    console.log('beforeinstallprompt disparado');
-    installBtn.style.display = 'none';
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    console.log(`Usuário escolheu: ${outcome}`);
-    deferredPrompt = null;
-  });
-});
+      .tela.active {
+        transform: translateX(0);
+        opacity: 1;
+      }
 
-//Apagar caso não precise mais desses exemplos de requisições fetch
+      h1 {
+        margin-bottom: 1.25rem;
+        font-size: 1.5rem;
+      }
+      p {
+        margin-bottom: 1rem;
+        color: #444;
+      }
 
-*/
+      .btn {
+        background: #007bff;
+        color: #fff;
+        border: none;
+        padding: 0.8rem 1.2rem;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      .btn.secondary {
+        background: #6c757d;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
 
-      let deferredPrompt;
-      const installButton = document.getElementById("installButton");
+      .testeFixed {
+        position: fixed;
+        top: 60px;
+        background-color: yellow;
+        height: 50px;
+        width: 100%;
+      }
 
-      window.addEventListener("beforeinstallprompt", e => {
-        console.log("beforeinstallprompt disparado");
-        // Previne que o pop-up padrão do navegador apareça
-        e.preventDefault();
-        // Armazena o evento para que ele possa ser chamado mais tarde
-        deferredPrompt = e;
-        // Mostra o botão de instalação
-        installButton.style.display = "block";
+      .testeFixed2 {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        align-self: center;
+        text-align: center;
+      }
 
-        installButton.addEventListener("click", e => {
-          // Esconde o botão
-          installButton.style.display = "none";
-          // Mostra o pop-up de instalação do navegador
-          deferredPrompt.prompt();
-          // Espera a escolha do usuário
-          deferredPrompt.userChoice.then(choiceResult => {
-            deferredPrompt = null;
-          });
-        });
-      });
+      .pointer {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <!-- Navegação header principal -->
 
-      document.getElementById("enviar").onclick = async () => {
-        const resposta = await fetch("http://localhost:3000/example", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            value:
-              "Ah não, agora vai! Exemplo pelo front nº 3 " + Math.random().toString(36).substring(7),
-          }),
-        });
+      <div id="headerContainer"></div>
 
-        const resultado = await resposta.json();
-        console.log(resultado);
-        alert("Registro criado!");
-      };
+      <!-- <header>
+        <div class="header">
+          <div class="headerLeft">
+            <span class="material-symbols-rounded pointer" onclick="voltar()">
+              arrow_back_ios
+            </span>
+            <h2 class="titleScreen" id="titleScreen">Valor</h2>
+          </div>
 
-      document.getElementById("apagar").onclick = async () => {
-        const resposta = await fetch("http://localhost:3000/example/30", {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-          // body: JSON.stringify({
-          //   value: "Exemplo pelo front nº 2",
+          <div class="headerRight">
+            <span class="material-symbols-rounded"> format_line_spacing </span>
+            <span class="material-symbols-rounded"> search </span>
+            <span class="material-symbols-rounded"> select_check_box </span>
+          </div>
+        </div>
+      </header> -->
 
-          // })
-        });
+      <!-- 🏠 Tela Home Principal -->
+      <div class="tela" id="tela-home" name="Home">
+        <!-- <h1>Está fixo em cima</h1> -->
 
-        const resultado = await resposta.json();
-        console.log(resultado);
-        alert("Registro apagado!");
-      };
-
-      document.getElementById("atualizar").onclick = async () => {
-        const resposta = await fetch("http://localhost:3000/example/30", {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            value: "The fate of Ophelia",
-          }),
-        });
-
-        const resultado = await resposta.json();
-        console.log(resultado);
-        alert("Registro atualizado!");
-      };
-
-      document.getElementById("exibir").onclick = async () => {
-        const resposta = await fetch("http://localhost:3000/example", {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        });
-
-        const resultado = await resposta.json();
-        console.log(resultado);
-        alert("Registro atualizado!");
-      };
-    </script>
-    <footer>
-      <div class="navButtons navButtonsActive">
-        <span class="material-symbols-rounded"> exercise </span>
-        <span>Treino</span>
+        <div class="tela__conteudo">
+          <h1 class="testeFixed">🏠 Home</h1>
+          <p>Bem-vindo Home — abra o Lorem-Ipsum para ver a transição.</p>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <button class="btn" onclick="irPara('Lorem-Ipsum')">
+              Ir para Lorem-Ipsum ➜
+            </button>
+            <button class="btn" onclick="irPara('perfil')">
+              👤 Ir para Perfil
+            </button>
+            <button class="btn" onclick="irPara('outraTela2')">
+              outraTela2
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+              🏡 Ir para Home Alt 1
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+              🏡 Ir para Home Alt 2
+            </button>
+          </div>
+          <h1>🏠 Home</h1>
+          <p>Bem-vindo — abra o Lorem-Ipsum para ver a transição.</p>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <button class="btn" onclick="irPara('Lorem-Ipsum')">
+              Ir para Lorem-Ipsum ➜
+            </button>
+            <button class="btn" onclick="irPara('perfil')">
+              👤 Ir para Perfil
+            </button>
+            <button class="btn" onclick="irPara('outraTela2')">
+              outraTela2
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+              🏡 Ir para Home Alt 1
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+              🏡 Ir para Home Alt 2
+            </button>
+          </div>
+          <br />
+          <br /><br /><br /><br /><br /><br /><br /><br />
+          <h1>🏠 Home</h1>
+          <p>Bem-vindo — abra o Lorem-Ipsum para ver a transição.</p>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <button class="btn" onclick="irPara('Lorem-Ipsum')">
+              Ir para Lorem-Ipsum ➜
+            </button>
+            <button class="btn" onclick="irPara('dif')">Dif</button>
+            <button class="btn" onclick="irPara('outraTela2')">
+              outraTela2
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+              🏡 Ir para Home Alt 1
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+              🏡 Ir para Home Alt 2
+            </button>
+          </div>
+        </div>
+        <!-- <h1>Está fixo em baixo</h1> -->
       </div>
-      <div class="navButtons">
-        <span class="material-symbols-rounded"> history </span>
-        <span>Histórico</span>
+
+      <!-- 🔣 Tela Categorias Principal -->
+      <div class="tela active" id="tela-categories" name="Categorias">
+        <!-- <h1>Está fixo em cima</h1> -->
+
+        <div class="tela__conteudo">
+          <!-- <h1 class="testeFixed">🏠 Home</h1> -->
+
+          <div id="allCategoriesCards"></div>
+
+          <!-- Content to copy categories -->
+          <div class="content">
+            <div class="categoryContainer">
+              <div
+                class="categoryCard"
+                onclick="irPara('treino', 'slide', this)"
+                data-category="A"
+              >
+                <span class="categoryTitle">A</span>
+              </div>
+            </div>
+          </div>
+
+          <p>Bem-vindo AB — abra o Lorem-Ipsum para ver a transição.</p>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <button class="btn" onclick="irPara('Lorem-Ipsum')">
+              Ir para Lorem-Ipsum ➜
+            </button>
+            <button class="btn" onclick="irPara('perfil')">
+              👤 Ir para Perfil
+            </button>
+            <button class="btn" onclick="irPara('outraTela2')">
+              outraTela2
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+              🏡 Ir para Home Alt 1
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+              🏡 Ir para Home Alt 2
+            </button>
+          </div>
+          <h1>🏠 Home</h1>
+          <p>Bem-vindo — abra o Lorem-Ipsum para ver a transição.</p>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <button class="btn" onclick="irPara('Lorem-Ipsum')">
+              Ir para Lorem-Ipsum ➜
+            </button>
+            <button class="btn" onclick="irPara('perfil')">
+              👤 Ir para Perfil
+            </button>
+            <button class="btn" onclick="irPara('outraTela2')">
+              outraTela2
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+              🏡 Ir para Home Alt 1
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+              🏡 Ir para Home Alt 2
+            </button>
+          </div>
+          <br />
+          <br /><br /><br /><br /><br /><br /><br /><br />
+          <h1>🏠 Home</h1>
+          <p>Bem-vindo — abra o Lorem-Ipsum para ver a transição.</p>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <button class="btn" onclick="irPara('Lorem-Ipsum')">
+              Ir para Lorem-Ipsum ➜
+            </button>
+            <button class="btn" onclick="irPara('dif')">Dif</button>
+            <button class="btn" onclick="irPara('outraTela2')">
+              outraTela2
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+              🏡 Ir para Home Alt 1
+            </button>
+            <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+              🏡 Ir para Home Alt 2
+            </button>
+          </div>
+        </div>
+        <!-- <h1>Está fixo em baixo</h1> -->
       </div>
-      <div class="navButtons">
-        <span class="material-symbols-rounded"> monitoring </span>
-        <span>Avaliação física</span>
+
+      <!-- Tela Treino -->
+      <div class="tela" id="tela-treino" name="Treino">
+        <div class="tela__conteudo">
+          <!-- <h1 class="testeFixed">Está fixo em cima dif</h1> -->
+          <button onclick="atualizarHistorico()">Atualizar histórico</button>
+          <div class="exerciseCard">
+            <div class="card" data-progress="100">
+              <div class="box">
+                <div class="percent">
+                  <svg>
+                    <circle cx="29" cy="29" r="29"></circle>
+                    <circle cx="29" cy="29" r="29"></circle>
+                  </svg>
+                  <div class="num">
+                    <h2>4<span>/5</span></h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="exerciseInfo"
+              onclick="irPara('exercicio-detalhes', 'slide', this)"
+              data-exercise-id="12"
+            >
+              <span class="exerciseInfoTitle">Supino Inclinado com Inline</span>
+              <span>Peito</span>
+            </div>
+          </div>
+
+          <div>
+            <span id="treino-test">
+              <!-- Exercícios serão inseridos aqui -->
+            </span>
+          </div>
+        </div>
+        <!-- <h1>Está fixo em baixo</h1> -->
       </div>
-      <div class="navButtons">
-        <span class="material-symbols-rounded"> restaurant </span>
-        <span>Refeições</span>
+
+      <!-- Exercícios detalhes -->
+      <div id="tela-exercicio-detalhes" class="tela" name="Detalhes">
+        <div class="tela__conteudo">
+          <div id="exercicio-detalhes-container"></div>
+        </div>
       </div>
-    </footer>
+
+      <!-- 📄 Tela Lorem-Ipsum -->
+      <div id="tela-Lorem-Ipsum" class="tela">
+        <h1>Lorem-Ipsum</h1>
+        <p>Aqui fica o Lorem-Ipsum em execução.</p>
+        <div style="display: flex; gap: 10px">
+          <button class="btn secondary" onclick="voltar()">⬅ Voltar</button>
+          <button class="btn" onclick="irPara('home')">🏠 Home</button>
+          <button class="btn" onclick="irPara('categories')">Categorias</button>
+          <button class="btn" onclick="irPara('outraTela')">
+            Ir para Outra Tela
+          </button>
+        </div>
+      </div>
+
+      <!-- 📄 Outra Tela -->
+      <div id="tela-outraTela" class="tela">
+        <h1>Outra Tela</h1>
+        <p>Aqui fica outro conteúdo qualquer.</p>
+        <div style="display: flex; gap: 10px">
+          <button class="btn secondary" onclick="voltar()">⬅ Voltar</button>
+          <button class="btn" onclick="irPara('home')">🏠 Home</button>
+          <button class="btn" onclick="irPara('perfil')">
+            👤 Ir para Perfil
+          </button>
+        </div>
+      </div>
+
+      <!-- 📄 Outra Tela 2 -->
+      <div id="tela-outraTela2" class="tela">
+        <h1>Outra Tela 2</h1>
+        <p>Aqui fica outro conteúdo qualquer.</p>
+        <div style="display: flex; gap: 10px">
+          <button class="btn secondary" onclick="voltar()">⬅ Voltar</button>
+          <button class="btn" onclick="irPara('Ç')">Ç</button>
+        </div>
+      </div>
+
+      <!-- 👤 Tela Perfil -->
+      <div id="tela-perfil" class="tela">
+        <h1>👤 Perfil</h1>
+        <p>Informações do usuário e configurações.</p>
+        <div style="display: flex; gap: 10px">
+          <button class="btn secondary" onclick="voltar()">⬅ Voltar</button>
+          <button class="btn" onclick="irPara('home')">🏠 Home</button>
+          <button class="btn" onclick="irPara('w')">W</button>
+        </div>
+      </div>
+
+      <!-- 🔤 Tela W -->
+      <div id="tela-w" class="tela">
+        <h1>W</h1>
+        <p>W</p>
+        <div style="display: flex; gap: 10px">
+          <button class="btn secondary" onclick="voltar()">⬅ Voltar</button>
+          <button class="btn" onclick="irPara('home')">🏠 Home</button>
+          <button class="btn" onclick="irPara('Lorem-Ipsum')">
+            Ir para Lorem-Ipsum
+          </button>
+          <button class="btn" onclick="irPara('Ç')">Ir para Ç</button>
+        </div>
+      </div>
+
+      <!-- 🔤 Tela Ç -->
+      <div id="tela-Ç" class="tela">
+        <h1>Ç</h1>
+        <p>Ç</p>
+        <div style="display: flex; gap: 10px">
+          <button class="btn secondary" onclick="voltar()">⬅ Voltar</button>
+          <button class="btn" onclick="irPara('home')">🏠 Home</button>
+          <button class="btn" onclick="irPara('perfil')">Ir para Perfil</button>
+        </div>
+      </div>
+
+      <!-- 🏡 Home Alternativo 1 -->
+      <div id="tela-homeAlternativo1" class="tela">
+        <h1>🏡 Home Alternativo 1</h1>
+        <p>Versão alternativa do home.</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap">
+          <button class="btn secondary" onclick="irPara('home','dissolve')">
+            Voltar ao Home
+          </button>
+          <button class="btn" onclick="irPara('homeAlternativo2','dissolve')">
+            Ir para Home Alt 2
+          </button>
+        </div>
+      </div>
+
+      <!-- 🏡 Home Alternativo 2 -->
+      <div id="tela-homeAlternativo2" class="tela">
+        <h1>🏡 Home Alternativo 2</h1>
+        <p>Segunda variação do home.</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap">
+          <button class="btn secondary" onclick="irPara('home','dissolve')">
+            Voltar ao Home
+          </button>
+          <button class="btn" onclick="irPara('homeAlternativo1','dissolve')">
+            Ir para Home Alt 1
+          </button>
+        </div>
+      </div>
+      <div class="testeFixed2">
+        <!-- Bottom navigation footer-->
+        <!-- <footer>
+          <div class="navButtons navButtonsActive">
+            <span class="material-symbols-rounded"> exercise </span>
+            <span>Treino</span>
+          </div>
+          <div class="navButtons">
+            <span class="material-symbols-rounded"> today </span>
+            <span>Calendário</span>
+          </div>
+          <div class="navButtons">
+            <span class="material-symbols-rounded"> monitoring </span>
+            <span>Avaliação física</span>
+          </div>
+          <div class="navButtons">
+            <span class="material-symbols-rounded"> restaurant </span>
+            <span>Refeições</span>
+          </div>
+        </footer> -->
+      </div>
+    </div>
+
+    <script type="module" src="./assets/scripts/main.js"></script>
+    <script src="./assets/scripts/script3.js"></script>
+    <script src="./assets/scripts/script2.js"></script>
+    <script src="./assets/scripts/script4.js"></script>
   </body>
 </html>

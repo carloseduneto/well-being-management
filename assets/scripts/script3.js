@@ -196,6 +196,7 @@ function mudarTreino(categoria) {
   console.log("Categoria recebida em mudarTreino:", categoria);
   if (categoria != null || categoria != undefined) {
     let treinoTest = document.getElementById("treino-test");
+    treinoTest.innerHTML = "";
     // treinoTest.innerHTML = `Categoria selecionada: ${categoria}<br><br><br>`;
     getExerciseData2().then((exerciseDataGlobal) => {
       exerciseDataGlobal.forEach((element) => {
@@ -280,7 +281,7 @@ function mudarTreino(categoria) {
   }
 }
 
-mudarTreino("1");
+// mudarTreino("1");
 
 function mudarExercicioDetalhes(exerciseId) {
   if (exerciseId != null || exerciseId != undefined) {
@@ -549,7 +550,18 @@ function mudarExercicioDetalhes(exerciseId) {
   }
 }
 
+// 1. Declare esta variável FORA da função
+let emTransicao = false;
+
 function irPara(destino, efeito = "slide", elemento = null) {
+  
+  // 2. VERIFICADOR DE SEGURANÇA
+  // Se já estiver trocando de tela, cancela o novo clique imediatamente
+  if (emTransicao) {
+    console.log("Clique ignorado: Animação em andamento.");
+    return; 
+  }
+
   // Só chama obterCategoriaTreino se um elemento foi realmente passado
   if (elemento) {
     obterCategoriaTreino(elemento);
@@ -563,10 +575,25 @@ function irPara(destino, efeito = "slide", elemento = null) {
 
   const atual = document.getElementById(`tela-${telaAtual}`);
   const proxima = document.getElementById(`tela-${destino}`);
+  
   if (!proxima) {
     console.warn(`Tela '${destino}' não encontrada!`);
     return;
   }
+
+  // 3. ATIVA O BLOQUEIO
+  emTransicao = true; 
+
+  // Define o tempo da sua animação (em milissegundos)
+  // Ajuste este valor para igualar ao seu CSS (ex: transition: 0.5s -> 500)
+  const tempoAnimacao = 500; 
+
+  // 4. DESBLOQUEIA APÓS O TEMPO DA ANIMAÇÃO
+  setTimeout(() => {
+      emTransicao = false;
+  }, tempoAnimacao);
+
+  // --- O resto do seu código continua igual ---
 
   // 🔹 Atualiza o título automaticamente
   const titleScreen = document.getElementById("titleScreen");
@@ -575,20 +602,6 @@ function irPara(destino, efeito = "slide", elemento = null) {
 
   // Atualiza o histórico do navegador
   history.pushState({ tela: destino, efeito }, "", `#${destino}`);
-
-  // // Atualiza o histórico do navegador
-  // let hash = `#${destino}`;
-
-  // // Se tiver elemento (como na lista de exercícios), anexa o ID
-  // if (elemento && elemento.dataset.exerciseId) {
-  //   hash += `/${elemento.dataset.exerciseId}`;
-  // }
-
-  // history.pushState(
-  //   { tela: destino, efeito, id: elemento?.dataset.exerciseId },
-  //   "",
-  //   hash
-  // );
 
   if (efeito === "dissolve") {
     historico.push(destino);
